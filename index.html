@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <!-- Required meta tags -->
+    <title>Atividade SO</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Style -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="icons/fontawesome/css/all.css">
+    <!-- Babel Compiler-->
+   <!--  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+ -->
+
+	<!--<script type="text/babel" src="java.js"></script>-->
+
+    <!-- Compatibility with later versions of IE -->
+    <!--[if lt IE 9]><script src="js/html5shiv.js"></script>
+	<![endif]-->
+  </head>
+  <body>
+    <div class="conteiner">     
+        <section class="col-md-12 d-flex justify-content-center align-items-center" style="margin-top: 10%">
+            <table class="table table-light table-bordered table-stripped" id="tabela1">
+            <thead class="thead-dark">
+                <tr>
+                    <th style="text-align: center;" class="lead">Selecionar configuração - Processos</th>
+                </tr>
+            </thead>
+            <tbody>
+               
+            <td>
+               <div class="form-group">
+                    <label for="nome">Nome do processo</label>
+                    <input type="text" class="form-control" name="" id="nome">
+                    <label for="tamanho" class="mt-5">Tamanho do processo</label>
+                    <div class="input-group">
+                        <input type="number" name="" class="form-control" id="tamanho">
+                        <div class="input-group-append">
+                            <span class="input-group-text">Kb</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-dark btn-block mt-5" id="b-criar">Criar processo</button>
+                </div>
+            </td>
+            </tbody>
+        </table>
+        </section>
+
+
+
+
+         <section class="col-md-12 d-flex justify-content-center align-items-center" style="margin-top: 5%;">
+           <table class="table table-primary table-info" id="tabela2" style="text-align: center;">
+             <tr>
+                <td colspan="2"><span>Processos:</span></td></tr>
+                <thead class="thead-dark lead">
+                    <th>Nome</th>
+                    <th>Tamanho</th>
+                </thead>
+                <tbody id="proc"> 
+               
+                    <!--os processos ficam aqui-->
+     
+                </tbody>
+            </table>
+        </section>
+
+
+         <section class="col-md-12 d-flex justify-content-center align-items-center" style="margin-top: 5%">
+                    <table class="table table-light table-bordered table-stripped" id="tabela3">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th style="text-align: center;" class="lead">Selecionar configuração - Partições</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       
+                    <td>
+                       <div class="form-group">
+                            <label for="nome1">Nome da partição</label>
+                            <input type="text" class="form-control" name="" id="nome1">
+                            <label for="tamanho1" class="mt-5">Tamanho da partição</label>
+                            <div class="input-group">
+                                <input type="number" name="" class="form-control" id="tamanho1">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">Kb</span>
+                                </div>
+                            </div>
+                           <!--  <span class="text-danger">*a quantidade de processos será igual a quantidade de partições</span>não achei que teria influência ter mais ou menos partições em relação ao modo de alocar, só que alguns não seriam alocados -->
+                            <button class="btn btn-dark btn-block mt-5" id="b-criarP">Criar partição</button>
+                        </div>
+                    </td>
+                    </tbody>
+                </table>
+                </section>
+
+                <section class="col-md-12 d-flex justify-content-center align-items-center" style="margin-top: 5%;">
+                   <table class="table table-primary table-danger" id="tabela4" style="text-align: center;">
+
+                        <thead class="thead-dark lead">
+                            <tr>
+                                <th>Nome</th>
+                                <th>Tamanho</th>
+                            </tr>
+                        </thead>
+                        <tbody id="part"> 
+                       
+                            <!--os processos ficam aqui-->
+             
+                        </tbody>
+                    </table>
+                </section>
+
+                 <section class="col-md-12 d-flex justify-content-center align-items-center" style="margin-top: 5%">
+                    <table class="table table-light table-bordered table-stripped" id="tabela5">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th style="text-align: center;" class="lead">Selecionar configuração - Tipo de alocação</th>
+                        </tr>
+                    </thead>
+                    <tbody>    
+                        <td>
+                           <div class="form-group">
+                                <select id="tipo" class="form-control">
+                                    <option>Selecione</option>
+                                    <option>Best-fit</option>
+                                    <option>Worst-fit</option>
+                                    <option>First-fit</option>
+                                    <option>Next-fit</option>
+                                </select>
+                                <button class="btn btn-dark btn-block mt-5" id="b-conc">Concluir</button>
+                            </div>
+                        </td>
+                    </tbody>
+                     </table>
+                </section>
+
+                <section class="col-md-12 d-flex justify-content-center align-items-center" style="margin-top: 5%;">
+                   <table class="table table-dark table-bordered" id="tabela6" style="text-align: center;">
+                        <thead class="thead-dark lead">
+                           <tr id="res">
+                                
+                            </tr>
+                        </thead>
+                        <tbody> 
+                            <tr id="resultados">
+                                <!--os processos ficam aqui-->
+                            </tr>
+                            
+             
+                        </tbody>
+                    </table>
+                </section>
+</div>
+
+
+
+                 
+
+<script type="text/javascript" src="comeco.js"></script>
+    
+</script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
