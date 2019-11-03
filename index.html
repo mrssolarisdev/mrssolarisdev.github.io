@@ -20,6 +20,43 @@
     <!-- Compatibility with later versions of IE -->
     <!--[if lt IE 9]><script src="js/html5shiv.js"></script>
 	<![endif]-->
+    <style type="text/css">
+        body{
+    background-image: url(https://ankaraseouzmani.xyz/wp-content/uploads/2018/09/mohammad-alizade-631039-unsplash.jpg);
+    background-size: cover;
+}
+
+.af{
+    text-align: center;
+}
+
+
+@keyframes pula {
+    0%{
+        -o-transform: scale(0);
+        transform: scale(0);
+    }
+    50%{
+        -o-transform: scale(1);
+        transform: scale(1);
+    }
+
+    75%{
+        -o-transform: scale(0.5);
+        transform: scale(0.5);
+    }
+    
+    100%{
+        -o-transform: scale(0);
+        transform: scale(0);
+    }
+}
+.pula:active{
+    animation: pula 0.5s linear;
+    -o-animation:pula 0.5s linear ;
+    transition: all 1s linear;
+}
+    </style>
   </head>
   <body>
     <div class="conteiner">     
@@ -161,7 +198,297 @@
 
                  
 
-<script type="text/javascript" src="comeco.js"></script>
+<script type="text/javascript">
+    //------------- INTERFACE ---------------
+//implementação de fato começa na linha 131
+
+//variáveis globais
+
+let contProc = 0; //contador de processos
+let contPart = 0; // contador de partições
+let memoria = []; // vetor de partições
+let processos = []; //vetor de processos;
+
+//event listeners
+let b1= document.getElementById('b-criar');
+b1.addEventListener("click",preencherTabProc);
+
+let b2 = document.getElementById('b-criarP');
+b2.addEventListener("click",preencherTabPart);
+
+let b3 = document.getElementById('b-conc');
+b3.addEventListener("click",concluir);
+
+// classes
+class Particao{
+    constructor(nome,tam,proc="NA"){
+        this.nome = nome;
+        this.tam = tam;
+        this.proc = proc;
+    }
+}
+
+class Processo{
+    constructor(nome,tam){
+        this.nome = nome;
+        this.tam = tam;
+    }
+}
+
+//métodos de formulário
+function preencherTabProc(){
+    let campo1 = document.getElementById('nome').value;
+    let campo2 = parseInt(document.getElementById('tamanho').value);
+    let proc= document.getElementsByTagName('tbody')[1];
+    if(campo1 && campo2 !== ""){//funciona pro campo numerico pq caractere vazio em js é considerado também como 0
+        contProc++;
+        proc.innerHTML+="<tr><td>"+campo1+"</td><td>"+campo2+"</td></tr>";
+        let o = new Processo(campo1,parseInt(campo2));
+        processos.push(o);
+    }
+    else{
+        alert("Preencha os campos");
+    }
+    clearProc();
+    console.log(contProc);
+}
+
+function preencherTabPart(){
+    let campo1 = document.getElementById('nome1').value;
+    let campo2 = parseInt(document.getElementById('tamanho1').value);
+    let part= document.getElementsByTagName('tbody')[4];
+    if(campo1 && campo2 !== ""){//funciona pro campo numerico pq caractere vazio em js é considerado também como 0
+        contPart++;
+        part.innerHTML+="<tr><td>"+campo1+"</td><td>"+campo2+"</td></tr>";
+        let o = new Particao(campo1,parseInt(campo2));
+        memoria.push(o);
+    }
+    else{
+        alert("Preencha os campos");
+    }
+    clearPart();
+    console.log(contPart);
+}
+
+
+function clearProc(){
+    let x = document.getElementById('nome');
+    let y = document.getElementById('tamanho');
+
+    x.value="";
+    y.value="";
+}
+
+function clearPart(){
+    let x = document.getElementById('nome1');
+    let y = document.getElementById('tamanho1');
+    x.value="";
+    y.value="";
+}
+
+function clearVector(){
+    let x = document.getElementById('res').innerHTML="";
+    let y= document.getElementById('resultados').innerHTML="";
+    for(let i=0; i<memoria.length; i++)
+        memoria[i].proc = "NA";
+}
+
+//métodos auxiliares
+
+function concluir(){
+    let op = document.getElementById('tipo').value;
+    switch(op){
+        case "Best-fit":
+            clearVector();//limpa o vetor de memoria de possiveis alocacoes de processos de outro tipo que não o bestFit
+            bestFit();
+            break;
+        case "Worst-fit":
+            clearVector();//....
+            worstFit();
+            break;
+        case "First-fit":
+            clearVector();//....
+            firstFit();
+            break;
+        case "Next-fit":
+            clearVector();//....
+            nextFit();
+            break;
+        default:
+            alert("Selecione uma opção!");
+            break;
+    }
+}
+
+function apresentar(){
+    let y = document.getElementById('res');
+    let x = document.getElementById('resultados');
+    for(let i=0; i<memoria.length; i++){
+        y.innerHTML += "<th>"+memoria[i].nome+"<br>"+memoria[i].tam+"</th>";
+        x.innerHTML += "<td>"+memoria[i].proc+"</td>";
+    }
+}
+
+// métodos essenciais - IMPLEMENTAÇÃO DOS ALGORITMOS DE ALOCAÇÃO
+function bestFit(){
+    let p;
+    let esc;
+    let proc;
+    let nomeProc;
+    let part;
+    let check=false;
+    for (let i = 0; i <contProc; i++) {
+        proc = processos[i].tam;
+        nomeProc = processos[i].nome;
+        esc=-1;//toda vez que vai se alocar um processo na memoria, a posição escolhida para adcionar o processo zera
+        p = 999999;//garante que toda vez que um novo processo for ser alocado na memoria, a diferença entre o tam. do processo e o tam. da partição será menor que esse valor
+        check=false; // toda vez que volta para alocar 
+        for (let j = 0; j < contPart; j++) {
+            part = memoria[j].tam;
+            if((part-proc)>=0){//diferença entre o tamanho da partição e o tamanho do processo deve ser >=0 para que o processo caiba na partição
+                if(memoria[j].proc=="NA"){ //checa se posicao da memória está vazia
+                    a=part-proc; //guarda a diferença entre o tamanho da partição e do processo
+                    if(a<=p){ //o que torna o best BEST mesmo é essa parte aqui(compara se a diferença entre a partição e o processo é menor que a diferença encontrada anteriormente)
+                        esc=j;
+                        p=a;//menor diferença encontrada
+                        check= true;//checa se achou uma posicao melhor, se achou, o esc
+                    }               // continua esse
+                }
+            }
+        }
+        if(check==false)
+            esc=-1;
+
+        if(esc!=-1)
+            memoria[esc].proc=nomeProc;
+    }
+    apresentar();
+    console.log(memoria);
+}
+
+
+
+function worstFit(){
+    let p;
+    let esc;
+    let proc;
+    let nomeProc;
+    let part;
+    let check=false;
+    for (let i = 0; i <contProc; i++) {
+        proc = processos[i].tam;
+        nomeProc = processos[i].nome;
+        esc=-1;//toda vez que vai se alocar um processo na memoria, a posição escolhida para adcionar o processo zera
+        p = -999999;//garante que toda vez que um novo processo for ser alocado na memoria, a diferença entre o tam. do processo e o tam. da partição será maior que esse valor
+        check=false; // toda vez que volta para alocar 
+        for (let j = 0; j < contPart; j++) {
+            part = memoria[j].tam;
+            if((part-proc)>=0){//diferença entre o tamanho da partição e o tamanho do processo deve ser >=0 para que o processo caiba na partição
+                if(memoria[j].proc=="NA"){ //checa se posicao da memória está vazia
+                    a=part-proc; //guarda a diferença entre o tamanho da partição e do processo
+                    if(a>=p){ //o que torna o best BEST mesmo é essa parte aqui(compara se a diferença entre a partição e o processo é menor que a diferença encontrada anteriormente)
+                        esc=j;
+                        p=a;//menor diferença encontrada
+                        check= true;//checa se achou uma posicao melhor, se achou, o esc
+                    }               // continua esse
+                }
+            }
+        }
+        if(check==false)
+            esc=-1;
+
+        if(esc!=-1)
+            memoria[esc].proc=nomeProc;
+    }
+    apresentar();
+    console.log(memoria);
+}
+function firstFit(){
+    let esc;
+    let proc;
+    let nomeProc;
+    let part;
+    let check=false;
+    let cont=0;
+    for (let i = 0; i <contProc; i++) {
+        proc = processos[i].tam;
+        nomeProc = processos[i].nome;
+        esc=-1;
+        check=false;
+        cont=0;
+        for (let j = 0; j < contPart; j++) {
+            part = memoria[j].tam;
+            if((part-proc)>=0){
+                if(memoria[j].proc=="NA"){//checa se posicao vazia
+                    if(cont==0){//contador checa se o contador continua 0, se não continuar, significa que o processo já encontrou uma posição de memória na qual ele se encaixa(não importa se é uma posição enorme ou não) 
+                        esc=j;// 
+                        check= true;//checa se achou uma posicao melhor, se achou, o esc continua esse
+                        cont++;//como o contador agora mudou pra 1, sempre que o processo tentar checar se pode entrar em uma outra posição de memoria, não vai poder alocá-la, por não atender a condição(cont==0)
+                    }
+                }
+            }
+        }
+        if(check==false)
+            esc=-1;
+
+        if(esc!=-1)
+            memoria[esc].proc=nomeProc;
+    }
+    apresentar();
+    console.log(memoria);
+}
+function nextFit(){
+    let esc;
+    let proc;
+    let nomeProc;
+    let part;
+    let check=false;
+    let cont=0;
+    let j = 0;
+    let aloc = 0;
+    let x = 0;
+    //let y =0;
+    for (let i = 0; i <contProc; i++) {
+        proc = processos[i].tam;
+        nomeProc = processos[i].nome;
+        esc=-1;
+        check=false;
+        cont=0;
+        // essa parte indica de onde o vetor memoria deve começar a rodar
+        if(aloc!=0){//se for diferente de 0, aloc(posicao onde o processo foi alocado) mudou
+            if(aloc==memoria.length-1) // se aloc é igual ao indice final do vetor memoria
+                x=0; //entao x volta pra 0
+            else
+                x=aloc;//senao x assume o indice onde o processo foi alocado
+        }
+        else
+            x=0;//se a posição não foi alocada x assume 0 e j começa de 0
+
+        for (let j = x; j < contPart; j++) {
+            part = memoria[j].tam;
+            if((part-proc)>=0){
+                if(memoria[j].proc=="NA"){//checa se posicao vazia
+                    if(cont==0){//contador checa se o contador continua 0, se não continuar, significa que o processo já encontrou uma posição de memória na qual ele se encaixa(não importa se é uma posição enorme ou não) 
+                        esc=j;// 
+                        check= true;//checa se achou uma posicao melhor, se achou, o esc continua esse
+                        cont++;//como o contador agora mudou pra 1, sempre que o processo tentar checar se pode entrar em uma outra posição de memoria, não vai poder alocá-la, por não atender a condição(cont==0) 
+                        aloc = j;
+                    }
+                }
+            }
+
+        }
+        
+        if(check==false)
+            esc=-1;
+
+        if(esc!=-1)
+            memoria[esc].proc=nomeProc;
+    }
+    apresentar();
+    console.log(memoria);
+}
+</script>
     
 </script>
     <!-- Optional JavaScript -->
