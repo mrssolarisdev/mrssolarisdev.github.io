@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--Favicon-->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+ 	
+
+ 	<style type="text/css">
+ 		body{
+ 			background:#e7094c;
+ 			display: flex;
+ 			align-items: center;
+ 			justify-content: center;
+ 			min-height: 100vh;
+ 		}
+ 		#conteiner{
+ 			display: flex;
+ 			flex-wrap: wrap;
+ 			justify-content: space-around;
+ 			margin: 50px;
+ 		}
+ 		#conteiner-code{
+ 			background:white;
+ 			margin: 20px;
+ 			border-bottom: 5px solid #e5e5e56e;
+ 		}
+ 		#conteiner-code:before{
+ 			content: '';
+ 			background: #black;
+ 			width: 50%;
+ 		}
+
+ 		#box-code{
+ 			background: black;
+ 			border-top-left-radius: 8px;
+ 			border-top-right-radius: 8px;
+ 			border-bottom-left-radius: 8px;
+ 			border-bottom-right-radius: 8px;
+ 			margin: 20px 50px;
+ 			font-size: 12px;
+ 		}
+ 		#box-code-line1{
+ 			background: #122529;
+		    width: 100%;
+		    padding: 10px;
+		    border-top-left-radius: 8px;
+		    border-top-right-radius: 8px;
+ 		}
+ 		#box-code-line1 span{
+ 			display: inline-block;
+ 			border-radius: 50%;
+ 			width: 10px;
+ 			height: 10px;
+ 		}
+
+ 		#box-code-line1 span:nth-child(1){
+ 			background:red;
+ 		}
+ 		#box-code-line1 span:nth-child(2){
+ 			background:yellow;
+ 		}
+ 		#box-code-line1 span:nth-child(3){
+ 			background:green;
+ 		}
+ 		#content1{
+ 			padding: 15px;
+ 			color: white;
+ 		}
+ 		#conteiner-code h2{
+ 			letter-spacing: 0.2em;
+ 		}
+ 		#explanation{
+ 			padding: 30px;
+ 		}
+ 		#menu{
+ 			background: #e5e5e56e;
+ 			margin: 0 20px;
+ 			margin-bottom: -20px;
+ 			padding: 10px;
+ 			width: 100%;
+ 			text-align: center;
+ 			border-top: 1px solid #e75883;
+ 		}
+ 		#menu .ab{
+ 			color: #e7094c;
+ 			font-weight: 700;
+ 			text-decoration: none;
+ 			padding: 5px;
+ 			letter-spacing: 0.1em;
+ 			text-transform: uppercase;
+ 			transition: 0.5s;
+
+ 		}
+ 		#menu .ab:hover{
+ 			color: black;
+ 			font-weight: bold;
+ 			cursor: pointer;
+ 		}
+
+ 		.separator{
+ 			width: 10px;
+ 			height: 10px;
+ 			display: inline-block;
+ 			background: white;
+ 			border-radius: 50%;
+ 		}
+ 		#title {
+ 			letter-spacing: 0.1em;
+ 			word-spacing: 0.2em;
+ 			font-size: 3em;
+ 			font-weight: bold;
+ 			color: white;
+ 			text-transform: uppercase;
+ 			background: #e5e5e56e;
+		    padding: 13px;
+		    width: 100%;
+		    text-align: center;
+		    margin: 0 20px;
+ 		}
+
+ 		.code-oneline{
+ 			background: #e7094c;
+ 			padding:10px;
+ 			color: white;
+ 			display: inline-block;
+ 			border-bottom: 5px solid #eb5687;
+ 			transition: 1s;
+ 			width: 100%;
+ 		}
+
+
+ 	</style>
+    <title></title>
+  </head>
+
+  <body>
+
+  	<!-- Conteiner geral -->
+  	<div id="conteiner">
+  		<!-- Título -->
+  		<h2 id="title">Minha <span style="color: #e7094c;">biblioteca</span></h2>
+  		<!-- menu -->
+	  	<nav id="menu">
+	  		<span id="op1" class="ab">css</span>
+	  		<span class="separator"></span>
+ 
+	  		<span id="op2" class="ab" >HTML</span>
+	  		<span class="separator"></span>
+
+	  		<span id="op3" class="ab" >Javascript</span>
+	  		<span class="separator"></span>
+
+	  		<span id="op4" class="ab" >Bootstrap</span>
+	  		<span class="separator"></span>
+
+	  		<span id="op5" class="ab" >JQUERY</span>
+	  		<span class="separator"></span>
+
+	  		<span id="op6" class="ab" >GIT</span>
+	  		<span class="separator"></span>
+
+	  		<span id="op7" class="ab" >Item1</span>
+	  		<span class="separator"></span>
+
+	  		<span id="op8" class="ab" >Item2</span>
+	  		<span class="separator"></span>
+
+	  		<span id="op9" class="ab" >Item3</span>
+	  	</nav>
+
+
+
+	  	<div id="posts">
+	  		<!-- Sessão css geral -->
+		  	<section id="css">
+
+		  		<!-- Post de css 1 -->
+		  		<section id="conteiner-code">
+			  		<section id="explanation">
+				  		<div id="explanation">
+				  			<h2>Inputs e formulário</h2>
+				  			<p>Formulário:</p>
+				  			<span class="code-oneline"> &#8249;form&#8250;</span>
+				  			<p>Inputs:</p>
+				  		</div>
+				  		<div id="box-code">
+				  			<div id="box-code-line1">
+				  				<span></span>
+				  				<span></span>
+				  				<span></span>
+				  			</div>
+				  			<div id="content1">
+				  				<p>#box-code-line1 {</p>
+				   				<p>background: #122529;</p>
+								<p>width: 100%;</p>
+								<p>padding: 8px;</p>
+								<p>border-top-left-radius: 8px;</p>
+								<p>border-top-right-radius: 8px;</p>
+								<p>}</p>
+				  			</div>
+				  		</div>
+			  		</section>
+			  		<div class="foot"></div>
+		  		</section>	
+
+		  		<!-- Post de css 2 -->
+			  	<section id="conteiner-code">
+			  		<section id="explanation">
+				  		<div id="explanation">
+				  			<h2>Título Código</h2>
+				  			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				  			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				  			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				  			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				  			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				  			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				  		</div>
+				  		<div id="box-code">
+				  			<div id="box-code-line1">
+				  				<span></span>
+				  				<span></span>
+				  				<span></span>
+				  			</div>
+				  			<div id="content1">
+				  				<p>#box-code-line1 {</p>
+				   				<p>background: #122529;</p>
+								<p>width: 100%;</p>
+								<p>padding: 8px;</p>
+								<p>border-top-left-radius: 8px;</p>
+								<p>border-top-right-radius: 8px;</p>
+								<p>}</p>
+				  			</div>
+				  		</div>
+			  		</section>
+			  	</section>	
+
+
+		  	</section> <!-- Fim css geral -->
+		  	
+
+
+			<!-- Sessão html geral -->
+		  	<section id="ht" style="display:none;">
+
+		  		<!-- Post de html 1 -->
+		  		<section id="conteiner-code">
+			  		<section id="explanation">
+				  		<div id="explanation">
+				  			<h2>Título Código HTML</h2>
+				  			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				  			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				  			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				  			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				  			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				  			
+				  			</p>
+				  			<span class="code-oneline">proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+
+				  		</div>
+				  		<div id="box-code">
+				  			<div id="box-code-line1">
+				  				<span></span>
+				  				<span></span>
+				  				<span></span>
+				  			</div>
+				  			<div id="content1">
+				  				<p>#box-code-line1 {</p>
+				   				<p>background: #122529;</p>
+								<p>width: 100%;</p>
+								<p>padding: 8px;</p>
+								<p>border-top-left-radius: 8px;</p>
+								<p>border-top-right-radius: 8px;</p>
+								<p>}</p>
+				  			</div>
+				  		</div>
+			  		</section>
+			  		<div class="foot"></div>
+		  		</section>	
+
+		  		<!-- Post de html 2 -->
+			  	<section id="conteiner-code">
+			  		<section id="explanation">
+				  		<div id="explanation">
+				  			<h2>Título Código</h2>
+				  			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				  			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				  			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				  			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				  			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				  			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				  		</div>
+				  		<div id="box-code">
+				  			<div id="box-code-line1">
+				  				<span></span>
+				  				<span></span>
+				  				<span></span>
+				  			</div>
+				  			<div id="content1">
+				  				<p>#box-code-line1 {</p>
+				   				<p>background: #122529;</p>
+								<p>width: 100%;</p>
+								<p>padding: 8px;</p>
+								<p>border-top-left-radius: 8px;</p>
+								<p>border-top-right-radius: 8px;</p>
+								<p>}</p>
+				  			</div>
+				  		</div>
+			  		</section>
+			  	</section>	
+
+
+		  	</section>	<!-- Fim Sessão html geral -->
+
+
+
+
+
+		  	<!-- Sessão Javascript geral -->
+		  	<section id="js" style="display:none;">
+
+		  		<!-- Post de js 1 -->
+		  		<section id="conteiner-code">
+			  		<section id="explanation">
+				  		<div id="explanation">
+				  			<h2>JAVASCRIPT É LEGAL!</h2>
+				  			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				  			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				  			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				  			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				  			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				  			
+				  			</p>
+				  			<span class="code-oneline">proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+
+				  		</div>
+				  		<!-- <div id="box-code">
+				  			<div id="box-code-line1">
+				  				<span></span>
+				  				<span></span>
+				  				<span></span>
+				  			</div>
+				  			<div id="content1">
+				  				<p>#box-code-line1 {</p>
+				   				<p>background: #122529;</p>
+								<p>width: 100%;</p>
+								<p>padding: 8px;</p>
+								<p>border-top-left-radius: 8px;</p>
+								<p>border-top-right-radius: 8px;</p>
+								<p>}</p>
+				  			</div>
+				  		</div> -->
+			  		</section>
+			  		<div class="foot"></div>
+		  		</section>	
+
+		  		<!-- Post de js 2 -->
+			  	<section id="conteiner-code">
+			  		<section id="explanation">
+				  		<div id="explanation">
+				  			<h2>Título Código</h2>
+				  			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				  			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				  			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				  			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				  			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				  			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				  		</div>
+				  		<div id="box-code">
+				  			<div id="box-code-line1">
+				  				<span></span>
+				  				<span></span>
+				  				<span></span>
+				  			</div>
+				  			<div id="content1">
+				  				<p>#box-code-line1 {</p>
+				   				<p>background: #122529;</p>
+								<p>width: 100%;</p>
+								<p>padding: 8px;</p>
+								<p>border-top-left-radius: 8px;</p>
+								<p>border-top-right-radius: 8px;</p>
+								<p>}</p>
+				  			</div>
+				  		</div>
+			  		</section>
+			  	</section>	
+
+
+		  	</section>	<!-- Fim Sessão js geral -->
+
+
+
+
+		  	<!-- Sessão bootstrap geral -->
+		  	<section id="bt" style="display:none;">
+
+		  		<!-- Post de bootstrap 1 -->
+		  		<section id="conteiner-code">
+			  		<section id="explanation">
+				  		<div id="explanation">
+				  			<h2>OBA BOOTSTRAP!</h2>
+				  			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				  			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				  			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				  			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				  			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				  			
+				  			</p>
+				  			<span class="code-oneline">proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+
+				  		</div>
+				  		<!-- <div id="box-code">
+				  			<div id="box-code-line1">
+				  				<span></span>
+				  				<span></span>
+				  				<span></span>
+				  			</div>
+				  			<div id="content1">
+				  				<p>#box-code-line1 {</p>
+				   				<p>background: #122529;</p>
+								<p>width: 100%;</p>
+								<p>padding: 8px;</p>
+								<p>border-top-left-radius: 8px;</p>
+								<p>border-top-right-radius: 8px;</p>
+								<p>}</p>
+				  			</div>
+				  		</div> -->
+			  		</section>
+			  		<div class="foot"></div>
+		  		</section>	
+
+		  		<!-- Post de boostrap 2 -->
+			  	<section id="conteiner-code">
+			  		<section id="explanation">
+				  		<div id="explanation">
+				  			<h2>Título Código</h2>
+				  			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				  			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				  			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				  			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				  			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				  			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				  		</div>
+				  		<div id="box-code">
+				  			<div id="box-code-line1">
+				  				<span></span>
+				  				<span></span>
+				  				<span></span>
+				  			</div>
+				  			<div id="content1">
+				  				<p>#box-code-line1 {</p>
+				   				<p>background: #122529;</p>
+								<p>width: 100%;</p>
+								<p>padding: 8px;</p>
+								<p>border-top-left-radius: 8px;</p>
+								<p>border-top-right-radius: 8px;</p>
+								<p>}</p>
+				  			</div>
+				  		</div>
+			  		</section>
+			  	</section>	
+
+
+		  	</section>	<!-- Fim Sessão bootstrap geral -->
+
+
+	  	</div><!--fim div posts-->
+	  	
+  	</div>
+  	
+  	<script defer type="text/javascript">
+
+ 		const op1 = document.getElementById('op1');
+ 		const op2 = document.getElementById('op2');
+ 		const op3 = document.getElementById('op3');
+ 		const op4 = document.getElementById('op4');
+ 		const op5 = document.getElementById('op5');
+ 		const op6 = document.getElementById('op6');
+ 		const op7 = document.getElementById('op7')
+		const op8 = document.getElementById('op8')
+		const op9 = document.getElementById('op9')
+
+ 		let cs = document.getElementById('css');
+ 		let ht = document.getElementById('ht');
+ 		let js = document.getElementById('js');
+ 		let bt = document.getElementById('bt');
+
+
+ 		//Botão 1 - CSS (esconde todos e revela o conteúdo da div css)
+		
+ 		op1.addEventListener('click',
+ 			function(){
+ 				if(cs.style.display==='none'){
+ 					cs.style.display='block';
+ 					ht.style.display='none';
+ 					js.style.display='none';
+ 					bt.style.display='none';
+ 				}
+ 			}
+ 		);
+
+
+ 		//Botão 2 - HTML (esconde todos e revela o conteúdo da div htmml)
+ 		op2.addEventListener('click',
+ 			function(){
+ 				if(ht.style.display === 'none'){
+ 					cs.style.display ='none';
+ 					ht.style.display = 'block';
+ 					js.style.display='none';
+ 					bt.style.display='none';
+ 				}
+ 			}
+ 		);
+
+ 		//Botão 3 - JS (esconde todos e revela o conteúdo da div js)
+ 		op3.addEventListener('click',
+ 			function(){
+ 				if(js.style.display === 'none'){
+ 					cs.style.display ='none';
+ 					ht.style.display = 'none';
+ 					js.style.display='block';
+ 					bt.style.display='none';
+ 				}
+ 			}
+ 		);
+
+		//Botão 4 - BOOTSTRAP (esconde todos e revela o conteúdo da div bt)
+ 		op4.addEventListener('click',
+ 			function(){
+ 				if(bt.style.display === 'none'){
+ 					cs.style.display ='none';
+ 					ht.style.display = 'none';
+ 					js.style.display='none';
+ 					bt.style.display='block';
+ 				}
+ 			}
+ 		);
+
+
+
+ 	</script>
+
+    <!-- Script js -->
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
