@@ -89,7 +89,6 @@ class BD{
 				console.log('todos os itens do localStorage correspondem a busca')
 		}
 
-		console.log(despesasFiltradas)
 		return despesasFiltradas;
 	}
 
@@ -207,7 +206,6 @@ function recuperarRegistros(despesas = Array(), filtro = false){
 				setTimeout(()=> {window.location.reload()}, 2000);
 			})
 			linha.insertCell(4).append(btn);
-			console.log(d);
 		}
 	);
 }
