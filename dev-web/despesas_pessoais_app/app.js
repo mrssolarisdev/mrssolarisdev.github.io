@@ -153,7 +153,7 @@ function registrar() {
 
 			if(despesa.validarDados()){
 				bd.gravar(despesa);
-				mudarModal("Registro inserido com sucesso","Despesa foi cadastrada com sucesso", "Voltar e corrigir","modal-header text-success", "btn btn-success" );	
+				mudarModal("Registro inserido com sucesso","Despesa foi cadastrada com sucesso", "Voltar","modal-header text-success", "btn btn-success" );	
 				limparCampos(ano, mes, dia, tipo, descricao, valor);
 			}
 			else{
