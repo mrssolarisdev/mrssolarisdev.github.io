@@ -25,6 +25,13 @@ Entrar em uma classe dentro de outra, util para marcar a pagina na qual voce est
 		}
 
 ==========================================================================================================================
+
+O HTML = HYPERTEXT MARKUP LANGUAGE 
+
+MARCA O QUE É CADA PARTE DO TEXTO, INDICA AO INTERPRETADOR O QUE É O QUE
+O QUE É O VIDEO, UMA DIV ETC.
+
+
 LISTAS
 
 <ol> Ordened List- - Lista ordenada- numeros
@@ -186,6 +193,53 @@ E UM VALOR NO QUAL ELE JÁ VEM CONFIGURADO:
 	NAO PEGA EM NAVEGADORES DEFASADOS
 ]
 
+SE PEDIR PRA RESGATAR O VALUE, ELE RETORNA O VALOR ONDE A BARRA DE SELEÇÃO DO RANGE ESTÁ
+TESTE:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<input type="range" id="ta" min="0" max="5" step="1">
+<script type="text/javascript">
+	let d = document.getElementById('ta');
+
+	d.addEventListener('change',
+    ()=>{
+    	console.warn(d.value);
+	}
+    );
+</script>
+</body>
+</html>
+
+
+para estilizar:
+
+input[type=range] {
+  -webkit-appearance: none; /* remove estilo padrão do browser */
+}
+
+/* estiliza o marcador móvel */
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; /* remove estilo padrão do browser */
+  background: red;
+  height: 30px;
+  border-radius: 50%;
+  width: 30px;
+}
+/* estiliza barra*/
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 30px;
+  background: blue;
+}
+
+UTILIZA PREFIXOS DE COMPATIBILIDADE MOZ E MS
+
+
 INPUT PARA DATA
 <input type="date" id="date">
 [---------NAO PEGA EM NAVEGADORES DEFASADOS----------]
@@ -296,6 +350,141 @@ LABEL É A ETIQUETA, O ROTULO DE UMA INPUT(NOME QUE VEM ANTES)
 
 		}
 ==============================================================================================
+
+
+				________________________[TAG AUDIO]__________________________
+
+
+				<audio></audio> - DEFINE UM AUDIO, LEVA ATRIBUTOS COMO:
+
+				controls - DEFINE QUE O AUDIO TEM CONTROLE DE VOLUME, ACELERAR ETC.
+				autoplay - DEFINE QUE O AUDIO COMEÇA SOZINHO.
+				loop     - DEFINE QUE O AUDIO SE REPETE QUANDO ACABA.
+				preload  - DEFINE QUE O AUDIO É CARREGADO JUNTO COM A PÁGINA.
+					O atributo preload é usado em elementos audio para carregar arquivos grandes.
+					Ele pode assumir 3 valores:
+					"none" não carrega o arquivo
+					"auto" carrega o arquivo
+					"metadata" carrega apenas os meta dados do arquivo
+
+
+				src      - DEFINE DE ONDE O AUDIO É PEGO, MAS É MELHOR USAR A TAG SOURCE:
+
+				<source></source> - DEFINE DE ONDE O AUDIO SERÁ PEGO, LEVA OS ATRIBUTOS:
+				source="endereçoAudio.extensão"
+				type="extensao/extensao" // audio/mp3
+
+				________________________[TAG VIDEO]__________________________
+
+
+				<video></video> - DEFINE UM VIDEO, LEVA ATRIBUTOS COMO:
+
+
+				____________________[ATRIBUTOS VIDEO]_________________
+
+				audioTracks	Returns an AudioTrackList object representing available audio tracks
+				autoplay	Sets or returns whether the audio/video should start playing as soon as it is loaded
+				buffered	Returns a TimeRanges object representing the buffered parts of the audio/video
+				controller	Returns the MediaController object representing the current media controller of the audio/video
+				controls	Sets or returns whether the audio/video should display controls (like play/pause etc.)
+				crossOrigin	Sets or returns the CORS settings of the audio/video
+				currentSrc	Returns the URL of the current audio/video
+				currentTime	Sets or returns the current playback position in the audio/video (in seconds)
+				defaultMuted	Sets or returns whether the audio/video should be muted by default
+				defaultPlaybackRate	Sets or returns the default speed of the audio/video playback
+				duration	Returns the length of the current audio/video (in seconds)
+				ended	Returns whether the playback of the audio/video has ended or not
+				error	Returns a MediaError object representing the error state of the audio/video
+				loop	Sets or returns whether the audio/video should start over again when finished
+				mediaGroup	Sets or returns the group the audio/video belongs to (used to link multiple audio/video elements)
+				muted	Sets or returns whether the audio/video is muted or not
+				networkState	Returns the current network state of the audio/video
+				paused	Returns whether the audio/video is paused or not
+				playbackRate	Sets or returns the speed of the audio/video playback
+				played	Returns a TimeRanges object representing the played parts of the audio/video
+				preload	Sets or returns whether the audio/video should be loaded when the page loads
+				readyState	Returns the current ready state of the audio/video
+				seekable	Returns a TimeRanges object representing the seekable parts of the audio/video
+				seeking	Returns whether the user is currently seeking in the audio/video
+				startDate	Returns a Date object representing the current time offset
+				textTracks	Returns a TextTrackList object representing the available text tracks
+				videoTracks	Returns a VideoTrackList object representing the available video tracks
+				volume	Sets or returns the volume of the audio/video
+				src      - DEFINE DE ONDE O AUDIO É PEGO, MAS É MELHOR USAR A TAG SOURCE:
+
+				<source></source> - DEFINE DE ONDE O VIDEO SERÁ PEGO, LEVA OS ATRIBUTOS:
+				source="endereçoVideo.extensão"
+				type="extensao/extensao" // video/mp4
+
+				Vários arquivos podem ser especificados utilizando o elemento <source> 
+				para disponibilizar vídeo ou áudio codificados em formatos diferentes para navegadores diferentes.
+				Por exemplo:
+
+				<video controls="">
+				  <source src="foo.ogg" type="video/ogg">
+				  <source src="foo.mp4" type="video/mp4">
+				  Seu navegador não suporta o elemento <code>video</code>.
+				</video>
+
+				Também é possível especificar os codecs que o arquivo de mídia requer; isso permite que o navegador
+				faça escolhas mais inteligentes:
+
+				<video controls="">
+				  <source src="foo.ogg" type="video/ogg; codecs=dirac, speex">
+				  Seu navegador não suporta o elemento <code>video</code>.
+				</video>
+
+				AS CLASSES PARA ESTILIZAR VIDEO:
+
+				.video:hover 
+				.player
+				.player .progress
+				.player .progress-bar
+				.player .button-holder
+				.player .progress-button
+				.player [class^="buffered"]
+				.player .play-pause
+				.player .play
+				.player .pause-button
+				.player .play .pause-button
+			    .player .pause .play-button
+			    .player .pause-button
+			    .player .pause-button span
+			    .player .pause-button span:first-of-type
+			    .player .time
+			    .player .stime .ttime
+			    .player .play:hover,
+			    .player .play:active
+			    .pause-button:active span
+			    .player .pause-button:hover span
+			    .player .volume
+			    .player .volume-icon
+			    .player .volume-icon-hover
+			    .player .volume-holder,
+			    .player .valume-bar-holder
+			    .player .volume-button
+			    .player .volume-button-holder
+			    .pplayer .volume-bar
+			    .player .fullscreen
+			    .player .fullscreen a
+			    .player .volume-icon span
+			    .player .volume-icon span:before
+			    .player .volume-icon span:after
+			    .player .volume-icon span:before
+			    .player .volume-icon span:after
+			    .player .v-change-X span:after onde X varia de 1 a 11 (ambos inclusos).
+
+			    
+				_______________________[HTML Audio/Video Methods]_______________________
+				Method	Description
+				addTextTrack()	Adds a new text track to the audio/video
+				canPlayType()	Checks if the browser can play the specified audio/video type
+				load()	Re-loads the audio/video element
+				play()	Starts playing the audio/video
+				pause()	Pauses the currently playing audio/video
+
+						
+
 ----------------------------------------------------------------------------
 LETRAS
 
@@ -1327,6 +1516,83 @@ AQUI UM LINK PARA FAZER AS ANIMAÇÕES MAIS FACILMENTE:
 
 https://html-css-js.com/css/generator/transform/
 
+
+TRANSFORM STYLE:
+
+A propriedade CSS do estilo de transformação define se os filhos de um elemento são posicionados
+no espaço 3D ou achatados no plano do elemento. (define que o elemento ao ser mexido(a depender do que acotneceu
+) pode ser representado também no eixo das cotas ao inves de ser distorcido).
+
+transform-style: preserve-3d;
+transform-style: flat;
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+FILTER
+
+filter:
+ none 
+ blur(px) 
+ brightness(%)
+ contrast(%) 
+ drop-shadow(xpx xpx xpx color) 
+ grayscale(%) 
+ hue-rotate(deg) 
+ invert(%) 
+ opacity(%)
+ saturate(%)
+ sepia(%) 
+ url(urlxml);
+
+ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+ PERSPECTIVE
+
+ Dá uma perspectiva em 3d do elemento em relação a tela. Funciona como se rotacionasse o elemento para tras ou
+ para frente na tela, só que em 3d. Considerando uma div em forma de quadrado uma perspectiva de 15 px o deixa
+ parecido com um trapezio cujas pontas superiores estão para trás, como se fosse um trapézio deitado no chão.
+
+ Quanto menor o valor, maior o efeito. Quanto maior, mais parecido com o tamanho original do elemento.
+
+ perspective: Xpx;
+
+=================================================================================================================
+
+BLEND MODE
+
+A propriedade mix-blend-mode descreve como um elemento de conteúdo deve ser mesclado com os elementos 
+abaixo dele no background.
+
+valores:
+
+mix-blend-mode: normal;
+mix-blend-mode: multiply;
+mix-blend-mode: screen;
+mix-blend-mode: overlay;
+mix-blend-mode: darken;
+mix-blend-mode: lighten;
+mix-blend-mode: color-dodge;
+mix-blend-mode: color-burn;
+mix-blend-mode: hard-light;
+mix-blend-mode: soft-light;
+mix-blend-mode: difference;
+mix-blend-mode: exclusion;
+mix-blend-mode: hue;
+mix-blend-mode: saturation;
+mix-blend-mode: color;
+mix-blend-mode: luminosity;
+
+/* Valores globais */
+mix-blend-mode: initial;
+mix-blend-mode: inherit;
+mix-blend-mode: unset;
+
+Um truque bacana é colocar uma imagem por baixo de uma div, e um texto com fundo branco cujo texto se mistura 
+com o fundo(imagem).
+Pra isso criamos um conteiner relativo, e dentro uma imagem que será absoluta em relação a esse conteiner relativo
+além de um span de tamanho total do conteiner, que também será relativo. Para fazer o texto se misturar basta usar
+o comando: mix-blend-mode: screen;
+(se os dois elementos do conteiner forem absolutos não funciona, o que leva o texto deve ser relativo)
 ==============================================================================================================
 OBSERVAÇÕES
 
@@ -1403,7 +1669,7 @@ PARA ADAPTAR O SITE TOTALMENTE A DEFICIENTES NUNCA SE ESUQEÇA DE COLOCAR OS ELE
 <section></section> /*  define uma area ou sessão*/
 <time></time> /* FEITO PARA OS BUSCADORES ENTENDEREM MELHOR QUE O QUE ESTÁ ALI SE TRATA DE UMA DATA*/
 <aside></aside> /*FEITO PARA OS BUSCADORES ENTENDEREM QUE O QUE ESTÁ ALI SE TRATA DE UM CONTEUDO QUE ESTÁ NA LATERAL*/
-
+<pre></pre> /*Faz com que o tamanho da fonte seja fixo, os espaços e as quebras de linhas sejam preservadas do texto original*/
 DESSE MODO O BROWSER IRÁ LER E INTERPRETAR, DIZENDO A PESSOA O QUE É E ONDE ESTÁ CADA COISA
 ******************************************************************************************************************************
 
@@ -6612,16 +6878,18 @@ GRANDE, O QUE EXIGE TRATAMENTO, ENTÃO A TELA FICA NORMAL
 
 
 
+	  		QUANDO PRECISAMOS QUE O ELEMENTO TENHA SOMENTE UMA CLASSE (AO CONTRARIO DO CLASSLIST, QUANDO
+	  			ADICIONAMOS MAIS UMA) SOBRESCREVEMOS A CLASSE ATUAL COM:
 
-
-
+	  		elem.className('on');
+	  		elem.className('off');
 
 
 
 	  						----------------[STRINGS]-----------------
 
 	  							*****MEDIR O TAMANHO DA STRING*****
-	  										.lenth
+	  										.length
 	  						ESSE COMANDO NAO LEVA () POIS É PROPRIEDADE
 
 	  										EX:
@@ -6927,6 +7195,17 @@ GRANDE, O QUE EXIGE TRATAMENTO, ENTÃO A TELA FICA NORMAL
 
 .-----------.EU POSSO COMBINAR UMA ACAO COM MAIS DE UMA OUTRA, REPETINDO A MESMA AÇÃO OU UMA DIFERENTE, EM 
 RESUMO, UM ELEMENTO HTML PODE EXECUTAR MAIS DE UM EVENTO.-------------------------------------------.
+
+
+		   ____________________[CONTROLE DA POSIÇÃO RELATIVA DO PONTEIRO]_____________________
+		Screen → Posição do ponteiro em relação ao tamanho total da tela. - screenX, screenY.
+
+		Client → Posição do ponteiro em relação ao tamanho do browser(cliente). clientX, clientY.
+
+		Page → Posição do ponteiro em relação ao documento. pageX, pageY.
+		
+		Offset → Posição do ponteiro em relação ao elemento. Ponteiro no começo do elemento se situa na
+		coordenada (0,0) offsetX, offsetY.
 
 										[EVENTOS DE TECLADO]
 
@@ -7403,7 +7682,7 @@ RESUMO, UM ELEMENTO HTML PODE EXECUTAR MAIS DE UM EVENTO.-----------------------
 
 
 
-				____________________[ EVENT LISTENER ] ____________________
+				____________________ [ EVENT LISTENER ] ____________________
 
 				ADCIONA UM ESCUTADOR DE EVENTO A UM ELEMENTO. PODEMOS ADCIONAR
 				POR EXEMPLO, O ESCUTADOR DE EVENTO NUM BOTÃO, NESSE CASO, O EVENTO
@@ -7452,6 +7731,7 @@ RESUMO, UM ELEMENTO HTML PODE EXECUTAR MAIS DE UM EVENTO.-----------------------
 			animationend 		occurs when the CSS animation has completed /* ISSO É MT UTIL MDSS*/
 			animationstart 		occurs when the CSS animation has started
 			animationiteration  occurs when the CSS animation is repeated	 
+			change 				QUANDO O ELEMENTO MUDA.
 
 						TEM MUITAS, N DÁ P LISTAR, TEM NESSE LINK
 						 ->https://www.w3schools.com/jsref/dom_obj_event.asp
@@ -7750,6 +8030,25 @@ RESUMO, UM ELEMENTO HTML PODE EXECUTAR MAIS DE UM EVENTO.-----------------------
 											else{
 												console.log('o elemento existe e está na posição:' +aux);'
 											}
+
+						_______________[RETIRAR DETERMINADOS INDICES ESPECIFICOS]______________
+
+						Retira x elementos a partir de determinado indice:
+						EX:
+						arr.splice(aPartirDesseIndice, tireNITens, insiraEsse); - Para colocar outro elemento depois tirar x indice(s)
+						arr.splice(aPartirDesseIndice, tireXITens);
+
+						var myFish = ["angel", "clown", "mandarin", "surgeon"];
+
+						// a partir do índice 2 remove 0 elementos, e insere "drum"
+						var removed = myFish.splice(2, 0, "drum");
+						//myFish é ["angel", "clown", "drum", "mandarin", "surgeon"]
+						//removed é [], nenhum elemento removido
+
+						//a partir do índice 3 remove 1 elemento 
+						removed = myFish.splice(3, 1);
+						//myFish é ["angel", "clown", "drum", "surgeon"]
+						//removed é ["mandarim"]
 
 
 								_____________[ORDENAR ELEMENTOS DENTRO DO ARRAY]___________
@@ -8626,6 +8925,14 @@ altura atual	|
 					   	 QUANDO USAMOS LINKS, ATUAMOS SOBRE O OBJETO LOCATION.
 
 
+					   	length	Returns the number of URLs in the history list
+						History Object Methods
+						Method	Description
+						back()	Loads the previous URL in the history list
+						forward()	Loads the next URL in the history list
+						go()	Loads a specific URL from the history list
+
+
 					   	 			------------------------------
 
 					   	 				  REDIRECIONAMENTO 
@@ -8642,7 +8949,7 @@ altura atual	|
 
 
 					BASTA COLOCAR NO FIM DA URL UM: ? E DEPOIS, CONCATENAR A URL COM 
-					A VARIAVEL QUE DESEJA PASSAR PARA A PAGINA NO HREF. ASSIM:
+					A VARIAVEL/string/valor QUE DESEJA PASSAR PARA A PAGINA NO HREF. ASSIM:
 
 								window.location.href="app.html?"+nivel 
 
@@ -8958,7 +9265,7 @@ altura atual	|
 					let string1= "Abobrinha";
 					string1 = string1.toLowerCase()
 
-					RETIRAR ESPAÇOS
+					RETIRAR ESPAÇOS DO COMEÇO E FIM DA STRING
 					string1.trim();
 
 					RETORNAR UMA STRING DENTRO DE UMA STRING(RETORNA UMA STRING DO INDEX TAL A TAL)
@@ -10762,6 +11069,10 @@ Limpa a cache daquela aplicação
 
 
 
+
+
+
+
 					     _________________ [ BIBLIOTECAS JS ] ________________
 
 					     * BIBLIOTECA DROP *
@@ -10780,3 +11091,1058 @@ Limpa a cache daquela aplicação
 
 							INSTALAR A CRYPTO JS -> npm install crypto-js 
 							   	(TEM QUE TER O NODE INSTALADO)
+
+					________________________[OBJETO CONSOLE]__________________________
+					assert()	Writes an error message to the console if the assertion is false
+					clear()	Clears the console
+					count()	Logs the number of times that this particular call to count() has been called
+					error()	Outputs an error message to the console
+					group()	Creates a new inline group in the console. This indents following console messages by an additional level, until console.groupEnd() is called
+					groupCollapsed()	Creates a new inline group in the console. However, 
+					the new group is created collapsed. The user will need to use the disclosure
+					button to expand it
+					groupEnd()	Exits the current inline group in the console
+					info()	Outputs an informational message to the console
+					log()	Outputs a message to the console
+					table()	Displays tabular data as a table
+					time()	Starts a timer (can track how long an operation takes)
+					timeEnd()	Stops a timer that was previously started by console.time()
+					trace()	Outputs a stack trace to the console
+					warn()	Outputs a warning message to the console
+
+					**************************[BACK END]*******************************
+
+					HTTP: HYPERTEXT TRANSFER PROTOCOL
+					O PADRÃO AO FAZER UMA REQUISIÇÃO HTTP SEGUE AS REGRAS DE:
+					IDENTIFICAR O CLIENTE FAZENDO A REQUISIÇÃO, O URL SOLICITADO QUE SEGUE
+					PELA INTERNET ATÉ O SERVIDOR QUE IRÁ RESPONDER A REQUISIÇÃO. CASO DIGITEMOS
+					UMA URL QUE NÃO EXISTE, A URL SEGUE PELA INTERNET MAS NENHUM SERVIDOR RESPONDE
+					A REQUISIÇÃO.
+
+					PROTOCOLO DE REQUISIÇÃO/RESPOSTA.
+
+					SERVIDOR WEB: PROGRAMA CAPAZ DE ACEITAR REQUISIÇÕES HTTP E RESPONDE-LAS.
+					FUNCIONA COMO MEDIADOR ENTRE O CLIENTE (GERALMENTE BROWSER) E A APLICAÇÃO DE
+					BACK-END.
+
+					BASICAMENTE HÁ 3 COMPONENTES POR TRAS DO BACK END:
+					A LNGUAGEM DE PROGRAMAÇÃO DE BACK END - php
+					O SERVIDOR HTTP - apache
+					SISTEMA GERENCIADOR DE BANCO DE DADOS. - mysql
+
+					MariaDB => Versão melhorada do MySQL
+
+					Maria db foi o gerenciador de banco de dados melhorado pela comunidade depois de
+					a oracle abandonou o projeto após ter comprado o MySQL da Sun. Ele foi adotado
+					pela apache como gerenciador oficial.
+
+					XAMPP - STACK PHP, APACHE, MARIADB
+
+
+					DENTRO DO XAMPP IRÃO EXISTIR AS OPÇÕES DE INICIALIZAÇÃO DOS SERVIÇOS INSTALADOS, NO
+					CASO: APACHE E MYSQL.
+					ANTES DE TENTAR USAR OS DOIS, ELES DEVEM SER INICIALIZADOS.
+					A JANELA DE LOGS MOSTRA DADOS DOS SERVIÇOS INSTALADOS, E DO PROPRIO XAMPP, ENTÃO 
+					QUALQUER ERRO EM TEMPO DE EXECUÇÃO SERÁ MOSTRADO ALI. 
+
+					AO CLICAR EM START O SERVIÇO FICA VERDE ALÉM DE MOSTRAR O PID E A PORTA ONDE ELE ESTÁ ESCUTANDO.
+					DÁ PRA MODIFICAR AS PORTAS DE ACORDO COM A NECESSIDADE.
+
+					ENDEREÇO DE LOOPBACK: ENDEREÇO QUE FAZ COM QUE POSSAMOS FAZER REQUISIÇÕES HTTP AO 
+					NOSSO PROPRIO COPUTADOR, O LOCALHOST. O ENDEREÇO FAZ COM QUE A REQUISIÇÃO BATA NA PLACA 
+					DE REDE DA PROPRIA MÁQUINA, FAZENDO COM QUE ELA MESMA RESPONDA A REQUISIÇÃO.
+					SE DIGITARMOS LOCALHOST COM O APACHE ATIVADO, SERÁ FEITA UMA REQUISIÇÃO A QUEM ESTÁ
+					ESCUTANDO NAQUELA PORTA, A PORTA DO LOCALHOST.
+					SE O APACHE ESTIVER PARADO, VAI DAR ERRO, PORQUE NÃO TEM NINGUEM EM LOCALHOST(NA PORTA)
+					PRA RECEBER A REQUISIÇÃO.
+
+					SE EU FAÇO UMA REQUISIÇÃO E NÃO INDICO UM PARAMETRO, EU TENHO COMO RETORNO O INDEX.
+
+
+
+
+
+					O XAMPP UTILIZA A PORTA 80 POR PADRÃO, SE OUTRA APLICAÇÃO ESTIVER USANDO-A, VAI DAR 
+					CONFLITO.
+
+					 XAMPP => Apache, MariaDB(Mysql), PHP and Perl.
+					 Full stack WAMP => Windows + Apache + MariaDB(MySQL) + PHP.
+					 Full stack LAMP => Linux + Apache + MariaDB(MySQL) + PHP.
+					 Full stack MAMP => Mac + Apache + MariaDB(MySQL) + PHP.
+
+
+					 Para mudar a ordem de prioridade na qual os arquivos serão lidos caso seja passado somente
+					 o diretorio na url pela requisição, podemos acessar no apache : config -> httpd.conf -> ctrl+f -> directoryindex
+					 terá uma lista de arquivos que vão ser acessados linearmente caso se passe só o diretorio, é so mudar. Reinicie o apache 
+
+							____________________________[PHP]________________________________
+
+
+								  HYPERTEXT PREPROCESSOR - APLICAÇÕES DE SERVIDOR
+
+					O INTERPRETADOR DO PHP PODE SER BAIXADO LIVREMENTE AO SER USADO EM PROJETOS.
+					SUAS APLICAÇÕES SÃO:
+
+					Script e linha de comando - Uma vez instalado o interpretador, o proprio shell do linux pode
+					executar. Isso é muito util pra criar rotinas automatizadas no SO, ou do servidor, como por
+					exemplo, uma rotina de backup de arquivos, de remoção de arquivos temporários, importação de arquivos 
+					via ftp. 
+
+					Aplicações desktop : php - gtk - Por exemplo o skype, etc. Essa parte ainda deixa a desejar, 
+					ele não é uma linguagem pro lado do cliente, AINDA.
+
+					Aplicações server-side (scripts) - Sua finalidade principal.
+
+					Métodos:
+
+					https://www.php.net/manual/pt_BR/indexes.functions.php
+
+
+			____________________________[EMBUTINDO BLOCOS PHP EM PÁGINAS HTML]________________________
+
+
+									TAG PADRÃO  - 
+									<?php codigo ?> Vem habilitada - MAIS INDICADA
+									<?php
+										echo 'Utilizando a tag padrão';
+									?>
+
+									Tag de impressão -
+									<?= codigo ?> Vem habilitada - Específica pra impressão de 
+									conteudos dentro da página html
+									imprime resultados sem precisar do echo. EX:
+
+									<?= 
+										'Tag impressão'; 
+									 ?>
+
+
+SE COLOCARMOS ESSA TAG AQUI NO CODIGO SEM HABILITAR ANTES, O PHP COMENTA ELA NO CODIGO PRA NÃO DEIXAR O USUÁRIO VÊ-LA
+									Tag curta - <? codigo ?>  Vem desabilitada
+
+				Para habilitar: No XAMPP na parte do apache vá em configurações>PHP.ini> Ctrl+F no bloco de notas buscando short_open_tag
+				> A segunda chave com esse nome provavelmente terá o valor OFF, para ativar, mude para On.
+				Depois é só reiniciar o apache.
+									Asp Tag - <% codigo %> DEPRECATED
+
+						ESSAS TAGS ESTÃO PARA O PHP COMO A TAG SCRIPT ESTÁ PARA O JAVASCRIPT.
+						ELAS INDICAM UMA SESSÃO DE CÓDIGOS EM PHP.
+
+						UM FATO INTERESSANTE, O QUE EU PRODUZIR DENTRO DESTAS TAGS NÃO SERÁ CONTABILIZADO
+						PELO BROWSER COMO PHP, E SIM COMO HTML. O BACK END INTERPRETA A CODIFICAÇÃO, E DEVOLVE
+						PRO BROWSER O PHP COMO HTML. O BROWSER NÃO TEM INTELIGENCIA PARA PROCESSAR O PHP. O SERVIDOR
+						ONDE O PHP ESTÁ CONFIGURADO SIM. 
+
+						CADA COMANDO DADO DEVE ESTAR SEGUIDO DE PONTO E VÍRGULA.
+
+					CONSIDERANDO ESTE TRECHO:
+
+					<body>
+
+						<?php
+							echo 'Utilizando a tag padrão';
+						?>
+
+					</body>
+
+					O RESULTADO SERÁ:
+
+					<body>
+						"Utilizando a tag padrão"
+					</body>
+
+					PODEMOS NOTAR QUE ONDE O CODIGO FOI POSTO, O CONTEÚDO A SER IMPRESSO FICOU.
+
+
+					COmandos:
+
+					echo Joga algo no documento, seja string, valores, elementos html, etc. Suporta vários argumentos
+					print Mesma função do echo, mas tem valor de retorno de 1 quando dá tudo certo e 0 quando dá erro.
+					Suporta 1 argumento. Util pra saber se o conteúdo foi realmente impresso ou não. Ela imprime antes
+					e depois retorna o valor, então é mais lenta que o echo.
+					
+
+					<?php
+				 		echo 'Comando echo <br>';
+				 		print 'Comando print <hr>'; // ou print("abc")
+				 	?>
+
+				____________________________[COMENTÁRIOS]________________________
+
+				Uma linha:
+
+				// comentario
+				# comentario
+
+				Mais de uma linha:
+
+				/* codigo */
+
+				____________________________[TIPAGEM E VARIÁVEIS]________________________
+
+				Fracamente tipada: String, int, float, boolean, array;
+				Apesar da tipagem forte, não há a opção de defini-la explícitamente na declaração de variável. A tipagem é dinâmica.
+		Nomes de variáveis devem começar obrigatóriamente com $, sem espaços ou caracteres especiais, com excessão do _
+				Case sensitive.
+				Podemos atribuir ou não um valor no momento da sua criação.
+
+				Se não atribuir nada a variável ela fica sem tipagem, inválida.
+
+				Para por exemplo imprimir a variável em uma parte do documento:
+
+				<?php
+			 		$nome = 'Abc';
+			 		$idade = '21';
+			 		$fumante = false;
+			 		$peso = 82.5;
+			 	?>
+			 	<h1>Ficha cadastral </h1>
+			 	<br>
+			 	<p>Nome:<?= $nome ?></p>
+			 	<br>
+			 	<p>Idade:<?= $idade ?></p>
+			 	<br>
+			 	<p>Fumante:<?= $fumante ?></p> // a saida de um valor false impresso diretamente no browser assume uma representação vazia
+			 	<br>
+			 	<p>Peso:<?= $peso ?></p>
+
+			 	PARA IMPRIMIR UMA VARIÁVEL NA TELA, UTILIZAMOS UMA TAG PHP ONDE QUEREMOS QUE ELA SEJA IMPRESSA, 
+			 	GERALMENTE, A TAG DE IMPRESSAO. 
+
+			 	TAMBEM PODERIA SER:
+
+			 	<p>Nome:<?php echo $nome ?></p>
+
+			 	ou se a tag simplificada estiver ativa:
+
+			 	<p>Nome:<? echo $nome ?></p>
+
+			 	Ao longo do processamento o tipo da variável e seu valor podem mudar.
+
+			 	Dá pra exibir qualquer coisa do php dentro de qualquer tag html.
+
+			 			_______________________[CONSTANTES]___________________________
+
+
+			 			Para declarar constantes usamos a função define. Ela pede 2 parâmetros:
+
+			 			nome, valor
+
+			 			EX:
+
+			 			define('BD_URL','endereco_bd_dev');
+				 		define('BD_USUARIO','endereco_bd_usuario');
+				 		define('BD_SENHA','endereco_bd_senha');
+
+
+			 			Boa prática: Caracteres maiúsculos em constantes.
+
+			 			Ao chama-las não precisamos usar o $
+
+			 			
+ 						echo BD_URL.'<br>'.BD_USUARIO.'<br>'.BD_SENHA;
+
+			 			Variáveis constantes emitem erro ao ter seu valor mudado em tempo de execução, obviamente.
+			 			São imutáveis.
+
+			 			Util quando há necessidade de parametrizar informações de ambiente.
+
+			 			Aparentemente não dá pra concatena-las usando as aspas duplas.
+
+			 			____________________________[CONCATENAÇÃO]________________________
+
+
+
+			 Operador .
+
+			 Para concatenar usamos o operador ponto, seguido da variável(sem esquecer do dolar).
+			 O operador . está para a concatenação no php, como o operador + está para a concatenação no java ou no js.
+			 Sempre que quisermos concatenar algo com outro algo usamos o ponto na direção da concatenação.
+
+			 Concatenação na frente:
+
+			 echo $var.'Olá';
+
+			 Atrás:
+
+			 echo 'Olá'.$var;
+
+			 No meio:
+
+			 echo 'Olá'.$nome.'Pessoa';
+
+			 Aspas duplas "
+
+			 Se imprimirmos uma mensagem com ASPAS, podemos incluir a variável dentro da cadeia de caracteres, sem problemas.
+
+			 Ex:
+
+			 echo "Eu gosto de $gostos meu nome é $nome e tenho $idade anos";
+
+			 O método com aspas duplas é mais lento, então só é recomendado caso se tenha a necessidade de exibir 
+			 variáveis com texto internamente (se o texto for hardcode/estatico use aspas simples)
+
+
+			 					_______________________[CONDICIONAL]________________________
+
+			 					if, else, else if, if else if, enfim, aquela coisa
+
+
+
+			 					     _____________________[OPERADORES]____________________
+
+
+			 					Literalmente igual ao js. Exceto pelo diferente que tem duas representações:
+
+			 					!= ou <>
+			 					Igual == 
+			 					Identico ===
+			 					Diferente !=
+			 					Diferente <>
+			 					Não identico !==
+			 					Menor <
+			 					Maior >
+			 					Menor igual <=
+			 					Maior igual >=
+
+
+			 					Em todo lugar que precisarmos chamar variáveis a chamamos considerando o $.
+
+			 					OPERADORES LÓGICOS SÃO AQUELES QUE JA CONHECEMOS, E A XOR, EM ADIÇÃO.
+
+			 					E - &&
+			 					OU - ||
+			 					XOR - XOR - (Essa é meio estranha pq eu so vi np php essa opção até agora, rs)
+			 								- RETORNA VERDADEIRO SE UMA DAS EXPRESSÕES FOR VERDADEIRA E A OUTRA FALSA.
+			 								obrigatoriamente uma ou mais precisam ser verdadeiras e as outras falsas ou vice versa.
+			 								Em resumo, se a comparação resultar em valores diferentes entre
+			 								si, ou seja, falso e verdadeiro ou verdadeiro e falso.
+			 					! - Inverte o resultado
+
+			 												[TERNÁRIO]
+
+
+			 					<condição> ? true : false;
+
+			 					Eu posso imprimir, se quiser, o resultado do teste no ternário diretamente no documento, com
+			 					a tag de impressão:
+
+			 					<?=
+						 			$cartao_usuario ? 'SIM' : 'NÃO';
+						 		?>
+
+						 		Há a possibilidade de usar operadores ternários encadeados, mas isso não é recomendado.
+
+
+
+						 		_______________________[SWITCH]__________________________
+
+						 		DEFINE O FLUXO A SER SEGUIDO CONFORME O VALOR DA VARIÁVEL TESTADA.
+						 		PRECISA DO BREAK APOS CADA OPÇÃO,
+						 		pode omitir o DEFAULT, nesse caso caso nenhuma condição seja atendida, nada acontece.
+						 		faz comparação entre não identicos - o que significa que o tipo não é relevante. 
+
+						 				_____________________[CASTING]__________________
+
+
+						 Para castar uma variável de um tipo para outro, colocamos a esquerda da variavel/valor
+						 parenteses, e dentro deles o tipo da variável pra qual queremos castar:
+
+						 Ponto flutuante: (float), (double), (real) - representam a mesma coisa
+						 string: (string)
+						 int: (int), (integer)
+						 boolean: (boolean), (bool)
+
+						 De float para int, o int aproveita somente a parte inteira do valor.
+						 A representação booleana de uma string válida é 1, então castando uma string que contenha caracteres, 
+						 o retorno é sempre 1, castando uma string que seja um caractere vazio, a representação é false, mas o 
+						 false não tem representação, então não retorna nada, o false é uma representação vazia.
+
+						 				_____________[OPERADORES ARITMÉTICOS]___________
+
+
+						 adição: +
+						 subtração: -
+						 multiplicação: *
+						 divisão: /
+						 módulo: % - retorna o resto inteiro da divisão
+						 potência: **
+
+						 ()- Pra quando for necessário realizar uma operação aritmética antes de qualquer outra operação.
+
+						 ex:
+
+						 echo 'Resultado da soma é'.($num1+$num2)
+
+						 ATRIBUIÇÃO:
+
+						 =, +=, -=, /=, *= ,%=;
+
+						 Incremento decremento:
+
+						 pré:
+
+						 ++$var
+						 --$var
+
+						 pós:
+
+						 $var --
+						 $var ++
+
+						 		_____________________[FUNÇÕES]__________________
+
+
+						Com a mesma sintaxe das funcoes originais do javascript.
+
+						function nomeFuncao($params){
+							//logica
+						}
+
+						nomeFuncao();
+
+						nome das funcoes recomendadas: verbo-substantivo em estilo camelCase
+
+						os parâmetros são tratados como variáveis, então levam também o simbolo de $
+
+						tipo void, ou tipo com retorno (o tipo do retorno depende do valor do retorno, 
+							fracamente tipado)
+
+						Assinatura da função: quantidade de argumentos no método(como não tem um tipo pré
+							definido no parametro até que um tipo seja atribuido a ele, através da inferencia
+							de um valor a ele, somente a quantidade de parametros conta, ao contrario de outras
+							linguagens.)
+
+			 			 _________________[FUNCOES NATIVAS STRING]___________________
+
+			 			strtolower($texto) - transforma string em lovercase
+			 			strtoupper($texto) - transforma string em uppercase
+			 			ucfirst($texto)    - (uppercase first) transforma string em capitalize
+			 			strlen($texto)     - conta quantidade de caracteres na string
+
+			 						substitui isso    por isso      nisso
+			 			str_replace(<procura por>, <substitui por>, $texto) - substitui uma cadeia de caracteres em uma string por outra
+			 			cadeia de caracteres. - É CASE SENSITIVE. Essa funcao é boa pra mudar a representação numérica de um numero que varia
+			 			de país pra pais. Internamente numeros são tratados como ponto, enquanto que a representação visual, ao menos no brasil
+			 			usa virgula. Podemos usa-la pra substituir o ponto pela virgula. Também podemos formatar datas, etc.
+			 			
+			 			substr($texto, <posicao inicial>, <qtd de caracteres>) Retorna parte de uma string. <qtd de caracteres> quantidade a partir e 
+			 			inclusive da <posicao inicial>. Útil para, por exemplo quando não queremos mostrar o titulo de uma noticia inteira, podemos cortar
+			 			uma parte do texto e colocar "truncado" com reticencias, para indicar que aquele texto continua.
+
+						__________________[FUNCOES NATIVAS MATEMATICAS]__________________
+
+						ceil($numero) - Arredonda o valor pra cima
+						floor($numero) - Arredonda pra baixo
+						round($numero) - Arredonda com base nas casas decimais - Se está mais proximo do valor quando arredondado pra cima
+						arredonda pra cima, se está mais proximo do valor quando arredondado pra baixo, arredonda pra baixo.
+						fração entre 0 - 4 arredonda p baixo, maior ou igual a 5 pra cima.
+						
+						rand()         - Gera um número aleatório. - Quando não se passa um parâmetro os valores gerados vão de 0 ao valor maximo
+						provido pelo SO.
+
+						rand com limite de N a N:
+						rand(10, 20) - Gera numeros aleatorios entre 10 e 20 incluindo 10 e 20.
+
+						getrandmax() - Devolve o número aleatorio máximo que o so pode gerar.
+						sqrt($numero)  - Retorna a raiz quadrada do numero.
+						Se o numero for negativo ele retorna NAN. Para checar se o número é nan temos que usar uma função nativa
+						pq se ele for, só vai avisar que é NAN do lado do cliente, do lado do servidor, a raíz de um numero negativo
+						é qualquer outra coisa(por isso um if não funciona), a função é: is_nan(num);
+
+						is_nan($valor) - Checa se o valor é um NAN (not a number) - o php retorna NAN pro lado do cliente quando um CÁLCULO
+						envolve um caractere, um char, ou um valor não numérico(caso de uma raíz negativa, divisão por 0, multiplicação de 0 por infinito, 
+							infinito x infinito etc. Nesse caso o php dá um warning alem disso).
+
+						number_format(numero, qtdCasasDecimais) - define quantas casas decimais o numero vai mostrar:
+
+						pow(2, 8) - (2 elevado a 8) Retorna o resultado do primeiro numero elevado ao segundo
+
+						abs($numero) - Valor absoluto de um número (deixa ele positivo)
+
+					 				_____________________[DATAS]___________________
+
+					Excelente filtro de registros, útil pra registrar junto a acontecimentos sistêmicos.
+
+					(por conta do locale os dias da semana são representados em inglês, mas tem como alterar isso).
+					Recuperando a data atual:
+
+					date(formato) -> Onde formato se refere a formatação do retorno da data.
+
+					Para retornar, por exemplo, dia do mês, mês do ano, e dia do ano (abreviado):
+
+					date('d/m/y')
+					date('y/m/d')
+
+					(Essa barra é estranha mas é só a representação de um separador, o que importa são as letras passadas
+						como parâmetro). Pode ter espaço, barra, dois pontos, etc entre as letras-parametro. 
+
+					
+
+					PARÂMETROS:
+
+					Dias :
+
+					d : dia do mês entre 01 e 31
+					D : dia da semana - Retorna a String referente ao dia da semana, abreviadamente. - Thu
+					j : dia do mês sem 0 a esquerda - 1 a 31
+					J : representação textual do dia da semana sem abreviar - Sunday
+					N : representação numérica ISO-8601 do dia da semana - 1 a 7
+					S : representação abreviada dos sufixos ordinais referentes aos dias da semana em ingles -st, nd
+					w : representação numérica do dia da semana - de 0 a 6
+					z : dia do ano - de 0 a 365
+
+					Semana	---	---
+					W	Número do ano da semana ISO-8601, começa na Segunda (adicionado no PHP 4.1.0)	
+					Exemplo: 42 (a 42ª semana do ano)
+					
+					Mês	---	---
+					F	Um representação completa de um mês, como January ou March	January até December
+					m	Representação numérica de um mês, com zero à esquerda	01 a 12
+					M	Uma representação textual curta de um mês, três letras	Jan a Dec
+					n	Representação numérica de um mês, sem zero à esquerda	1 a 12
+					t	Número de dias de um dado mês	28 até 31
+					Ano	---	---
+					L	Se está em um ano bissexto	1 se está em ano bissexto, 0, caso contrário.
+					o	Número do ano ISO-8601. Este tem o mesmo valor como Y, exceto que se o número da semana ISO (W) pertence ao anterior ou próximo ano, o ano é usado ao invés. (adicionado no PHP 5.1.0)	Exemplos: 1999 ou 2003
+					Y	Uma representação de ano completa, 4 dígitos	Exemplos: 1999 ou 2003
+					y	Uma representação do ano com dois dígitos	Exemplos: 99 ou 03
+					Tempo	---	---
+					a	Antes/Depois de meio-dia em minúsculo	am or pm
+					A	Antes/Depois de meio-dia em maiúsculo	AM or PM
+					B	Swatch Internet time	000 até 999
+					g	Formato 12-horas de uma hora sem zero à esquerda	1 até 12
+					G	Formato 24-horas de uma hora sem zero à esquerda	0 até 23
+					h	Formato 12-horas de uma hora com zero à esquerda	01 até 12
+					H	Formato 24-horas de uma hora com zero à esquerda	00 até 23
+					i	Minutos com zero à esquerda	00 até 59
+					s	Segundos, com zero à esquerda	00 até 59
+					u	Microssegundos (adicionado no PHP 5.2.2). Note que a função date() sempre gerará 000000, já que aceita um parâmetro integer, enquanto que DateTime::format() possui suporte a microssegundos se DateTime foi criado com microssegundos.	Example: 654321
+					Fuso horário	---	---
+					e	Identificador do fuso horário (adicionado no PHP 5.1.0)	Exemplos: UTC, GMT, Atlantic/Azores
+					I (i maiúsculo)	Se a data está ou não no horário de verão	1 se horário de verão, 0, caso contrário.
+					O	Deslocamento ao Horário de Greenwish (GMT) em horas	Exemplo: +0200
+					P	Deslocamento ao Horário de Greenwish (GMT) com dois pontos entre horas e minutos (adicionado no PHP 5.1.3)	Exemplo: +02:00
+					T	Abreviação do fuso horário	Exemplos: EST, MDT ...
+					Z	Deslocamento, em segundos, do fuso horário. O deslocamento para fusos horários a oeste de UTC sempre será negativa, e para aqueles à leste de UTC sempre será positiva.	-43200 até 50400
+					Data/Hora completa	---	---
+					c	Data ISO 8601 (adicionado no PHP 5)	2004-02-12T15:19:21+00:00
+					r	» RFC 2822 formatted date	Exemplo: Thu, 21 Dec 2000 16:01:07 +0200
+					U	Segundos desde Unix Epoch (January 1 1970 00:00:00 GMT)
+
+					Se a data/hora estiverem erradas mesmo com a data do sistema operacional atualizada, pode ser que o timezone
+					seja o culpado. Neste caso, a instalação do php vem com o timezone de um país diferente setado(no meu caso Europa/Berlim)
+					, precisamos mudá-lo. Podemos fazer isso configurando no arquivo php.ini no servidor, ou com uma função, em tempo de processamento(geralmente
+						quando não temos acesso ao servidor).
+
+					Para saber em qual timezone estamos basta executar a função:
+
+					date_default_timezone_get();
+
+					Para mudar usamos o identificador do timezone identificado na documentação.
+					O timezone do brasil é:
+					'America/Sao_Paulo'
+
+					assim
+
+					date_default_timezone_set('America/Sao_Paulo')
+
+					Para configurar o timezone no servidor:
+
+					Apache -> Config -> php.ini -> timezone 4x -> Altere o valor padrão para America/Sao_Paulo
+
+
+					PADRÕES COMPUTACIONAIS SÃO EM AMERICANO(NO BANCO DE DADOS).
+
+
+					Para converter uma data em segundos:
+
+					strtotime(data); data-> formato americano yyyy-mm-dd
+
+					Retorna a quantidade de segundos entre 01/01/1970(inicio da era unix) e a data(não é milissegundos)
+
+					Pra converter de segundos para dias:
+
+					$tempo_dias = $segundos / 86400;
+
+							___________________________[ARRAY]__________________________
+
+
+							ARRAY SEQUENCIAL:
+							Criando array:
+
+							$lista_frutas = array(item, item1, item2);
+							ou
+							$lista_frutas = [item1, item2, item3];
+							ou
+							$lista_frutas = [];
+
+							Para colocar um novo valor no array, durante a execução:
+
+							$lista_frutas[]='Item X';
+
+							O php vai dinamicamente alocar um espaço novo para o item no fim
+							da lista.
+
+
+							Mostrando valor em um indice N:
+
+							echo $lista_frutas[1];
+
+							Associando valor em um indice N:
+
+							$lista_frutas[N] = 'Bolinho';
+
+
+
+							ARRAY ASSOCIATIVO:
+
+							Criamos o array do mesmo modo que o anterior mas de maneira não sequencial
+							onde os indices não crescem. Aqui, os indices podem ser valores, caracteres
+							ou strings, definimos o indice de cada elemento do array EXPLICITAMENTE, através
+							de pares chave/valor, onde chave é o índice do elemento e valor é o elemento em si.
+							Os associamos desta forma:
+
+							'chave' => 'valor'
+
+							ex:
+
+								$lista_bolinhos = ['a' => 'Bolinho', 'x' => 'Banana', 1 => 'Maçã'];
+
+							E para mostrar o indice:
+
+								$lista_bolinhos['x'];
+
+							Associando valor em um indice N:
+
+								$lista_frutas[N] = 'Bolinho';
+
+							Adicionando dinamicamente itens no final de um array:
+
+							$lista_frutas[] = $valor;
+
+
+
+
+							ARRAY MULTIDIMENSIONAL:
+
+							Basta atribuir ao array num x indice, um outro array:
+
+								$lista_coisas = []
+								$lista_coisas['x'] = [];
+
+							Colocando um array dentro de outro por referencia:
+
+							$array1 = ['Banana','Maçã'];
+							$array2 = ['Bolo','Suco'];
+
+							$array3 = [$array1, $array2];
+							$array3 = ['x' => $array1, 'y' => $array2];
+
+							MÉTODOS DE ARRAY:
+
+							in_array('valorprocurado', array); - Retorna 1 (true) caso o elemento esteja no array e vazio (false) caso não
+		
+							array_search('valorprocurado', array) - Retorna o indice do valor procurado caso o valor exista e null caso não exista.
+							(se precisar comparar o retorno dessa função com null pra saber se o indice retornado é valido tem que usar os operadores
+								identico ou não identico. null internamente é tratado como false, ou seja, 0, portanto, se o valor procurado estiver
+								no indice 0 e comparar o indice 0(que foi retornado), o php vai apontar que não existe).
+							
+							MÉTODOS DE ARRAY:
+
+							- is_array($array) - Retorna true se o parametro passado for um array
+							
+							- array_keys($array) - Retorna todos os valores do array (não imprime sozinho, retorna as chaves
+								para uma variável ou função(use var_dump ou print_r))
+
+							- sort(array) - Ordena o array, retorna true caso o sort tenha sido bem sucedido e false(vazio) caso não seja bem sucedido.
+							O método rearranja os valores do array pra os indices, linearmente. Dá pra ordenar arrays multidimensionais também,o método
+							reordena todos os arrays de dentro. 
+							O sort modifica os indices do array passado por parametro. Portando se um array multidimensional é passado o array que leva 
+							os outros tem seus indices alterados(em caso de indices não numéricos, ou não lineares). No caso de um array só, o mesmo acontece.
+
+							- asort(array) - Atua sobre o array passado dando sort, mas ordena somente pelo valor no indice, não o proprio indice, eles são chaves levadas
+							junto com seu par valor na ordenação. Também não altera os índices não numéricos.
+
+							- count($array) - Conta a quantidade de elementos de um array.
+
+							- array_merge(array1,...,arrayN) - Funde um ou mais arrays em um. Retorna um novo array. Útil para manipular dados mais facilmente
+							onde diversos arrays vem de diversos locais, mas as informações juntas também fazem sentido.
+
+							- explode(delimitador, $string) - Quebra uma string em uma substring a cada delimitador encontrado(pode ser este uma barra, um número, uma virgula..)
+							onde cada substring é posta em um índice de um array que é retornado. Pode ser usado, por exemplo, pra transformar uma data brasileira em americana.
+							O delimitador na string é eliminado.
+							Ex:
+
+							$data = '25/01/2020';
+							echo $data;
+							$retorno = explode('/', $data);
+							 echo "<pre>";
+								var_dump($retorno);
+								echo count($retorno);
+							echo "</pre>";
+							echo "Nova data:".$retorno[2].'/'.$retorno[1].'/'.$retorno[0];
+
+							- implode(glue, pieces) - Pega os índices de um array e implode em uma String, juntando os indices.
+							Recebe como parametro o separador que haverá entre cada um dos indices implodidos na nova string e o array.
+							Retorna uma string.
+
+							Posso combinar o explode e o implode pra tirar por exemplo, barras de uma string, e colocar  traços.
+							O produto inicial é uma string, e o resultado final também. Mas no meio do processo é gerado um array.
+
+							$data = '25/01/2020';
+							$retorno = explode('/', $data);
+							$retorno2 = implode('-', $retorno);
+
+							__________________[MÉTODOS DE DEBUG]_______________
+
+							Testei imprimindo array, neste caso, mas deve servir pra mais.
+							Testam o tipo de dado e o que está ali. No caso de array retorna
+							cada um dos indices, cada um com seu respectivo tipo e conteudo.
+
+							var_dump($array); - Retorna tipo, indice, e conteudo(tamanho do conteudo tb). - nao precisa de echo
+							$variavel = 'abc';
+							var_dump($variavel)
+
+							$lista_bolinhos = ['a' => 'Bolo de morango', 'x' => 'Bolo de chocolate', 1 => 'Bolo de banana', 50 => 30];
+							var_dump($lista_bolinhos);
+
+							print_r($array) - retorna indice e conteudo; - nao precisa de echo
+
+
+							____________________[CHECAGEM DE VALOR INVÁLIDO]_____________________
+
+							is_nan(&valor) - Checa se o valor é um not a number
+
+							is_null($valor) - Checa se o valor é null - E SOMENTE NULL
+							echo is_null($funcionario) ? 'É null' : 'Não é null';
+
+
+							empty($valor) - Checa se o valor é vazio = ''.(também funciona se os valores forem false ou null)
+
+
+
+
+							Um resuminho:
+
+							O valor nulo é vazio para função empty e para a is_null
+							O valor vazio é vazio para a função empty e não é nulo para a função is_null
+							O valor false é também vazio para a função empty mas não é nulo para a funcao is_null
+
+							Portanto, is_null só retorna true quando o valor recebido é nulo E NENHUM OUTRO
+							empty retorna true quando os valores são vazios nulos ou falsos.
+							is_null só funciona para valores null, empty funciona para todos ('' false null)
+
+							Essas regras só valem usando as funções. Por comparação as coisas ficam
+							muito loucas.
+
+										_____________________[LOOPS]______________________
+
+
+							while(condição){
+								//logica;
+								condição de parada;
+							}
+
+							do{
+								//logica;
+								condição de parada;
+							}while(condicao);
+
+							for($var ; condicao; condicao_parada){
+
+							}
+
+							Foreach: para arrays e objetos
+
+							foreach($array as $valor){
+								//logica
+							}
+
+							ou
+
+							foreach($array as $chave => $valor){
+								//logica
+								echo "$index $valor_atual_no_indice";
+							}
+
+
+							Comandos de alteração do fluxo normal do laço:
+
+							break - para a iteração
+							continue - pula a lógica interna depois desse comando e pula a próxima iteração
+
+
+
+							__________________________[REQUEST]_________________________
+
+							Um request é como uma cartinha, o cabeçalho é o action e o corpo é o método, get/post
+
+							action - colocado como atributo numa tag form de html, diz pra onde aquele formulario será submetido 
+							quando o botão submit for pressionado. O próprio browser encapsula as informações do formulario e as
+							dispara por meio de uma requisição, que podem ser recuperados do lado do servidor.
+							"action é o destino do submit de um formulário".
+
+							GET: (get é um dos metodos pelo qual o formulário pode ser submetido pro action).
+							No get os dados da requisição vao juntos com a url por parâmetro. Para isso, no form, colocamos
+							method: get(ou nada, já que get é o padrão). O navegador encapsula os dados do formulário em suas respectivas tags
+							name e as passa como parametro para a url.
+							Para recuperar esses parâmetros do lado do servidor usamos a super global $_GET (é case sensitive), que é um array.
+							Cada parâmetro encaminhado na url é um índice no get, o nome da tag name(o nome dos parametros passados por url são
+								também o nome dos indices). Ou seja, os indices da super global get são definidos com base dos nomes criados nas
+							tags inputs, que são passadas como parametro para a url. Bem, isso não é seguro em determinados casos, para isso, existe
+							o post.
+
+							POST:(post é um dos metodos pelo qual o formulário pode ser submetido pro action). No get os dados de formulário são anexados A PROPRIA REQUISIÇÃO, retirando os dados da url. Para isso colocamos no
+							form: method="post". Agora todos os dados serão encapsulados numa fichinha que pode ser vista em: network -> arquivo -> headers -> form data (la embaixo)
+							Assim como a $_GET o $_POST também é um array cujos indices leva o nome das tags encapsuladas e enviadas via requisição.
+
+
+							Adendos:
+
+							Ao acessar diretamente uma página que só deveria ter sido acessada depois de se ter feito o metodo get ou post, haverá um erro
+							por que a variável (a depender da logica que fizemos né) get ou post não receberão nada. 
+							Se não passarmos o tipo de requisição ele é automaticamente GET.
+
+							Um adendo: as tags name derivadas das inputs tem que estar presentes em cada uma, mesmo dentro do formulário.
+							Assim, do lado do front end o nome das tags recebem o conteudo da input cujos dados serão enviados ajunto com o disparo
+							da request.
+							o nome nas tags name serão referentes aos índices de onde estarão armazenadas as informações da input, dentro
+							de um array no php.
+
+							O tipo de método deve estar explicito na tag FORM. 
+							Para os dados serem SUBMETIDOS para a action o input deve ser do tipo SUBMIT.
+
+							
+
+
+
+							QUALQUER PARÂMETRO PASSADO PELA URL PODE SER PEGA COM GET, CONTANTO QUE O ARQUIVO EM QUESTÃO TENHA EXTENSÃO .PHP
+							PARA ISSO BASTA FAZER, COM O GET, REFERENCIA AO NOME DAQUELE PARAMETRO, ASSIM: $_GET['paramDaUrl']
+
+							_________________________[RESPONSE]_________________________
+
+							A resposta dada ao cliente é o resultado da interpretação do script php.
+							Depois de uma request, o servidor a recebe e a submete para o script php que dá um retorno em html ao apache.
+							tudo isso por meio de uma comunicação chamada cgi. Despois disso ele devolve o html para o cliente.
+
+
+
+							______________[AUTENTICAÇÃO]_____________
+
+
+	$aut = false;
+
+	[$usuarios = array(
+		array('email' => 'adm_teste@gmail.com.br', 'password' => 'admin'),
+		array('email' => 'user@teste.com.br', 'password' => '1234')
+	);
+
+	foreach ($usuarios as $value) {
+		if ($value['email'] === $_POST['email'] && $value['password'] === $_POST['password']) {
+			$aut = true;
+		}
+		#echo $value['email'].'<br>'.$value['password'].'<br>';
+	}] essa parte é necessaria pois não trabalhamos ainda, banco de dados.
+	Comparamos os dados pegos por post/get com os dados num provavel banco de dados.
+
+	if($aut){
+		//logado;
+	}
+	else{
+		header('Location: index.php?login=error');
+	}
+
+				TAMBÉM DA PRA FAZER ISSO AQUI AO INVES DE EXPLICITAR O POST SEMPRE:
+
+							$login = $_POST['login'];
+							$senha = $_POST['senha'];
+
+	Se ao compararmos a senha e email pegas por post/get os dados não forem compativeis, para podermos mostrar
+	no formulario de login que algum dado foi posto errada, podemos utilizar a função header. ELa força o redirecionamento
+	para uma determinada página.Do mesmo modo, podemos redirecionar o fluxo para uma outra página caso os dados sejam compativeis
+	Num caso de erro, por exemplo, podemos encaminhar a url do formulario de login, juntamente com um parâmetro qualquer, que indique um
+	erro, que o front end pode tratar.
+
+	header('Location: url.php?param=seila')
+
+	Em um caso de erro, por exemplo:
+
+	header('Location: index.php?login=error')
+
+
+				______________________________[SESSION]___________________________________
+
+			Uma sessão é um espaço de memória do lado do servidor onde podem ser armazenadas informações
+			que conectem a instancia da aplicação no servidor com a instancia da aplicação do lado do cliente. Essas informações
+			são transitadas durante a requisição pelo cliente através de um cookie ou url, pro servidor para que a linguagem de pro
+			gramação tenha condições de recuperar essa informação e acessar aquele espaço de memoria dedicado pra aquela instâcia do
+			browser em espacial.
+
+			Basicamente, ao usar o start_session() iniciamos uma instancia no servidor com um id unico que corresponde ao cliente que logou
+			nessa instancia. Podemos setar diversas informações do usuário usando a super global $_SESSION ex($_SESSION['carrinho'] = array('bolinho', 'seila'))
+			(só temos acesso a essa super global depois de usar o start_session() )Mesmo com a session tendo sido definida em um script podemos resgatá-la em qualquer outra página apenas fazendo referencia a ela.
+			Como esta session terá um id unico, caso quisermos que aquela pagina so seja acessada depois de um login, a session deve começar
+			logo no script de autenticação do login. Assim, depois verficamos na pagina pra qual somos redirecionados depois do login, se a sessão está ativa, caso não
+			podemos jogar o usuário para fora dali.
+
+			Os dados criados em uma sessão estão disponiveis para todos os scripts da aplicação que forem acessados por aquela instância do navegador(entende-se pelo proprio navegador cliente)
+			A transação de dados entre os scripts é feita através de um cookie que leva o id unico do navegador. Então quando a requisição é feita a partir dessa instancia do navegador o cookie
+			é transitado na requisição http, e do lado do servidor a partir do id carregado no cookie temos condições de acessar áquela sessão especifica dedicada a esse browser.
+
+			O cookie tem um id unico usado para acessar a sessão.
+
+			Cada sessão php dura 3 horas. Então mesmo que fechemos a instancia do browser o cookie ainda permanece ali SEMPRE e será transitado pela requisição. Enquanto a sessão ainda existir do lado do servidor
+			o cookie nos será útil, uma vez que o id do cookie é usado para acessar a sessão persistente no servidor.
+
+			"Pra este browser eu(servidor) iniciei uma sessão com x id pra sempre que ele precisar de algum dado meu, me mostrar seu id, que se válido lhe renderá os dados pedidos
+			, e outro servidor iniciou outra sessão para este mesmo browser com outro id que é usado pra o mesmo fim, uma prova de que ele é um cliente com uma area unica que ele pode acessar
+			apresentando o id"
+
+
+			Pense assim: Eu, uma unica pessoa, posso ter duas sessões reservadas com uma identificação diferente para um hotel, e para um restaurante.
+			O restaurante me forneceu um id quando eu o paguei, a partir desse id posso transitar livremente no restaurante. O mesmo acontece com o hotel
+			me deram um cartão com um id onde toda vez que precisar dos serviços dele, eu o mostro.
+
+			Do lado do servidor, uma região de memoria será dedicada para uma determinada instancia do navegador, sempre que essa instancia realizar uma requisição 
+			o identificador unico dessa instancia do lado do servidor será encaminhado na requisição e a propria linguagem de programação é inteligente para recuperar essa
+			identificação e liberar o acesso a essa sessão exclusiva para o navegador, permitindo que lá, na interpretação dos scripts do lado do servidor as variaveis dessa sessão sejam recuperadas, de modo
+			que os scripts sejam processados, e uma pagina html seja devolvida ao navegador.
+
+			Enfim, uma vez tendo iniciado a sessão, na nossa parte de autenticação, podemos fazer a verificação. Se o email e a senha forem compativeis com a dos formularios
+			então inserimos um registro(indice) no array session dizendo que o usuario está autenticado. Depois é só resgatar o valor desse mesmo indice e ver se é compativel com
+			o necessario para estar autenticado, se sim, a página é exibida.
+
+			ADENDO:
+
+			MESMO TENDO CRIADO A SESSÃO, EM TODAS AS PÁGINAS PROTEGIDAS EU TENHO QUE EXECUTAR O start_session() TODA VEZ ANTES DE UMA SAIDA DE DADOS.
+				
+						_____________________[IMPORTAÇÃO DE SCRIPTS]_________________
+
+						[INCLUDE]
+
+						Útil para reaproveitamento, funciona como o import do javascript.
+						Para isso usamos as tags php na posição que queremos que o script
+						importado atue(caso ali no script tenha, por exemplo, um retorno.).
+
+						import(inclusão):
+
+						<?php
+							include("url_script.php");
+
+							ou
+
+							include "url_script.php"
+						?>
+
+						Para comparar includes:
+
+						<?php
+						// won't work, evaluated as include(('vars.php') == TRUE), i.e. include('')
+						if (include('vars.php') == TRUE) {
+						    echo 'OK';
+						}
+
+						// works
+						if ((include 'vars.php') == TRUE) {
+						    echo 'OK';
+						}
+						?> #não pode levar o parenteses na comparação.
+
+
+						1 Podemos usar isso para não ter que ficar replicando não só logica como
+						também html(como menus).
+
+						2 Quando um arquivo é incluído, o código herda o escopo de variáveis da
+						linha que a inclusão ocorrer. Qualquer variável disponível no arquivo 
+						que incluiu estará disponível no arquivo incluído, daquela linha em diante.
+						Entretanto, todas as funções e classes definidas no arquivo incluído estarão 
+						no escopo global.
+
+						3 Resumindo, as variáveis e funções do script importado vem agora para o escopo
+						da função que o importou.
+
+						4  Não é obrigatório o uso dos parenteses (é ate melhor, pois os ifs só aceitam assim)
+
+						5 O INCLUDE GERA UM WARNING QUANDO HÁ ALGUM ERRO OU ELE NÃO ENCONTRA O ARQUIVO A
+						INCLUIR. O PROCESSAMENTO CONTINUA.
+
+						[REQUIRE]
+
+						A diferença principal do include pro require é que ele, ao contrario do include
+						lança uma exceção e trava a execução em caso de erro ou o arquivo não ser encontrado.
+						Um erro fatal.
+
+						require("url_script.php")
+
+						ou 
+
+						require "url_script.php";
+
+						[INCLUDE ONCE]
+
+						Como as variáveis do script importado se tornam do escopo global do script que o
+						importa, se o script for incluido duas vezes, as variáveis serão sobrescritas, e 
+						isso não é interessante. O require once não deixa isso acontecer. Caso o arquivo 
+						seja incluido uma vez, qualquer outra inclusão é desconsiderada. 
+
+						include_once("url_script.php");
+
+						ou 
+
+						include_once "url_script.php";
+
+						[REQUIRE ONCE]
+
+						Como as variáveis do script importado se tornam do escopo global do script que o
+						importa, se o script for incluido duas vezes, as variáveis serão sobrescritas, e 
+						isso não é interessante. O require once é parecido com o include once e seu pai, 
+						require. Gera um erro fatal caso não encontre o arquivo, e só deixa ele ser requerido
+						uma unica vez, evitando sobreposição de variáveis do escopo global.
+
+						require_once("url_script.php");
+
+						ou 
+
+						require_once "url_script.php";
+
+
+				_____________________________[Funções úteis]________________________________________
+
+				- isset($arr[$index]) : Retorna true se o array naquele indice está setado;
+				- header('Location: url.php') ou header('Locaton: url.php?param=nomeParam') Redireciona
+				o fluxo para uma X página, com ou sem parâmetros(que podem ser resgatados por get a partir
+				do nome dos parametros).
+				- file_exists($caminhoArquivo)
+
+							__________________[FATOS UTEIS]__________________
+
+			 1 	O interpretador do php tem a inteligência de entender um mesmo comando
+				iniciado em uma abertura e fechamento de tag php pode ser encerrada em outra
+				abertura e fechamento de tag. Por exemplo:
+
+				 <?php
+                	if(isset($_GET['login']) && $_GET['login'] === 'error'){
+                ?>
+                  <div class="text-danger"> Usuário ou senha inválidos</div>
+                <?
+                  }
+                ?>
+
+                O php lê o conteudo da primeira tag, e entende que o fechamento ainda não foi posto
+                e o encontra. A div ali só é adicionada caso a condição seja atendida. Isso é muito útil
+                porque o php não entende css tampouco compreende as classes do bootstrap. Isso acontece porque:
+
+                Quando o PHP interpreta um arquivo, ele simplesmente repassa o texto do arquivo até encontrar 
+                uma das tags especiais que lhe diz para começar a interpretar o texto como código PHP. 
+                O interpretador então executa todo o código que encontra, até chegar em uma tag de fechamento PHP,
+                 que novamente o coloca simplesmente repassando texto novamente. Este é o mecanismo que permite a 
+                 inclusão de código PHP dentro do HTML: qualquer coisa fora das tags PHP é deixado como encontrado,
+                  enquanto tudo dentro é interpretado e executado.
+
+             2 Eu posso usar o post para transitar informações entre o front e o back end via requisição, mas
+             usar o get para resgatar possiveis parametros passados via url provenientes de um possivel tratamento
+             com o header('Location: url.php?param=nomeParam')
+
+             3 Sempre que for checar um valor nas super globais (com if, no caso) $_SESSION, $_GET, $_POST usar a função
+             isset para checar se o array naquele index está setado.
