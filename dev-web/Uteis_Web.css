@@ -209,6 +209,8 @@ TESTE:
     	console.warn(d.value);
 	}
     );
+
+
 </script>
 </body>
 </html>
@@ -236,6 +238,19 @@ input[type=range]::-webkit-slider-runnable-track {
   height: 30px;
   background: blue;
 }
+
+
+Como não tem como colocar indicadores do valor pelo html, podemos colocar um norte para o usuario, usando js.
+
+assim:
+
+ <input id="idade" type="range" min="18" max="120" value="18" onchange="mostrarIdade(this.value)" />
+ <span id="exibeIdade">18</span>
+
+  function mostrarIdade(novoValor) {
+       document.getElementById("exibeIdade").innerHTML = novoValor;
+  }
+
 
 UTILIZA PREFIXOS DE COMPATIBILIDADE MOZ E MS
 
@@ -1656,6 +1671,54 @@ PARA LISTAS DE DESTAQUES COM LINKS E IMAGENS, NA IMAGEM USE: FLOAT, PARA DEIXAR 
 ---------------------------------------------------------------------------------------------------------------------=----------
 NAS DIVS ONDE VOCE TEM UMA FOTO, COM UM LINK OU NAO DENTRO, QUE QUISER APLICAR UM FUNDO A ELA(COMO SE FOSSE UMA BORDA)
 PONHA O BACKGROUND NORMALMENTE, MAS PARA A IMAGEM APARECER POR TRÁS, DÊ PADDING
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+VALORES PERSONALIZÁVEIS EM CSS
+
+Usamos a classe ::root{} que é uma pseudo classe fazendo referência ao nó raiz da árvore do DOM.
+Colocando nossas variáveis personalizadas lá, podemos usá-las em todo o resto do documento, pois tudo no root é
+reconhecido pelos outros elementos, uma vez que ele é o pai de todos os outros, e herdam suas características.
+
+Atributos personalizados sempre devem começar com -- .
+
+assim:
+  --pink-bg: pink;
+
+E colocar isso no root:
+
+:root{
+	--bg-pink: deeppink;
+	--border-black: 1px solid black;
+}
+
+Para usar em qualquer classe, id, ou tag, chamamos ela assim:
+
+atributo: var(--nome-att-personalizado);
+
+
+body{
+	background-color: var(--bg-pink);
+	border: var(--border-black);
+}
+
+Podemos fazer isso não só para background mas para outros atributos.
+
+Podemos concatenar uma variável com valores estáticos também, observe o body:
+
+:root{
+	--bg-pink: deeppink;
+	--border-black: black;
+}
+
+body{
+	background-color: var(--bg-pink);
+	border: 1px solid var(--border-black);
+}
+
+Isso é bacana para definir cores padrão a serem usadas no projeto, sem precisar ficar pegando o código hex o 
+tempo inteiro.
 
 *****************************************************************************************************************************
 
@@ -3790,10 +3853,6 @@ GRANDE, O QUE EXIGE TRATAMENTO, ENTÃO A TELA FICA NORMAL
 
 							---- [VALIDAÇÃO DE DADOS DE FORMULARIO] ----
 
-	NESSA PARTE, DEVERIA SE ALIAR COM JAVASCRIPT, QUE AINDA NAO FOI DADO, O QUE OCORRE, É QUE SERÁ EXPLICADO, ONDE APLICAR
-	CADA FORMATAÇÃO, PRA CADA TIPO DE VALIDAÇAO, POR EXEMPLO, SE O CADASTRO É VALIDO, FICA VERDE, SE NÃO, FICA VERMELHO
-	QUANDO APRENDER JAVASCRIPT, E SÓ APLICAR ESSAS CLASSES A DEPENDER DO RESULTADO.
-
 	SUPONDO QUE O USUARIO CLICOU EM LOGAR, E O EMAIL É VALIDO, OU POR EXEMPLO, QUER CRIAR UM NICKNAME, E ELE NÃO EXISTE, 
 	SENDO QUE O USUARIO ENTAO PODE CADASTRAR ELE, O CAMPO FICA VERDE, SENÃO, VERMELHO OU SE POR EXEMPLO, A SENHA ESTÁ 
 	ERRADA, PARA ISSO, NO CAMPO QUE CONTÉM A INPUT
@@ -3844,6 +3903,55 @@ GRANDE, O QUE EXIGE TRATAMENTO, ENTÃO A TELA FICA NORMAL
 
 							 ]
 
+		Agora que eu sei js, vamos lá. Eu testei isso usando uma input que será usada para definir uma senha.
+		Se a senha tiver menos de 8 caracteres, a classe is-invalid é adicionada. 
+
+		let caixa = document.getElementsByTagName('input')['password'];
+
+		caixa.addEventListener('input', e => {
+		 	if(caixa.value.length >= 8){
+		 		caixa.classList.remove('is-invalid');
+		 		caixa.classList.add('is-valid');
+		 	}
+		 	else{
+		 		caixa.classList.remove('is-valid');
+		 		caixa.classList.add('is-invalid');
+		 	}
+		 }
+		 );
+
+
+		Também fiz isso aqui, só dá pra enviar o formulário pro servidor caso nenhum dos campos tenha a classe
+		is invalid(podia ser outra tratativa, enfim). Eu só adiciono o type submit caso os dados sejam válidos.
+		E claro, só dá pra enviar pro servidor caso eles sejam válidos.
+
+		let button = document.getElementsByTagName('button')[0]; 
+
+		let caixa = document.getElementsByTagName('input')["password"];
+
+		button.addEventListener('click', e => { 
+		if(caixa.classList.contains('is-invalid')){
+		  button.type = 'button';
+		  console.log(button.type);
+		}
+		else{
+		  button.type = 'submit';
+		}
+		}
+		);
+
+		caixa.addEventListener('input', e => {
+		  if(caixa.value.length >= 8){
+		    caixa.classList.remove('is-invalid');
+		    caixa.classList.add('is-valid');
+		  }
+		  else{
+		    caixa.classList.remove('is-valid');
+		    caixa.classList.add('is-invalid');
+		  }
+		 }
+		 );
+							 
 								----------------*[INPUT GROUP]*-----------------
 
 
@@ -7511,6 +7619,16 @@ RESUMO, UM ELEMENTO HTML PODE EXECUTAR MAIS DE UM EVENTO.-----------------------
 			PODE COLOCAR MAIS DE UMA CLASSE.
 
 
+							[CAPTURANDO ATRIBUTOS DE OBJETOS]
+
+
+	Ja que vamos falar de capturar atributos, podemos aproveitar e dizer que podemos criar novos atributos. Para isso usamos
+	a palavra data seguida de um traço e o nome que queremos dar. Esse padrão é seguido somente para evitar conflitos e por convenção.
+
+	<input type="name" data-slow="true">
+	
+	document.getElementById('nome').getAttribute('nome'); - Pega um atributo de um elemento html(tipo type, data-target etc);
+
 
 
 
@@ -7715,6 +7833,8 @@ RESUMO, UM ELEMENTO HTML PODE EXECUTAR MAIS DE UM EVENTO.-----------------------
 
 				elemento.addEventListener("evento", funcao);
 
+				
+
 			____ONDE EVENTO PODE SER: _________________________________________________________________
 
 			click	    	    quando é pressionado e liberado o botão primário do mouse, trackpad, etc.
@@ -7732,6 +7852,8 @@ RESUMO, UM ELEMENTO HTML PODE EXECUTAR MAIS DE UM EVENTO.-----------------------
 			animationstart 		occurs when the CSS animation has started
 			animationiteration  occurs when the CSS animation is repeated	 
 			change 				QUANDO O ELEMENTO MUDA.
+			input               Ativado quando o valor num campo de input muda(util para validação de quantidade
+								de caracteres em senhas).
 
 						TEM MUITAS, N DÁ P LISTAR, TEM NESSE LINK
 						 ->https://www.w3schools.com/jsref/dom_obj_event.asp
@@ -11110,6 +11232,52 @@ Limpa a cache daquela aplicação
 					trace()	Outputs a stack trace to the console
 					warn()	Outputs a warning message to the console
 
+			____________________________[MODULOS JS]___________________________________
+
+			A idéia de módulos permite o reuso e melhor flexibilidade dos codigos em js.
+
+			Antes de tudo:
+			O arquivo que vai importar(chamar para si) os itens de outro tem que ser um
+			módulo.
+			O arquivo que vai exportar(enviar para outro) tem que ser um módulo.
+
+			Ambos arquivos tem que ser módulos. Um módulo só importa coisas de outro, assim
+			como só exporta coisas para outro.
+
+			Para tanto, ao declarar nosso arquivo no html ao invés do mime text/javascript,
+			o arquivo tem que carregar: type='module'. Não importa se a fonte é externa ou não.
+
+
+
+			Para usar módulos usamos a palavra export no que queremos que possa ser importado
+			de outros arquivos, e import como comando para importar o arquivo que leva a palavra
+			reservada export.
+
+			assim:
+
+			export const PI = Math.PI // 3.141592653589793
+
+			export function soma (...params) {
+			 return params.reduce((a, b) => a + b, 0)
+			}
+
+			No import dizemos entre chaves o que queremos importar de X arquivo.
+
+			import { soma } from './util.js' 
+
+			Para importar vários itens, dentro das chaves utilizamos virgulas entre cada
+			item.
+			Mesmo que o item importado seja uma função, ele é chamado entre chaves sem o 
+			parentese. Caso seja preciso executar os parenteses são executados depois.
+
+		É possivel dar um apelido para um item importado, que será usado no contexto do arquivo atual
+		ao invés do nome original(também funciona para funções, ela agora é executada uasndo o apelido,
+		como se fosse o nome da função original), importando entre chaves normalmente o nome do item
+		seguido da palavra as e depois o apelido. Assim:
+
+		import { soma as somaDeTodosOsValores } from './util.js'
+
+
 					**************************[BACK END]*******************************
 
 					HTTP: HYPERTEXT TRANSFER PROTOCOL
@@ -11863,7 +12031,7 @@ SE COLOCARMOS ESSA TAG AQUI NO CODIGO SEM HABILITAR ANTES, O PHP COMENTA ELA NO 
 
 							foreach($array as $chave => $valor){
 								//logica
-								echo "$index $valor_atual_no_indice";
+								echo "$chave $valor";
 							}
 
 
@@ -11874,66 +12042,69 @@ SE COLOCARMOS ESSA TAG AQUI NO CODIGO SEM HABILITAR ANTES, O PHP COMENTA ELA NO 
 
 
 
-							__________________________[REQUEST]_________________________
+						__________________________[REQUEST]_________________________
 
-							Um request é como uma cartinha, o cabeçalho é o action e o corpo é o método, get/post
+	Um request é como uma cartinha, o cabeçalho é o action e o corpo é o método, get/post
 
-							action - colocado como atributo numa tag form de html, diz pra onde aquele formulario será submetido 
-							quando o botão submit for pressionado. O próprio browser encapsula as informações do formulario e as
-							dispara por meio de uma requisição, que podem ser recuperados do lado do servidor.
-							"action é o destino do submit de um formulário".
+	action - colocado como atributo numa tag form de html, diz pra onde aquele formulario será submetido 
+	quando o botão submit for pressionado. O próprio browser encapsula as informações do formulario e as
+	dispara por meio de uma requisição, que podem ser recuperados do lado do servidor.
+	"action é o destino do submit de um formulário".
 
-							GET: (get é um dos metodos pelo qual o formulário pode ser submetido pro action).
-							No get os dados da requisição vao juntos com a url por parâmetro. Para isso, no form, colocamos
-							method: get(ou nada, já que get é o padrão). O navegador encapsula os dados do formulário em suas respectivas tags
-							name e as passa como parametro para a url.
-							Para recuperar esses parâmetros do lado do servidor usamos a super global $_GET (é case sensitive), que é um array.
-							Cada parâmetro encaminhado na url é um índice no get, o nome da tag name(o nome dos parametros passados por url são
-								também o nome dos indices). Ou seja, os indices da super global get são definidos com base dos nomes criados nas
-							tags inputs, que são passadas como parametro para a url. Bem, isso não é seguro em determinados casos, para isso, existe
-							o post.
+	GET: (get é um dos metodos pelo qual o formulário pode ser submetido pro action).
+	No get os dados da requisição vao juntos com a url por parâmetro. Para isso, no form, colocamos
+	method: get(ou nada, já que get é o padrão). O navegador encapsula os dados do formulário em suas respectivas tags
+	name e as passa como parametro para a url.
+	Para recuperar esses parâmetros do lado do servidor usamos a super global $_GET (é case sensitive), que é um array.
+	Cada parâmetro encaminhado na url é um índice no get, o nome da tag name(o nome dos parametros passados por url são
+		também o nome dos indices). Ou seja, os indices da super global get são definidos com base dos nomes criados nas
+	tags inputs, que são passadas como parametro para a url. Bem, isso não é seguro em determinados casos, para isso, existe
+	o post.
 
-							POST:(post é um dos metodos pelo qual o formulário pode ser submetido pro action). No get os dados de formulário são anexados A PROPRIA REQUISIÇÃO, retirando os dados da url. Para isso colocamos no
-							form: method="post". Agora todos os dados serão encapsulados numa fichinha que pode ser vista em: network -> arquivo -> headers -> form data (la embaixo)
-							Assim como a $_GET o $_POST também é um array cujos indices leva o nome das tags encapsuladas e enviadas via requisição.
-
-
-							Adendos:
-
-							Ao acessar diretamente uma página que só deveria ter sido acessada depois de se ter feito o metodo get ou post, haverá um erro
-							por que a variável (a depender da logica que fizemos né) get ou post não receberão nada. 
-							Se não passarmos o tipo de requisição ele é automaticamente GET.
-
-							Um adendo: as tags name derivadas das inputs tem que estar presentes em cada uma, mesmo dentro do formulário.
-							Assim, do lado do front end o nome das tags recebem o conteudo da input cujos dados serão enviados ajunto com o disparo
-							da request.
-							o nome nas tags name serão referentes aos índices de onde estarão armazenadas as informações da input, dentro
-							de um array no php.
-
-							O tipo de método deve estar explicito na tag FORM. 
-							Para os dados serem SUBMETIDOS para a action o input deve ser do tipo SUBMIT.
-
-							
+	POST:(post é um dos metodos pelo qual o formulário pode ser submetido pro action). No get os dados de formulário são anexados A PROPRIA REQUISIÇÃO, retirando os dados da url. Para isso colocamos no
+	form: method="post". Agora todos os dados serão encapsulados numa fichinha que pode ser vista em: network -> arquivo -> headers -> form data (la embaixo)
+	Assim como a $_GET o $_POST também é um array cujos indices leva o nome das tags encapsuladas e enviadas via requisição.
 
 
+	Adendos:
 
-							QUALQUER PARÂMETRO PASSADO PELA URL PODE SER PEGA COM GET, CONTANTO QUE O ARQUIVO EM QUESTÃO TENHA EXTENSÃO .PHP
-							PARA ISSO BASTA FAZER, COM O GET, REFERENCIA AO NOME DAQUELE PARAMETRO, ASSIM: $_GET['paramDaUrl']
+	Ao acessar diretamente uma página que só deveria ter sido acessada depois de se ter feito o metodo get ou post, haverá um erro
+	por que a variável (a depender da logica que fizemos né) get ou post não receberão nada. 
+	Se não passarmos o tipo de requisição ele é automaticamente GET.
 
-							_________________________[RESPONSE]_________________________
+	As tags name derivadas das inputs tem que estar presentes em cada uma, mesmo dentro do formulário.
+	Assim, do lado do front end o nome das tags recebem o conteudo da input cujos dados serão enviados junto com o disparo
+	da request.
+	SE NÃO HOUVEREM TAGS NAME, AO ENVIAR OS DADOS PARA O ACTION, TANTO O GET QUANTO O POST PEGAM UM ARRAY VAZIO!!!!!
 
-							A resposta dada ao cliente é o resultado da interpretação do script php.
-							Depois de uma request, o servidor a recebe e a submete para o script php que dá um retorno em html ao apache.
-							tudo isso por meio de uma comunicação chamada cgi. Despois disso ele devolve o html para o cliente.
+	o nome nas tags name serão referentes aos índices de onde estarão armazenadas as informações da input, dentro
+	de um array no php.
+
+	O tipo de método deve estar explicito na tag FORM ou ele é get. 
+	Para os dados serem SUBMETIDOS para a action o input deve ser do tipo SUBMIT e ele deve estar dentro do form.
+
+	
+
+
+
+	QUALQUER PARÂMETRO PASSADO PELA URL PODE SER PEGA COM GET, CONTANTO QUE O ARQUIVO EM QUESTÃO TENHA EXTENSÃO .PHP
+	PARA ISSO BASTA FAZER, COM O GET, REFERENCIA AO NOME DAQUELE PARAMETRO, ASSIM: $_GET['paramDaUrl']
+
+	_________________________[RESPONSE]_________________________
+
+	A resposta dada ao cliente é o resultado da interpretação do script php.
+	Depois de uma request, o servidor a recebe e a submete para o script php que dá um retorno em html ao apache.
+	tudo isso por meio de uma comunicação chamada cgi. Despois disso ele devolve o html para o cliente.
 
 
 
 							______________[AUTENTICAÇÃO]_____________
 
 
+	session_start();
 	$aut = false;
 
-	[$usuarios = array(
+	$usuarios = array(
 		array('email' => 'adm_teste@gmail.com.br', 'password' => 'admin'),
 		array('email' => 'user@teste.com.br', 'password' => '1234')
 	);
@@ -11943,14 +12114,17 @@ SE COLOCARMOS ESSA TAG AQUI NO CODIGO SEM HABILITAR ANTES, O PHP COMENTA ELA NO 
 			$aut = true;
 		}
 		#echo $value['email'].'<br>'.$value['password'].'<br>';
-	}] essa parte é necessaria pois não trabalhamos ainda, banco de dados.
-	Comparamos os dados pegos por post/get com os dados num provavel banco de dados.
+	}
 
 	if($aut){
-		//logado;
+		$_SESSION['autenticado'] = 'yes';
+		header('Location: home.php');
+		//caso passe no teste é redirecionado pra a página principal sem erro e a sessão leva o parametro de autenticado
 	}
 	else{
+		$_SESSION['autenticado'] = 'no';
 		header('Location: index.php?login=error');
+			//caso não, leva o parametro de erro
 	}
 
 				TAMBÉM DA PRA FAZER ISSO AQUI AO INVES DE EXPLICITAR O POST SEMPRE:
@@ -11970,6 +12144,100 @@ SE COLOCARMOS ESSA TAG AQUI NO CODIGO SEM HABILITAR ANTES, O PHP COMENTA ELA NO 
 
 	header('Location: index.php?login=error')
 
+	Depois, no index, resgatamos o valor do parametro por post, dentro do html, assim:
+
+
+	 <?php
+	    if(isset($_GET['login']) && $_GET['login'] === 'error'){
+	    
+	  ?>
+	     <div class="text-danger"> Usuário ou senha inválidos</div>
+	 <?
+	    }
+	 ?>
+
+	 Na parte lá encima de validar login, dentro de cada página (la no topo), verificamos se
+	 o array de sessão está não está setado e se o valor no indice autenticado é falso, pois se
+	 for, redirecionamos para a página de login com erro. Esse código pode estar em um arquivo 
+	 separado e ser chamado em todas as páginas usando require_once().
+
+	 Em todas as páginas que dependerem de autenticação:
+
+	 <?php
+		session_start();
+		if(!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] === 'no'){
+		  header('Location: index.php?login=error_auth');
+		}
+	?>
+
+	ou
+
+		<?php
+			require_once('valida_acesso.php');// usamos require once porque se essa instrução não achar o arquivo
+		?>									// nao podemos prosseguir, a autenticação é essencial.  e once porque
+										// so precisamos nos autenticar uma vez.
+
+	Onde no arquivo valida_acesso.php consta o código acima.
+
+	Depois checamos no index se o parametro error_auth do indice login retornou e se o array de sessão ali está setado,
+	se sim incluimos uma div indicando erro:
+
+
+                <?php
+                if(isset($_GET['login']) && $_GET['login'] === 'error_auth'){
+                
+                ?>
+                  <div class="text-danger"> Faça login para continuar</div>
+                <?
+                  }
+                ?>
+
+    Eu fiz isso aqui: 
+    Caso a sessão já tenha sido iniciada, não tem porque, ao voltar para a página de login, você poder fazer login de novo.
+    O correto seria, caso você já esteja logado(caso a sessão em autenticado esteja setado como true, ao entrar na página de login
+    	você ser redirecionado para a página principal, a home)
+
+
+ <?php
+  session_start();
+  
+  if(isset($_SESSION['autenticado']) || $_SESSION['autenticado'] === 'yes'){
+    var_dump($_SESSION['autenticado']);
+    header('Location: home.php');
+  }
+?>
+
+Para fazer logoff, temos que ter um botão cuja href seja um arquivo .php que contenha a lógica para efetuar o logoff.
+
+Para isso, é simples, podemos dar unset($_SESSION['index']) nos index que guardam os valores da sessão, ou simplesmente
+session_destroy() (isso tudo, claro, depois de dar um session_start()). Como falado na parte do session, só é possivel
+visualizar que a sessão e seus dados foram excluidos depois de uma requisição. Portanto, temos que redirecionar o fluxo para
+outra página, neste caso, o index é muito conveniente.
+
+FIca assim:
+
+Dentro do menu:
+
+ <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">
+        <img src="logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        App Help Desk
+      </a>
+      <ul class="navbar-nav">
+        <li class="nav-item"></li>
+          <a href="logoff.php" class="nav-link">Sair</a>// Esse é o botão
+      </ul>
+ </nav>
+
+O script:
+
+<?php
+	session_start();
+	if (session_status() === PHP_SESSION_ACTIVE) {
+		session_destroy();
+		header('Location: index.php');
+	}
+?>
 
 				______________________________[SESSION]___________________________________
 
@@ -12017,7 +12285,36 @@ SE COLOCARMOS ESSA TAG AQUI NO CODIGO SEM HABILITAR ANTES, O PHP COMENTA ELA NO 
 
 			MESMO TENDO CRIADO A SESSÃO, EM TODAS AS PÁGINAS PROTEGIDAS EU TENHO QUE EXECUTAR O start_session() TODA VEZ ANTES DE UMA SAIDA DE DADOS.
 				
-						_____________________[IMPORTAÇÃO DE SCRIPTS]_________________
+			
+			Métodos do $_SESSION
+
+			session_start() - Usada sempre que queremos dar uma inicio a uma sessão, usando esse comando estamos habilitados a manipular
+			a super global session.
+
+
+			session_destroy() - Destrói todos os índices e dados de uma sessão. Um adendo, ela funciona de forma parecida com o pós decremento
+			: ela destroi todos os dados da sessão, mas isso só será visível após uma nova requisição. 
+			A sessão morre, o espaço de memória reservado para aquele cliente é excluído.
+
+
+			session_unset() - Apaga todos os dados da sessão atual .Geralmente session_unset() é usado antes de session_destroy() 
+
+			unset($_SESSION['index']) - É originalmente uma função de array, mas serve para isso tambem. Apaga um X index(no caso, um dado da sessão.)
+ 
+
+			session_status() - Verifica o status da sessão. Possiveis valores retornaveis:
+
+			PHP_SESSION_DISABLED = 0
+			PHP_SESSION_NONE = 1
+			PHP_SESSION_ACTIVE = 2   / cada um desses valores é representado por uma constante interna, então podem ser usadas em qualquer parte.
+			
+
+			É útil usar esse comando no script que executa pela primeira vez o início da sessão(na pagina que autentica o login, por exemplo).
+
+			if (session_status() !== PHP_SESSION_ACTIVE) {//Verificar se a sessão não já está aberta.
+			  session_start();
+			}// visto tudo o que fizemos, nem precisa.
+					_____________________[IMPORTAÇÃO DE SCRIPTS]_________________
 
 						[INCLUDE]
 
@@ -12106,14 +12403,19 @@ SE COLOCARMOS ESSA TAG AQUI NO CODIGO SEM HABILITAR ANTES, O PHP COMENTA ELA NO 
 
 						require_once "url_script.php";
 
+		___________________________ [ARQUIVOS E MANIPULAÇÃO DE ARQUIVOS] _______________________________
 
+
+		Para escrevermos num arquivo, precisamos abri-lo, e após a escrita fechá-lo.
 				_____________________________[Funções úteis]________________________________________
 
 				- isset($arr[$index]) : Retorna true se o array naquele indice está setado;
 				- header('Location: url.php') ou header('Locaton: url.php?param=nomeParam') Redireciona
 				o fluxo para uma X página, com ou sem parâmetros(que podem ser resgatados por get a partir
-				do nome dos parametros).
+				do nome dos parametros). Para passar mais de um parâmetro colocando no fim de cada um os simbolos
+				&&, assim: header('Locaton: url.php?param=nomeParam&&param2=nomeParam2')
 				- file_exists($caminhoArquivo)
+				- unset(index)
 
 							__________________[FATOS UTEIS]__________________
 
@@ -12146,3 +12448,10 @@ SE COLOCARMOS ESSA TAG AQUI NO CODIGO SEM HABILITAR ANTES, O PHP COMENTA ELA NO 
 
              3 Sempre que for checar um valor nas super globais (com if, no caso) $_SESSION, $_GET, $_POST usar a função
              isset para checar se o array naquele index está setado.
+
+             4 -  Fazendo uma página de erro e explicação sobre requisições: 
+             https://pt.stackoverflow.com/questions/20733/como-criar-uma-tela-de-erro-404
+
+             5 SEEMMPREEEEEEEEEEEEEEE QUE MEXER COM A VARIÁVEL SESSION EM QUALQUER LUGAR TEM QUE ANTES INICIAR A SESSÃO
+             PRA QUE A SUPER GLOBAL EXISTA NAQUELE CONTEXTO, SE NÃO FIZER ISSO, DÁ ERRO! DÁ COMO SE ELA NÃO EXISTISSE!
+             session_start(). É necessário executar a session_start pra ter acesso a super global session.
