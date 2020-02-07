@@ -1,9 +1,0 @@
-# mrssolarisdev.github.io
-### Bem vindo ao meu repositório (>‿◠)✌
-
-* #### Simulador de alocação de memória 
-    *<a href="https://mrssolarisdev.github.io/facul/SO/memaloc_sim.html" style="color:#f7347a;" >Here > (´・ω・｀)</a>*
-* ### Anotações de desenvolvimento
-    *<a href="https://mrssolarisdev.github.io/dev-web/dev_web.html" style="color:#f7347a;" >Here > ᕙ(^▿^-ᕙ)</a>*
-   
-  
