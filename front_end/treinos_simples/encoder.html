@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Encoder / Decoder</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		:root{
+			--bg-grey: rgb(58, 73, 89);
+			--bg-pink: #95033f;
+		}
+		*{
+			margin:0;
+			padding: 0;
+		}
+		body{
+			background: rgb(6, 21, 38);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			caret-color:deeppink;
+		}
+		#enc-dec, #result, #conteiner button{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin: 2% auto;
+			background: var(--bg-grey);
+			position: relative;
+		}
+		#conteiner button{
+			padding: 2%;
+			background: var(--bg-pink);
+			border: none;
+			color: white;
+		}
+		
+		textarea{
+			width: 100%;
+			box-sizing: border-box;
+			background: var(--bg-grey);
+			border:none;
+			color: white;
+			font-size: 1.4em;
+			border:none;
+			padding: 2%;
+		}
+		textarea:focus{
+			outline: none;
+		}
+		h2{
+			color: orange;
+			text-transform: uppercase;
+			letter-spacing: 0.2em;
+			word-spacing: 0.3em;
+			text-align: center;
+			font-family: 'Lato', sans-serif;
+			padding: 8px;
+			margin: 24px;
+		}
+		#buttons{
+			width: inherit;
+			display: flex;
+			justify-content: center;
+		}
+		#buttons button{
+			display: inline-block;
+			margin: 0 auto;
+			padding: 8px 12px;
+			margin: 8px;
+			background: var(--bg-pink);
+			border: none;
+			color: white;
+		}
+		select{
+			background: var(--bg-grey);
+			border: none;
+			color: white;
+			padding: 8px;
+			width: 100%;
+		}
+	</style>
+	<script type="module" defer>
+		let select = document.getElementById('select');
+		let btnProsseguir = document.getElementById('pro');
+		let msgBox = document.getElementById('messageBox');
+		let resultBox = document.getElementById('resultBox');
+		let result = null;
+		let button1 = document.getElementsByTagName('button')[1];
+		let button2 = document.getElementsByTagName('button')[2];
+
+
+		function limpar(argument = true) {
+			if(!argument){
+				resultBox.value = "";
+				return;
+			}
+			console.log(msgBox.value, resultBox.value);
+		    msgBox.value = "";
+			resultBox.value = "";
+		}
+
+		function criptografar(txt){
+			limpar(false);
+			result = btoa(txt);
+			resultBox.value = result;
+		}
+
+		function descriptografar(txt){
+			limpar(false);
+			result = atob(txt);
+			resultBox.value = result;
+		}
+
+		select.addEventListener('change', e=>{
+			let valor = select.value;
+			if(valor === 'Criptografar'){
+				btnProsseguir.innerHTML = 'Criptografar';
+			}
+			if(valor === 'Descriptografar'){
+				btnProsseguir.innerHTML = 'Descriptografar';
+			}
+		}
+		);
+
+		btnProsseguir.addEventListener('click', ()=>{
+			if(select.value === 'Descriptografar'){
+				descriptografar(msgBox.value);
+			}
+			if (select.value === 'Criptografar') {
+				criptografar(msgBox.value);
+			}
+			else if(select.value === 'Selecione um modo'){
+				console.log('Cheguei');
+				alert('Selecione o modo');
+				return;
+			}
+		}
+		);
+
+		function copiar(){
+			let textoCopiado = resultBox;
+		    textoCopiado.select();
+		    document.execCommand("Copy");
+			// resultBox.select();
+			// let selObj = window.getSelection(); 
+			// console.log(selObj.toString());
+		}
+
+		button1.addEventListener('click',limpar);
+		button2.addEventListener('click',copiar);
+
+	</script>
+</head>
+<body>
+	<section>
+		<h2>Encoder / Decoder</h2>
+		<select id="select">
+			<option>Selecione o modo</option>
+			<option>Criptografar</option>
+			<option>Descriptografar</option>
+		</select>
+		<section id="conteiner">
+			<div id="enc-dec">
+				<textarea id="messageBox"></textarea>
+			</div>
+
+			<button id="pro">Criptografar</button>
+
+			<div id="result">
+				<textarea id="resultBox"></textarea>
+			</div>
+		</section>
+		<div id="buttons">
+			<button>Limpar</button>
+			<button>Copiar</button>
+		</div>
+	</section>
+</body>
+</html>
