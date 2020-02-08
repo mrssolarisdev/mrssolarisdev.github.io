@@ -89,6 +89,7 @@
 		let button2 = document.getElementsByTagName('button')[2];
 
 
+
 		function limpar(argument = true) {
 			if(!argument){
 				resultBox.value = "";
@@ -148,6 +149,7 @@
 
 		button1.addEventListener('click',limpar);
 		button2.addEventListener('click',copiar);
+		msgBox.addEventListener('click', ()=> box.select());
 
 	</script>
 </head>
