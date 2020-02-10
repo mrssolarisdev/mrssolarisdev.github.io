@@ -6,6 +6,5 @@ Abrir o review do html live preview:
 Abrir a barra de comandos e digitar:
 Show full preview - Janela inteira
 Show side preview - Meia janela
-Open in browser (ou botao direito no editor e selecionar abrir no browser)
-- Abrir no browser
+Open in browser (ou botao direito no editor e selecionar abrir no browser) - Abrir no browser
 
