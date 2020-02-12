@@ -24,6 +24,58 @@ Entrar em uma classe dentro de outra, util para marcar a pagina na qual voce est
 			color: white;
 		}
 
+
+Seletor :not(parametro)
+Aplica estilos ao elemento selecionado MENOS ao que voce passou como parametro para o seletor not.
+Ex:
+
+li:not(:first-of-type) {
+  margin-left: 10px;
+}
+Pode encadear:
+
+p:not(:first-of-type, .special) {
+	margin-left: 10px;
+}
+https://res.cloudinary.com/samanthaming/image/upload/f_auto,q_auto/v1579935822/tidbits/46-css-not-selector.jpg
+
+
+Seletor vazio :empty
+Aplica estilos a elementos que não tenham filhos. Filhos podem ser considerados quaisquer nós ou até mesmo texto,
+comentarios e caracteres vazios.
+
+ex:
+
+.alert {
+  background: pink;
+  padding: 10px;
+}
+.alert:empty {
+  display: none;
+}
+
+Uma solução para esse caso tambem poderia ser:
+
+.alert:not(:empty) {
+    background: pink;
+    padding: 10px;
+}
+
+https://res.cloudinary.com/samanthaming/image/upload/f_auto,q_auto/v1579935846/tidbits/72-css-empty-selector.jpg
+
+
+
+https://www.samanthaming.com/tidbits/72-css-empty-selector/
+
+Alguns tipos de seletores:
+
+:last-child
+:last-of-type
+:nth-child
+:nth-of-type
+:only-child
+:only-of-type
+
 ==========================================================================================================================
 
 O HTML = HYPERTEXT MARKUP LANGUAGE 
@@ -10879,7 +10931,13 @@ function contarHistoria(personagem = 'doggo', atividade = 'ossinhos' ,dono ='Jo�
 			     _________________ [ WEBSTORAGE JS ] ________________
 
 
-	LocalStorage* - Mantém os dados do lado do cliente no navegador enquanto ele não apaga a cache
+	LocalStorage* - Mantém os dados do lado do cliente no navegador enquanto ele não apaga a cache. Um fato interessante é que
+	os dados definidos em localStorage para aquela janela ficam disponiveis para todas as páginas de uma mesma aplicação: ou seja
+	páginas que tenham a mesma origem. Se eu tenho dois arquivos em uma pasta, e em um deles eu defino alguma propriedade no localStorage
+	na outra eu consigo acessar essa propriedade também, mesmo que esses arquivos estejam, cada um, em guias diferentes do navegador.
+	Para outras páginas que sejam abertas na mesma guia, ou em outras do navegador, que não sejam de mesma origem da página onde defini
+	a propriedade, esta X propriedade não estará definida.
+
 	SessionStorage* - Mantém os dados do lado do cliente no navegador até que a instancia do navegador se encerre
 	IndexedDB** - Não vimos 
 	Web SQL** - Não vimos
@@ -10980,6 +11038,22 @@ Remove um item do localStorage
 	localStorage.clear();
 Limpa a cache daquela aplicação
 
+HÁ TAMBEM O SESSION STORAGE, COM MÉTODOS IDÊNTICOS AO LOCALSTORAGE. A DIFERENÇA DE UM PARA OUTRO É QUE OS OBJETOS NO
+SESSION STORAGE SÓ EXISTEM ENQUANTO O USUÁRIO NÃO FECHAR O NAVEGADOR.
+
+
+Podemos criar atributos para o localStorage, como por exemplo uma variável para armazenar um contador, o que faria com que
+não precisassemos ter todo este trabalho que o professor teve. A variavel do localStorage poderia ser incrementada toda vez
+que um registro fosse ser colocado(se o valor da chave é 0 atualmente, o proximo registro é colocado em ++chave);
+
+Para criar atributos basta referenciar o localStorage, um ponto e o nome do atributo:
+
+ex:
+
+localStorage.attr = valor;
+
+
+
 
 
   				 _________________ [ Objetos literais vs JSON JS ] ________________
@@ -11075,6 +11149,81 @@ Limpa a cache daquela aplicação
 							}
 
 
+
+	 __________________[VALIDANDO DADOS DE FORMULÁRIO COM JS E ENVIANDO PRO SERVIDOR COM PHP]__________________
+
+	 gravar(){
+		if(validarPagina()){
+			if(confirm("Você tem certeza que deseja encaminhar esta manifestação para a Ouvidoria?")){
+				document.frm1.acao.value="salvar";
+				document.frm1.submit();
+			}
+		}
+	}	
+
+	Aprendi no exemplo acima com o site da faculdade. 
+
+	O objeto form no javascript tem atributos e métodos e um deles é o submit. Desta forma não precisamos colocar
+	o submit direto no botão e sim chamar uma função que envia o formulário para o servidor, caso todos os dados
+	tenham sido validados por uma outra função.
+
+
+	document.getElementById("myForm").submit();
+
+
+	// É aplicado no form.
+
+	Lista de atributos e métodos do objeto form:
+
+	action 
+	autocomplete
+	length - 	Returns the number of elements in a form
+	method
+	noValidate
+
+	target - Esse é especial. Muda onde mostrar a resposta(do servidor) que é recebida depois de submeter um form. 
+	Abre a resposta em uma nova janela ao invés de na mesma que foi clicada *(ou nao). valores: _blank|_self|_parent|_top|framename
+
+	reset()	Resets a form
+	submit() Submits a form
+
+
+	Atributos e e seletores das inputs:
+
+	disabled	- Specifies that the input element should be disabled
+	max		    - Specifies the maximum value of an input element (range)
+	min			- Specifies the minimum value of an input element (range)
+	pattern	    - Specifies the value pattern of an input element
+	required	- Specifies that the input field requires an element
+	type 	    - Specifies the type of an input element
+	readonly    - Attribute specifies that the input field is read only (cannot be changed)
+	maxlength   - Attribute specifies the maximum allowed length for the input field:
+	autocomplete
+	autofocus
+	form
+	formaction
+	formenctype
+	formmethod
+	formnovalidate
+	formtarget - 
+	height and width
+	list
+	min and max
+	multiple
+	pattern (regexp)
+	placeholder
+	step
+
+
+	:disabled	Selects input elements with the "disabled" attribute specified
+	:invalid	Selects input elements with invalid values
+	:optional	Selects input elements with no "required" attribute specified
+	:required	Selects input elements with the "required" attribute specified
+	:valid	Selects input elements with valid values
+
+
+
+
 			_________________ [ INSERINDO ELEMENTOS EM UMA TABELA DINAMICAMENTE JS ] ________________
 
 			CONSIDERANDO QUE TENHAMOS POR EXEMPLO, UM ARRAY DE INFORMAÇÕES E QUEREMOS JOGAR CADA UM DOS
@@ -11138,8 +11287,57 @@ Limpa a cache daquela aplicação
 			linha.insertCell(4).append(btn);
 
 
+________________________________[COPIAR CONTEUDO DE DIV PARA O CTRL C]________________________________
+
+Primeiro fazemos uma função e dentro dela, selecionamos o elemento que contém o texto que queremos copiar:
+
+let elem = document.get...pipippopopoEtc..
+// o comando não quer o texto, e sim o elemento, não precisa capturar value, innerHTML etc..
+
+elem.select();
+
+Depois copiamos o texto dentro da div com o comando:
+
+document.execCommand("Copy");
+
+EX:
+
+function copiar(){
+	let textoCopiado = resultBox;
+    textoCopiado.select();
+    document.execCommand("Copy");
+}
 
 
+Para SÓ SELECIONAR O TEXTO DENTRO DE UMA DIV(SEM COPIAR AUTOMATICAMENTE):
+
+Pegamos a referencia para o objeto que contém o texto a selecionar e em seguida usamos a função select;
+
+Ex:
+
+let box = document.getElementById('messageBox');
+
+box.addEventListener('click', ()=> box.select());
+
+Ao clicar na div o texto dentro dela será copiado. (Muito usado em campos de texto).
+
+________________________________[SEGURANÇA E CRIPTOGRAFIA]_____________________________________________
+
+BASE 64:
+
+Apesar de não ser tão segura, a criptografia de base 64 pode ser usada para pegar parametros do url(muito útil pra 
+passar critpgrafado por get por parametro e descriptografar no back end pra ninguem ver qual a mensagem ou pra não
+atrapalhar o tratamento por conter caracteres especiais).
+
+Para criptografar no javascript:
+
+De String para Base-64
+
+let criptografada = btoa("String");
+
+De Base-64 para String:
+
+let descriptografada = atob(criptografada);
 
 				________________________[OBSERVAÇÕES JS]_____________________________
 
@@ -11276,6 +11474,39 @@ Limpa a cache daquela aplicação
 		seguido da palavra as e depois o apelido. Assim:
 
 		import { soma as somaDeTodosOsValores } from './util.js'
+
+
+					_______________________[OBJETO NAVIGATOR]________________________
+
+
+					The navigator object contains information about the browser.
+
+Note: There is no public standard that applies to the navigator object, but all major browsers support it.
+
+	[window.navigator.Attr] 
+
+	exemplo: window.navigator.onLine (esse é bom colocar um listener pra escutar se há conexão a cada x segundos), tipo>
+
+	var online = navigator.onLine; // true ou false, (há, não há conexão à internet)
+	if(online) {
+	    // efetuar pedido ajax
+	}
+
+
+	appCodeName	Returns the code name of the browser
+	appName	Returns the name of the browser
+	appVersion	Returns the version information of the browser
+	cookieEnabled	Determines whether cookies are enabled in the browser
+	geolocation	Returns a Geolocation object that can be used to locate the user's position
+	language	Returns the language of the browser
+	onLine	Determines whether the browser is online
+	platform	Returns for which platform the browser is compiled
+	product	Returns the engine name of the browser
+	userAgent	Returns the user-agent header sent by the browser to the server
+	Navigator Object Methods
+	Method	Description
+	javaEnabled()	Specifies whether or not the browser has Java enabled
+	taintEnabled()	Removed in JavaScript version 1.2. Specifies whether the browser has data tainting enabled
 
 
 					**************************[BACK END]*******************************
@@ -11697,6 +11928,27 @@ SE COLOCARMOS ESSA TAG AQUI NO CODIGO SEM HABILITAR ANTES, O PHP COMENTA ELA NO 
 			 			substr($texto, <posicao inicial>, <qtd de caracteres>) Retorna parte de uma string. <qtd de caracteres> quantidade a partir e 
 			 			inclusive da <posicao inicial>. Útil para, por exemplo quando não queremos mostrar o titulo de uma noticia inteira, podemos cortar
 			 			uma parte do texto e colocar "truncado" com reticencias, para indicar que aquele texto continua.
+
+			 			[CRIPTOGRAFIA]:
+
+			 			De Base-64 para String:
+
+			 			$str = 'VGhpcyBpcyBhbiBlbmNvZGVkIHN0cmluZw==';
+			 			echo base64_decode($str);
+			 			--------------------------------
+			 			output:
+			 			This is an encoded string
+
+
+
+
+			 			De String para Base-64:
+			 			$str = 'This is an encoded string';
+						echo base64_encode($str);
+						-----------------------------
+						output:
+						VGhpcyBpcyBhbiBlbmNvZGVkIHN0cmluZw==
+
 
 						__________________[FUNCOES NATIVAS MATEMATICAS]__________________
 
@@ -12314,6 +12566,9 @@ O script:
 			if (session_status() !== PHP_SESSION_ACTIVE) {//Verificar se a sessão não já está aberta.
 			  session_start();
 			}// visto tudo o que fizemos, nem precisa.
+
+
+			SESSION GERALMENTE É USADO QUANDO PRECISAMOS RESGATAR EM VARIAS PAGINAS DA APLICAÇÃO, A MESMA INFORMAÇAO.
 					_____________________[IMPORTAÇÃO DE SCRIPTS]_________________
 
 						[INCLUDE]
@@ -12407,6 +12662,85 @@ O script:
 
 
 		Para escrevermos num arquivo, precisamos abri-lo, e após a escrita fechá-lo.
+
+Abrir arquivo de texto: fopen('1caminho/nome_arquivo.extensão','2parametro');
+1 - Caso o nome do arquivo não exista, o arquivo é criado.
+2 - O parâmetro é o tipo de manipulação que desejamos fazer com o arquivo, alguns:
+
+r: Somente leitura. [Retorna um erro caso o arquivo não exista e não tenta cria-lo.]
+
+r+ : Leitura e escrita, posiciona o ponteiro no começo do arquivo.[Retorna um erro caso o arquivo não exista e não tenta cria-lo.]
+
+w : Abre o arquivo para apenas escrita. Assim coloca o ponteiro do arquivo no começo do arquivo e vai diminuindo(truncando)
+o tamanho do arquivo para zero. [Se o arquivo não existe, tenta criá-lo].
+====Tenha cuidado pois o modo ‘w’ coloca o ponteiro de escrita no início do arquivo. Portanto se o arquivo já existir,
+ ele deletará todo o conteúdo!====
+
+w+ :Abre o arquivo para leitura e escrita. Assim coloca o ponteiro do arquivo no começo do arquivo e vai diminuindo(truncando)
+o tamanho do arquivo para zero. [Se o arquivo não existe, tenta criá-lo].
+
+a: Abre para somente para escrita somente; coloca o ponteiro do arquivo no final.
+[Se o arquivo não existir, tenta criá-lo]. 
+=>(o melhor, já que se o arquivo existir, só adicionaremos novas linhas 
+final). [Eu uso esse]
+a+: Abre o arquivo para leitura e escrita; coloca o ponteiro do arquivo no final.
+[ Se o arquivo não existir, tenta criá-lo].
+=>(o melhor, já que se o arquivo existir, só adicionaremos novas linhas 
+final).
+
+x: Cria e abre o arquivo para escrita somente; coloca o ponteiro no início do arquivo.
+Se o arquivo já existe, a chamada a fopen() irá falhar, retornando FALSE, gerando um erro nível E_WARNING. 
+[Se o arquivo não existe, tenta criá-lo.
+Esta opção é suportada no PHP 4.3.2 e posteriores, e somente funciona em arquivos locais.]
+
+x+: Cria e abre um arquivo para escrita e leitura; coloca o ponteiro do arquivo no início.
+Se o arquivo já existe, a chamada a fopen() irá falhar, retornando FALSE, gerando um erro nível E_WARNING. 
+[Se o arquivo não existe, tenta criá-lo.
+Esta opção é suportada no PHP 4.3.2 e posteriores, e somente funciona em arquivos locais].
+
+b: Lê de forma binária. [fortemente recomendado].
+
+Dá pra aliar os comandos, como esperado. Na documentação, se recomenda fortemente usar o parâmetro b, para forçar 
+uma leitura binária do arquivo, uma vez que cada sistema operacional tem um encerramento de string diferente. Lendo
+de forma binária não há esse problema.
+
+
+O esperando ao se fazer isso, é criar um arquivo dentro do diretório htdocs do servidor.
+
+
+Métodos de arquivo:
+$path = fopen('arquivo.extensão','modo'); - Path é a variável que vai guardar a referencia para o arquivo aberto.
+É criada quando o arquivo é aberto, e podemos usar o valor na referencia para usar nas outras funcoes. O modo definido
+na função é importante pois diz a funcao de leitura e de escrita como ela deve trabalhar.
+PRA LER UM ARQUIVO ABRIMOS USANDO r, PRA ESCREVER USAMOS a.
+
+fwrite($path, $texto)- Escreve em um arquivo (ao usar se certificar de que o arquivo foi aberto em modo de escrita);
+
+fgets($path); - Lê cada caractere de uma linha até encontrar uma quebra de linha. Pode levar um segundo parametro
+relacionado a quantidade de bits a serem lidos de cada linha( fgets($path, 2024).(se certificar de que ao usar essa função
+o arquivo foi aberto em modo de leitura).
+
+fclose($path) - Fecha um arquivo - É MUITO IMPORTANTE FECHAR UM ARQUIVO DEPOIS DE MANIPULA-LO!;
+
+file_exists($path) - Checa se o arquivo existe;
+
+feof($path) - Função end of file: Identifica o fim de um arquivo, útil para ler um arquivo usando while, itera sobre o
+arquivo enquando existirem linhas. Retorna false caso ainda existam linhas e true caso tenha encontrado o final do
+arquivo, então a função deve ser negada.
+
+while(!feof($path)){
+
+}
+
+Atributos de arquivo:
+
+PHP_EOL - PHP End of Line, coloca uma quebra de linha no local onde for inserida. O tipo de quebra de linha muda
+conforme o sistema operacional no qual o servidor php está rodando. Útil para concatenar no fim de textos.
+
+Observações:
+
+Podemos usar qualquer extensão para gravar;
+Para subir um nível hierarquico na estrutura de pastas usamos o: ../ - pode encadear
 				_____________________________[Funções úteis]________________________________________
 
 				- isset($arr[$index]) : Retorna true se o array naquele indice está setado;
@@ -12455,3 +12789,48 @@ O script:
              5 SEEMMPREEEEEEEEEEEEEEE QUE MEXER COM A VARIÁVEL SESSION EM QUALQUER LUGAR TEM QUE ANTES INICIAR A SESSÃO
              PRA QUE A SUPER GLOBAL EXISTA NAQUELE CONTEXTO, SE NÃO FIZER ISSO, DÁ ERRO! DÁ COMO SE ELA NÃO EXISTISSE!
              session_start(). É necessário executar a session_start pra ter acesso a super global session.
+
+
+             6 SOBRE SEGURANÇA DO BACK END:
+
+             Guardamos arquivos, até então, no diretorio htdocs que é um diretório publico, portanto qualquer requisição
+             feita ao servidor(no caso usando nosso ip e caminho para os arquivos) rende ao cliente, uma resposta. A questão
+             é, quando por exemplo fazemos login, o fluxo é redirecionado para uma tratativa que pode ser uma manipulação no
+             banco de dados, dados de usuário ou até mesmo a manipulação de um arquivo. Todos esses arquivos são processados
+             e enviados traduzidos para o cliente, mas uma pessoa má intencionada com mais habilidade pode usar tecnicas para
+             encontrar os arquivos originais, já que é um diretório público.
+             O que fazer?
+
+             Continuar usando o diretório htdocs para que qualquer um ainda consiga fazer requisições, mas, é recomendado que
+             os arquivos sensíveis, que envolvem manipulação de dados sigilosos, banco de dados etc sejam incluidos fora desta
+             pasta, e chamados nos arquivos presentes no diretório htdocs via include. 
+             Assim, uma má intencionada não tem acesso aos arquivos, já que este em si não é público.
+
+             Exemplo de páginas que devem ficar no htdocs:
+
+             index
+             home
+             etc.
+
+             Exemplos de páginas que devem ficar fora do htdocs:
+
+             validadores de login (consulta a um arquivo ou a um banco de dados para procurar usuários compativeis com os dados 
+             passados por post) .
+             No caso de validar um login, o index deve nos redirecionar para um script que nos redirecione a partir de um include
+             para outro script que deve estar fora do htdocs que  contenha a logica para validar ou não o login e nos conceder 
+             acesso ao sistema. Assim, caso alguem mal intencionado chegue ao arquivo pela requisição, ele vai ver somente o
+             arquivo que faz o include, não o que está dentro do include, já que este ultimo está protegido pelo SO por não estar
+             em um diretório público.
+
+             quaisquer arquivos que mexam com dados sigilosos.
+
+             No caso de manipulação de arquivos, colocamos os arquivos fora do htdocs, também, e fazemos referencia ao arquivo
+             usando o caminho para onde ele está(fora do htdocs). Os arquivos no htdocs podem chamar arquivos de fora, mas o cliente
+             so pode chamar arquivos do diretório público.
+
+
+             UM ARQUIVO QUALQUER DENTRO DE UM DIRETÓRIO QUE NÃO É O HTDOCS, OU SEJA, NÃO É PÚBLICO, NÃO PODE SER CHAMADO DIRETAMENTE
+             PELO CLIENTE, SOMENTE SOLICITADO POR OUTROS ARQUIVOS DO DIRETÓRIO PÚBLICO. É ISSO QUE TORNA A APLICAÇÃO SEGURA.
+             SÓ A PROPRIA APLICAÇÃO PODE LER E ESCREVER EM ARQUIVOS FORA DO DIRETÓRIO PUBLICO.
+
+             TODA REGRA DE NEGÓCIO SIGILOSA DEVE OBRIGATORIAMENTE ESTAR FORA DO DIRETÓRIO PUBLICO.
