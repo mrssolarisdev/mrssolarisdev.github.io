@@ -1877,7 +1877,7 @@ e definir a posição dela. Alem de a imagem nao ser copiavel centraliza rapido 
  aquilo é uma lateral.
 
 
-
+]
 
 *PADRÃO DO CORPO HTML A SEGUIR*
 
@@ -1912,28 +1912,6 @@ e definir a posição dela. Alem de a imagem nao ser copiavel centraliza rapido 
 		SÃO ALINHADOS AO CENTRO. PORTANTO AS SPANS DENTRO DELE FICARÃO NO CENTRO
 
 --------------------------------------------------------------------------------------------
-
-______________________________[PERSONALIZAR ATRIBUTOS DO HTML]_________________________________
-
-
-SELECIONADOR DE ATRIBUTOS
-
-The [attribute] selector is used to select elements with a specified attribute.
-
-The following example selects all <a> elements with a target attribute:
-Example
-
-a[target] {
-  background-color: yellow;
-}
-
-The [attribute="value"] selector is used to select elements with a specified attribute and value.
-
-a[target="_blank"] {
-  background-color: yellow;
-}
-
-
 ===========================================================================================================================
 ELEMENTOS QUE PRECISAM DE PREFIXO:
 -transition-
@@ -11189,14 +11167,8 @@ localStorage.attr = valor;
 	o submit direto no botão e sim chamar uma função que envia o formulário para o servidor, caso todos os dados
 	tenham sido validados por uma outra função.
 
-	<form name ="myForm" > </form>
-	document.myForm.submit();
 
-	Ao colocar um botão que ative a função de validação, o name do botão NUNCA pode ser submit, pois ele sobrescreve o método
-	submit do formulário. (o type sim, o name não)
-
-	<input type="submit" name="btn-submit" class="btn btn-pink btn-block" id="button-submit" value="Login" onclick="validar()">
-
+	document.getElementById("myForm").submit();
 
 
 	// É aplicado no form.
@@ -11207,7 +11179,7 @@ localStorage.attr = valor;
 	autocomplete
 	length - 	Returns the number of elements in a form
 	method
-	noValidate
+	noValidate - Especifica que não precisa ser validado
 
 	target - Esse é especial. Muda onde mostrar a resposta(do servidor) que é recebida depois de submeter um form. 
 	Abre a resposta em uma nova janela ao invés de na mesma que foi clicada *(ou nao). valores: _blank|_self|_parent|_top|framename
@@ -11216,7 +11188,7 @@ localStorage.attr = valor;
 	submit() Submits a form
 
 
-	a Atributos e e seletores das inputs:
+	Atributos e e seletores das inputs:
 
 	disabled	- Specifies that the input element should be disabled
 	max		    - Specifies the maximum value of an input element (range)
@@ -11248,9 +11220,95 @@ localStorage.attr = valor;
 	:optional	Selects input elements with no "required" attribute specified
 	:required	Selects input elements with the "required" attribute specified
 	:valid	Selects input elements with valid values
-	:focus Seleciona o que acontece com a input quando ela está selecionada
 
 
+
+			_______________________[O MÉTODO DE VALIDAÇÃO MAIS CORRETO]_____________________________
+
+			O melhor meio de validar o formulário é gerar uma função que seja ativada na sua submissão.
+			Caso a função retorne true, o formulário é submetido, caso não, o processo é parado.
+
+			O botão contém o type submit, como de praxe(ao invés de omitir essa instrução e submeter o
+				formulário itnernamente).
+
+			Uma função valida os dados de formulário e é chamada no onsubmit da tag form juntamente com
+			a palavra reservada return.
+
+			<form id="form-login" action="valida_cadastro.php" method="post"
+			 onsubmit="return validarCampos()" name="formLogin">
+
+
+			A função:
+
+			 function validarCampos(){
+			 	let sub = false;
+			 	let c_box = false;
+
+			 	let conclusion = false;
+
+			 	for (let i = 0 ; i < children.length ; i ++) {
+				 	if(children[i].value !="" && children[i].value!=='SELECT_OPTION')
+						sub = true;
+					else{
+						sub = false;
+						break;
+					}
+				}
+
+				checkbox.checked ? c_box = true : c_box = false;
+
+			 	sub && c_box && checkPassword ? conclusion = true : conclusion = false;
+			 	console.log(children, conclusion);	
+
+			 	return conclusion;
+			 }
+
+			 O botão:
+
+			 <input type="submit" name="btn-submit" class="btn btn-info btn-block mt-5" id="button-submit" value="Login">	
+
+
+			 É importante usar esse método pois, usando o tipo submit no botão o browser reconhece que o cliente está tentando
+			 submeter um formulário, e vai barrar o processo antes mesmo da validação manual, caso o pattern das inputs
+			 não seja preenchido corretamente. Isso não acontece em outros métodos.
+			 Usando o método .submit() se um campo de email estivesse sem o complemento email.com.br A submissão seria feita assim
+			 mesmo, independente da aplicação de um pattern na input.
+
+
+
+			 				______________________[QUERY SELECTOR]________________________
+
+			Document.querySelector('elemento') seleciona o primeiro elemento que atinge a condição procurada
+			Essa condição procurada pode ser um elemento de um tipo especifico(como um paragrafo, um span) ou 
+			com um atributo especifico(um atributo que tenha target, ou um elemento que tenha um type submit 
+			- seria querySelector "all ou nao" 
+			Ex:
+
+			document.querySelector('input[type=text]') - Sem o all, ele captura a primeira ocorrência do objeto
+			com esta condição do documento.
+
+
+
+			Com o all da pra puxar mais de um elemento que atinjam uma condição, é so separar eles por virgula
+
+			document.querySelectorAll("input[type=text], input[type=submit]", p)
+
+
+			É possível combinar esse comando com o getElementById ou outros. 
+			Por exemplo: 
+			document.getElementById('pai').querySelectorAll('filho[type=text]'). 
+
+			Esse comando seleciona o pai, e dele seleciona todos seus filhos que são do tipo texto, 
+			retornando uma coleção de objetos iterável.
+
+			Da pra selecionar mais de um tipo de filho, neste caso
+
+			Document.getElementById('pai').querySelectorAll("filho[type=text], filho[type=email]")
+
+
+
+			[querySelector]: Retorna a primeira ocorrencia do objeto que atinge a(s) condição(ões).
+			[querySelectorAll]: Retorna uma coleção de objetos que atingem a(s) condição(ões)
 
 			_________________ [ INSERINDO ELEMENTOS EM UMA TABELA DINAMICAMENTE JS ] ________________
 
@@ -12597,18 +12655,6 @@ O script:
 
 
 			SESSION GERALMENTE É USADO QUANDO PRECISAMOS RESGATAR EM VARIAS PAGINAS DA APLICAÇÃO, A MESMA INFORMAÇAO.
-
-
-
-			PARA DESTRUIR A SESSÃO CASO O USUÁRIO FIQUE OFFLINE MAIS DOQ X MINUTOS:
-
-			if (isset($_SESSION['ultima_atividade']) && (time() - $_SESSION['ultima_atividade'] > 3600)) {
-
-			    // última atividade foi mais de 60 minutos atrás
-			    session_unset();     // unset $_SESSION  
-			    session_destroy();   // destroindo session data 
-			}
-			$_SESSION['ultima_atividade'] = time(); // update da ultima atividade
 					_____________________[IMPORTAÇÃO DE SCRIPTS]_________________
 
 						[INCLUDE]
