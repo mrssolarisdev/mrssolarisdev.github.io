@@ -16,7 +16,7 @@
 	document.body.appendChild(elem);
 
 	document.addEventListener('mousemove', e => {
-		console.log(`X Coord ${e.clientX}, Y coord ${e.clientY}, Page X coord ${e.pageX}, PageY Coord ${e.pageY}`);
+		console.log(`X Coord ${e.clientX}, Y coord ${e.clientY}, Page X coord ${e.pageX}, PageY Coord ${e.pageY}, OffsetX coord ${e.offsetX} OffsetY coord ${e.offsetY}`);
 		//console.log(elem);
 		elem.style.left = e.pageX+'px';
 		elem.style.top = e.pageY+'px';
