@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Promisse</title>
+</head>
+<body style="color:black;background: pink; font-size: 4em;">
+	<script defer type="text/javascript">
+		let promise = new Promise((resolve, reject) => {
+			let a = 1 + 1;
+			if(a === 2)
+				resolve('Success');
+			else
+				reject('Failed');
+		});
+
+		promise.then((message) => {
+			let msg = 'Esse é o then, quando entra aqui significa que: '+message;
+			console.log('%c'+ msg ,'color:pink; background-color: black');
+			document.write(msg);
+		}).catch((error) => {
+			let msg = 'Esse é o catch, em oposição ao then, que ocorre quando a promessa não é cumprida, ou seja: '+error;
+			console.log('%c'+msg, 'color: red; background: black');
+			document.write(msg);
+		});
+	</script>
+</body>
+</html>
