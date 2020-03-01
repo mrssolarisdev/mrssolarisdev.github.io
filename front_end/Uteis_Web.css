@@ -4004,6 +4004,15 @@ GRANDE, O QUE EXIGE TRATAMENTO, ENTÃO A TELA FICA NORMAL
 		 }
 		 );
 							 
+				 _______________________[*CLASSLIST*]_____________________
+				 
+		elemento.classList.remove('classe'); - Remove a classe especificada da lista de classes do elemento.
+		elemento.classList.add('classe'); - Adiciona a classe especificada da lista de classes do elemento.
+		elemento.classList.contains('classe') - Checa se classe especificada existe na lista de classes do elemento.
+		elemento.classList.replace('essaClasse', 'porEssa') - Substitui a classe da esquerda pela da direita.
+		elemento.classList.toggle('classe') - Se a classe está presente, esconde,se não, a adiciona.
+
+
 								----------------*[INPUT GROUP]*-----------------
 
 
