@@ -76,6 +76,27 @@ tipos:
 
 ```<form>``` formulário (inputs devem estar dentro de um formulario, pois o botão de enviar para um banco de dados, pega os dados das inputs que estão dentro deste form, e envia pela requisição).
 
+**Atributos da tag form**
+```action``` - Para onde o formulário é submetido.  
+
+```autocomplete``` - Seta se dados inseridos em inputs de mesmo name aparecem como sugestão de valor.  
+
+```length``` - 	Returns the number of elements in a form.  
+
+```method``` - Método de submissão de formulário (get ou post).  
+
+```noValidate``` - Especifica que não precisa ser validado.  
+
+```target``` - Esse é especial. Muda onde mostrar a resposta(do servidor) que é recebida depois de submeter um form. 
+Abre a resposta em uma nova janela ao invés de na mesma que foi clicada *(ou nao). valores: _blank|_self|_parent|_top|framename  
+
+**Métodos do objeto form:**  
+
+```reset()``` - Resets a form.  
+
+```submit()``` - Submits a form.  
+
+
 ***input para texto***
 ```<input type="text" name="alguma coisa aqui">```  
 
@@ -230,7 +251,72 @@ ou required=""
 
 ```autofocus```-> diz a caixa que deve aparecer selecionada assim que a pagina carrega, indicando ao usuario por onde ele deve começar.
 
+***Atributos e e seletores das inputs:***  
 
+
+```disabled``` - Specifies that the input element should be disabled.  
+
+```max```    - Specifies the maximum value of an input element (range).  
+
+```min``` - Specifies the minimum value of an input element (range).  
+
+```pattern```- Specifies the value pattern of an input element.  
+
+```type``` - Specifies the type of an input element.  
+
+```readonly``` - Attribute specifies that the input field is read only (cannot be changed).  
+
+```maxlength```  - Attribute specifies the maximum allowed length for the input field.  
+
+```autocomplete```  
+
+```form```  
+
+```formaction```  
+
+```formenctype```  
+
+```formmethod```  
+
+```formnovalidate```  
+
+```formtarget  ```  
+
+```height and width```  
+
+```list```  
+
+```multiple```  
+
+```pattern (regexp)``` - Expressão regular que dita a regra que a string deve seguir naquela input para ser válida.  
+
+**Seletores:**    
+
+```:disabled```- Selects input elements with the "disabled" attribute specified.  
+
+```:invalid``` - Selects input elements with invalid values.  
+
+```:optional```- Selects input elements with no "required" attribute specified.  
+
+```:required``` - Selects input elements with the "required" attribute specified.  
+
+```:valid``` - Selects input elements with valid values.  
+
+
+>Para validar dados de formulário: Ao seguir uma regex, ao validar os dados do lado do cliente podemos ver se os dados naquela input seguem a regex, para isso usamos o método match() passando como argumento a string da regex.  
+
+
+>Exemplo de regex:  
+
+```<input type="email" pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" id="email">```  
+
+
+>Para valida-la:
+
+```id.match("^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$") ? ```  
+
+
+	
 ***caixa de seleção(combobox)***
 ```<select name="estado"> </select>``` -> cria uma caixa de seleção
 
@@ -521,3 +607,27 @@ _______________________[HTML Audio/Video Methods]_______________________
 ```play()``` - Starts playing the audio/video.  
 
 ```pause()``` - Pauses the currently playing audio/video.  
+
+
+***PARA ADAPTAR O SITE TOTALMENTE A DEFICIENTES NUNCA SE ESUQEÇA DE COLOCAR OS ELEMENTOS IMPORTANTES ENTRE AS SEGUINTES TAGS***
+
+
+```<header></header>``` - Cabeçalho.  
+
+```<nav></nav>``` - Todo menu que for feito tem que ser posto ai, ao inves de uma div.  
+
+```<footer></footer>``` - Reconhece que ali é o rodapé.  
+
+```<article></article>``` - Para artigos, textos, biografias, videos etc.  
+
+```<section></section>``` - Define uma area ou sessão.  
+
+```<time></time> ``` - Feito para os buscadores entenderem melhor que o que está ali se trata de uma data.
+
+```<aside></aside>``` - Feito para os buscadores entenderem que o que está ali se trata de um conteudo que está na lateral.  
+
+```<pre></pre>``` Faz com que o tamanho da fonte seja fixo, os espaços e as quebras de linhas sejam preservadas do texto original.   
+
+
+
+>####Desse modo o browser irá ler e interpretar, dizendo a pessoa o que é e onde está cada coisa.####
