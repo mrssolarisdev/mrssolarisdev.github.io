@@ -1,24 +1,24 @@
-**HTML**
+**html**
 
-O html = **hypertext markup language **
+o html = **hypertext markup language **
 
 marca o que é cada parte do texto, indica ao interpretador o que é o que
 o que é o video, uma div etc.
 
 
-**LISTAS**
+**listas**
 
-```<ol> Ordened List- - Lista ordenada- numeros
-<ul> Unordened List - Lista nao ordenada
-<li> List item - Item da lista
+```<ol> ordened list- - lista ordenada- numeros
+<ul> unordened list - lista nao ordenada
+<li> list item - item da lista
  ul type : circle, disc, square
- ol type : 1, A, a, I e i(algarismos romanos)
+ ol type : 1, a, a, i e i(algarismos romanos)
  ```
 
 
-**TABELAS**
+**tabelas**
  
- ```<table>``` tabela TODAS DEVEM COMEÇAR ASSIM  
+ ```<table>``` tabela todas devem começar assim  
  
 
  ```<tr>``` table row - linha da tabela  
@@ -33,29 +33,29 @@ o que é o video, uma div etc.
  ```<td rowspan="2"``` - row spansion - expansão da linha, nesse
  caso uma linha ocupa o espaço de duas  
  
- ```<thead>``` Header da tabela, geralmente engloba uma ```<tr>``` que tem elementos ```<th>``` dentro, serve pra agrupar os elementos do cabeçalho da tabela.  
+ ```<thead>``` header da tabela, geralmente engloba uma ```<tr>``` que tem elementos ```<th>``` dentro, serve pra agrupar os elementos do cabeçalho da tabela.  
  
- ```<tbody>``` Corpo da tabela, engloba tudo que forem dados que não fazem parte do header da tabela, agrupa trs que tem tds.
- Mais do que isso, ele tem uma barra de scroll, que só aparece nele(no thead nao). É bom pra impressão, pois, se eu fosse
+ ```<tbody>``` corpo da tabela, engloba tudo que forem dados que não fazem parte do header da tabela, agrupa trs que tem tds.
+ mais do que isso, ele tem uma barra de scroll, que só aparece nele(no thead nao). é bom pra impressão, pois, se eu fosse
  imprimir uma tabela, o header da tabela apareceria em cada folha, se não tivesse esse atributo, desse modo aparece só 
  na primeira.  
  
- ```<tfoot>``` O footer da tabela, do mesmo modo que a theader, só aparece uma vez em impressões.  
+ ```<tfoot>``` o footer da tabela, do mesmo modo que a theader, só aparece uma vez em impressões.  
  
  atributo scope:
-	```<th scope="col">Month</th>```  
+	```<th scope="col">month</th>```  
   
 nesse exemplo, diz que essa th é um table header de uma coluna, poderia ser row, e então seria o header de uma linha.
 
  
->Comentar html <! -- conteudo -->  
+>comentar html <! -- conteudo -->  
 
->Comentar css /* conteudo */
+>comentar css /* conteudo */
 
 
-**INPUTS**
+**inputs**
 
-TIPOS:   
+tipos:   
 
 ```color```  
 ```date```  
@@ -72,68 +72,68 @@ TIPOS:
 ```checkbox```  
 ```file```  
 
-**FORM**
+**form**
 
-```<form>``` Formulário (INPUTS DEVEM ESTAR DENTRO DE UM FORMULARIO, POIS O BOTÃO DE ENVIAR PARA UM BANCO DE DADOS, PEGA OS DADOS DAS INPUTS QUE ESTÃO DENTRO DESTE FORM, E ENVIA PELA REQUISIÇÃO).
+```<form>``` formulário (inputs devem estar dentro de um formulario, pois o botão de enviar para um banco de dados, pega os dados das inputs que estão dentro deste form, e envia pela requisição).
 
-***INPUT PARA TEXTO***
-```<input type="text" name="Alguma coisa aqui">```  
+***input para texto***
+```<input type="text" name="alguma coisa aqui">```  
 
-***INPUT PARA SENHA***
-```<input type="password" name"Nome exibido no browser">```  
+***input para senha***
+```<input type="password" name"nome exibido no browser">```  
 
-***INPUT PARA EMAIL***
-```<input type="email" name="nome" placeholder="Insira seu email.." required="">```  
+***input para email***
+```<input type="email" name="nome" placeholder="insira seu email.." required="">```  
 
 
-***INPUT PARA NUMERO(SPINNER)***
+***input para numero(spinner)***
 ```<input type="number" name="qtd" id="qtd">```  
 
-O number tem parametros especificos:
+o number tem parametros especificos:
 	```min="numero"```    
     
     
 	``` max="numero" ```  
   
-ASSIM A SETA SO DEIXA VOCE IR ATÉ O NUMERO DETERMINADO, SE PASSAR DO ESPECIFICADO A CERTA TRAVA, SE DIGITAR ALGO MAIOR OU MENOR E TENTAR ENVIAR, O BOTÃO NÃO DEIXA.
+assim a seta so deixa voce ir até o numero determinado, se passar do especificado a certa trava, se digitar algo maior ou menor e tentar enviar, o botão não deixa.
 
-Tem também o:
+tem também o:
 	```step="numero"```  
 
-DEFINE DE QUANTO EM QUANTO A QUANTIDADE NA CAIXA CONTARÁ
+define de quanto em quanto a quantidade na caixa contará
 
 
-***INPUT PARA URL***
+***input para url***
 ```<input type="url" name="url" id="url" placeholder="ex: http://www..."```  
 
-[ESSA INPUT SÓ ACEITA URL COM HTTP:// ENTÃO É UTIL DEIXAR ISSO CLARO NO PLACEHOLDER]
+[essa input só aceita url com http:// então é util deixar isso claro no placeholder]
 
-***INPUT PARA PESQUISA***
+***input para pesquisa***
 ```<input type="search" id="search">```
 
-***INPUT PARA CONTROLE DESLIZANTE***
+***input para controle deslizante***
 ```<input type="range" id="range">``` 
 
-PARA ELE TAMBEM SE APLICA O MAXIMO E MINIMO:
+para ele tambem se aplica o maximo e minimo:
 	```max="numero"```
 	```min="numero"```
   
-  E UM VALOR NO QUAL ELE JÁ VEM CONFIGURADO:
+  e um valor no qual ele já vem configurado:
 	```value="numero"```  
-  NAO PEGA EM NAVEGADORES DEFASADOS
+  nao pega em navegadores defasados
 
-SE PEDIR PRA RESGATAR O VALUE, ELE RETORNA O VALOR ONDE A BARRA DE SELEÇÃO DO RANGE ESTÁ
-TESTE:
+se pedir pra resgatar o value, ele retorna o valor onde a barra de seleção do range está
+teste:
 ```
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <body>
 
 <input type="range" id="ta" min="0" max="5" step="1">
 <script type="text/javascript">
-	let d = document.getElementById('ta');
+	let d = document.getelementbyid('ta');
 
-	d.addEventListener('change',
+	d.addeventlistener('change',
     ()=>{
     	console.warn(d.value);
 	}
@@ -145,7 +145,7 @@ TESTE:
 </html>
 
 ```
-Para estilizar a range:
+para estilizar a range:
 
 ```
 input[type=range] {
@@ -170,43 +170,43 @@ input[type=range]::-webkit-slider-runnable-track {
 }
 ```
 
-Como não tem como colocar indicadores do valor pelo html, podemos colocar um norte para o usuario, usando js.
+como não tem como colocar indicadores do valor pelo html, podemos colocar um norte para o usuario, usando js.
 
-Assim:
+assim:
 ```
- <input id="idade" type="range" min="18" max="120" value="18" onchange="mostrarIdade(this.value)" />
- <span id="exibeIdade">18</span>
+ <input id="idade" type="range" min="18" max="120" value="18" onchange="mostraridade(this.value)" />
+ <span id="exibeidade">18</span>
 
-  function mostrarIdade(novoValor) {
-       document.getElementById("exibeIdade").innerHTML = novoValor;
+  function mostraridade(novovalor) {
+       document.getelementbyid("exibeidade").innerhtml = novovalor;
   }
 ```
 
-****UTILIZA PREFIXOS DE COMPATIBILIDADE MOZ E MS****
+****utiliza prefixos de compatibilidade moz e ms****
 
 
-***INPUT PARA DATA***
+***input para data***
 ```<input type="date" id="date">```
-[---------NAO PEGA EM NAVEGADORES DEFASADOS----------]
+[---------nao pega em navegadores defasados----------]
 
-***INPUT PARA COR***
+***input para cor***
 ```<input type="color" id="color">```
-DA PRA DEFINIR A COR NA QUAL ELE VEM AO CARREGAR A PAGINA
-```value="corHex"```
+da pra definir a cor na qual ele vem ao carregar a pagina
+```value="corhex"```
 
-***INPUT PARA BOTÃO***
-```<input type="button" value="Nome exibido no lugar">``` 
+***input para botão***
+```<input type="button" value="nome exibido no lugar">``` 
 
-***INPUT PARA ENVIAR UM ARQUIVO PARA UM SERVIDOR***
-```<input type="Submit" value="Nome exibido no lugar"> ```
+***input para enviar um arquivo para um servidor***
+```<input type="submit" value="nome exibido no lugar"> ```
 
-***BOTÕES DE RADIO***
-```<input type="radio" name="nome exibido no browser"> value="Nome exibido no lugar">``` 
+***botões de radio***
+```<input type="radio" name="nome exibido no browser"> value="nome exibido no lugar">``` 
 
-***BOTÕES DE CHECKBOX***
-```<input type="checkbox" name="Nome exibido"> ```
+***botões de checkbox***
+```<input type="checkbox" name="nome exibido"> ```
 
-***INPUT PARA ARQUIVO***
+***input para arquivo***
 ```<input type="file" id="arquivo">```
 
 
@@ -214,77 +214,77 @@ DA PRA DEFINIR A COR NA QUAL ELE VEM AO CARREGAR A PAGINA
 
 
 
-**ATRIBUTOS DAS INPUTS**
+**atributos das inputs**
 
-```placeholder ``` -> PLACEHOLDER É O TEXTO DENTRO DA INPUT QUE APARECE NO CAMPO  
+```placeholder ``` -> placeholder é o texto dentro da input que aparece no campo  
 
-```value``` -> É exibido como o nome nos botões, campos de texto e também o valor das inputs de entrada de dados enviado depois do processamento.  
+```value``` -> é exibido como o nome nos botões, campos de texto e também o valor das inputs de entrada de dados enviado depois do processamento.  
 
 ```name```-> referencia ao que foi inserido na caixa, aparece no browser nomeando duas inputs do tipo radio, você as agrupa,
-fazendo com que só uma possa ser selecionada, no checkbox, mesmo com nomes iguais, você pode selecionar quantas quiser. Também se refere ao indice que a informação da input vai estar quando for enviada através de post ou get nas super globais $_GET e $_POST. 
+fazendo com que só uma possa ser selecionada, no checkbox, mesmo com nomes iguais, você pode selecionar quantas quiser. também se refere ao indice que a informação da input vai estar quando for enviada através de post ou get nas super globais $_get e $_post. 
 
-```id``` -> Identificador único de um elemento.  
+```id``` -> identificador único de um elemento.  
 
-```required``` ->Impede que o campo fique vazio ao enviar dados de um form" SE USA ASSIM: required="required" ou: required(sem valores)
+```required``` ->impede que o campo fique vazio ao enviar dados de um form" se usa assim: required="required" ou: required(sem valores)
 ou required=""  
 
 ```autofocus```-> diz a caixa que deve aparecer selecionada assim que a pagina carrega, indicando ao usuario por onde ele deve começar.
 
 
-***CAIXA DE SELEÇÃO(COMBOBOX)***
-```<select name="estado"> </select>``` -> Cria uma caixa de seleção
+***caixa de seleção(combobox)***
+```<select name="estado"> </select>``` -> cria uma caixa de seleção
 
-***OPÇÕES DE UMA CAIXA DE SELEÇÃO(COMBOBOX)***
-```<option value="Bahia">BA</option>``` -> Cria opções dentro de uma caixa de seleção // Nesse caso, o nome estado irá receber o valor bahia.  
+***opções de uma caixa de seleção(combobox)***
+```<option value="bahia">ba</option>``` -> cria opções dentro de uma caixa de seleção // nesse caso, o nome estado irá receber o valor bahia.  
 
 
-***AREA DE TEXTO***
+***area de texto***
 ```<textarea></textarea>```  
 
 
-***RETIRA A OPCAO DE AUMENTAR A TEXTAREA***
+***retira a opcao de aumentar a textarea***
 ```<textarea style="resize: none"></textarea>```  
 
 
->Fieldsets são tags que agrupam dados semelhantes
+>fieldsets são tags que agrupam dados semelhantes
 
 ```<fieldset>
 </fieldset>	
 ```  
 
->Legend é a legenda do fieldset
+>legend é a legenda do fieldset
 
 ```<legend> </legend>```
 
->Label é a etiqueta, o rotulo de uma input(nome que vem antes)
+>label é a etiqueta, o rotulo de uma input(nome que vem antes)
 ```<label></label>```  
 
 
 for: > id que associa um input a uma label(quando voce clica na label ela te leva pro input)
->QUANDO O ID NO FOR TEM O MESMO NOME QUE O DE UMA INPUT, AO CLICAR VOCE É LEVADO PARA A INPUT  
+>quando o id no for tem o mesmo nome que o de uma input, ao clicar voce é levado para a input  
 
 
-```<label for="nome">Nome</label>```  
+```<label for="nome">nome</label>```  
 
 ```<input type="text" name="nome" id="nome">```
 
 
 
->Há como fazer isso sem precisar do id, assim :   
+>há como fazer isso sem precisar do id, assim :   
 
-```<label>Nome:
+```<label>nome:
 	<input type="text" name="nome">
 </label>
 ```
 
->Type é o tipo de input no qual o estilo vai ser aplicado, os que nao forem especificados não sofrem alteração  
+>type é o tipo de input no qual o estilo vai ser aplicado, os que nao forem especificados não sofrem alteração  
 
 ```
 input[type="text"].tague{
 }
 ```
 
->PARA MAIS DE UM  
+>para mais de um  
 
 ```
 input[type="number"], [type="submit"]{
@@ -293,15 +293,15 @@ input[type="number"], [type="submit"]{
 ```
 
 
->PARA EXIBIR AS LABELS ACIMA DAS FIELDS É SÓ MUDAR O DISPLAY PRA BLOCK
+>para exibir as labels acima das fields é só mudar o display pra block
 
 
 
->PRA FAZER AQUELAS AREAS DE TEXTO QUE TEM UM ICONE DO LADO PRIMEIRO DÊ UM PADDING-LEFT PRA AFASTAR O TEXTO DENTRO
-CRIE UMA SEGUNDA CLASSE COM O ICONE E COLOQUE NA INPUT DEPOIS POSICIONE COM BACKGROUND POSITION O BACKGROUND 
-QUE TU COLOCOU ALI (OLHE A PASTA AUTENTICAÇÃO INTERFACE PARA ENTENDER DO QUE SE TRATA).  
+>pra fazer aquelas areas de texto que tem um icone do lado primeiro dê um padding-left pra afastar o texto dentro
+crie uma segunda classe com o icone e coloque na input depois posicione com background position o background 
+que tu colocou ali (olhe a pasta autenticação interface para entender do que se trata).  
 
->QUANDO O INPUT ESTÁ SELECIONADO, PARA PERSONALIZAR OQ ACONTECE NA SELEÇÃO USE:  
+>quando o input está selecionado, para personalizar oq acontece na seleção use:  
 
 ```
 classedoinput :focus{
