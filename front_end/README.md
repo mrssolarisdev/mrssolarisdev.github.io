@@ -610,7 +610,7 @@ _______________________[HTML Audio/Video Methods]_______________________
 
 
 ***PARA ADAPTAR O SITE TOTALMENTE A DEFICIENTES NUNCA SE ESUQEÇA DE COLOCAR OS ELEMENTOS IMPORTANTES ENTRE AS SEGUINTES TAGS***
-
+### TAGS HTML 5 ###  
 
 ```<header></header>``` - Cabeçalho.  
 
@@ -629,5 +629,96 @@ _______________________[HTML Audio/Video Methods]_______________________
 ```<pre></pre>``` Faz com que o tamanho da fonte seja fixo, os espaços e as quebras de linhas sejam preservadas do texto original.   
 
 
+###Antigas:###
+
+TAGS HTML
+```<!DOCTYPE html>```  
+
+```<html></html>```  
+
+```<head></head>```  
+
+```<body></body>```  
+
+```<div></div>```  
+
+```<span></span>```  
+
+```<p></p>```  
+
+```<h1 .. h6> </h1 .. h6>```  
+
+```<a>```  
+
+```<img>```  
+
 
 >####Desse modo o browser irá ler e interpretar, dizendo a pessoa o que é e onde está cada coisa.####
+
+
+
+*[LINKS UTEIS]*
+
+*NORMALIZE.CSS*
+https://necolas.github.io/normalize.css/8.0.1/normalize.css
+
+*EX -> RGB*
+https://www.webfx.com/web-design/hex-to-rgb/
+
+*CORES HEX*
+https://www.w3schools.com/cssref/css_colors.asp
+
+*CORES RGB*
+https://www.w3schools.com/css/css_colors.asp
+
+*GERADOR DE TRANSFORM*
+https://html-css-js.com/css/generator/transform/
+
+*AUTO PREFIXO DE COMPATIBILIDADE COM BROWSERS*
+https://autoprefixer.github.io
+
+*TABELA DE ENTIDADES HTML*
+http://arquivo.devmedia.com.br/artigos/devmedia/html-entities.html
+
+*GERADOR DE IMAGENS ALEATÓRIAS*
+https://source.unsplash.com
+
+*NOMES DOS ICONES QUE USO*
+https://fontawesome.com/icons
+https://useiconic.com/open(TIRE A VPN PRA ENTRAR)
+https://www.w3schools.com/bootstrap/bootstrap_ref_comp_glyphs.asp
+
+*GERADOR DE PALETA DE CORES*
+color.adobe.com/pt/create
+
+*CONVERTER PX PARA EM*
+https://www.w3schools.com/tags/ref_pxtoemconversion.asp
+
+*COMPARADOR DE SEMELHANÇA DE TEXTOS*
+https://www.invertexto.com/comparar-textos
+
+*ATRIBUTOS DE TAGS HTML*
+https://developer.mozilla.org/pt-BR/docs/HTML/Attributes
+
+*MIX BLEND MODE DE TEXTOS*
+https://developer.mozilla.org/pt-BR/docs/Web/CSS/mix-blend-mode
+
+*SVG TUTORIAL*
+https://www.w3schools.com/graphics/svg_intro.asp
+
+*TRANSFORM*
+https://developer.mozilla.org/en-US/docs/Web/CSS/transform-style,
+https://www.w3schools.com/cssref/css3_pr_transform.asp
+
+
+*TRANSFORM PERSPECTIVE - NO ESPAÇO 2 OU 3D*
+https://developer.mozilla.org/pt-BR/docs/Web/CSS/transform-function/perspective
+
+*ATRIBUTOS HTML DATA - PERSONALIZADOS*
+https://www.w3schools.com/tags/att_global_data.asp
+
+*CSS FILTER*
+https://www.w3schools.com/cssref/css3_pr_filter.asp
+
+*AUTO PREFIXER*
+https://autoprefixer.github.io - Adiciona todos os prefixos de compatibilidade a animations e derivados.
