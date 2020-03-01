@@ -644,15 +644,43 @@ _______________________[HTML Audio/Video Methods]_______________________
 
 ```<div></div>```  
 
-```<span></span>```  
-
-```<p></p>```  
-
-```<h1 .. h6> </h1 .. h6>```  
-
 ```<a>```  
 
 ```<img>```  
+
+***Tags de texto***  
+
+```<br>``` - Quebra de linha.  
+
+```<p>``` - Paragrafo.  
+
+```<hr>``` - Horizontal line- linha horizontal.  
+
+```<b> e <strong>``` -  Negrito.  
+
+```<u>``` - Uderline.  
+
+```<em> e <i>``` - Italico.  
+
+```<strike>``` - Ticado.  
+
+```<h1> ate <h6> ``` -  Titulos de cabeçalho.  
+
+
+***COMPORTAMENTO POSICIONAL***  
+
+>Elementos bloco, ficam um abaixo do outro, alguns deles são:  
+
+```<h1> <p> <table> <div>```  
+
+>Elementos inline ,ficam um ao lado do outro e ocupam o tamanho do seu conteudo  
+
+```<a> <span> <img>```  
+
+>Elementos inline block tem uma combinação do comportamento tanto do block, quanto do inline, agem como blocos, mas se posicionam um ao lado do outro.  
+
+  
+  
 
 
 >####Desse modo o browser irá ler e interpretar, dizendo a pessoa o que é e onde está cada coisa.####  
