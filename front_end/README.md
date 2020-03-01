@@ -209,3 +209,102 @@ DA PRA DEFINIR A COR NA QUAL ELE VEM AO CARREGAR A PAGINA
 ***INPUT PARA ARQUIVO***
 ```<input type="file" id="arquivo">```
 
+
+
+
+
+
+**ATRIBUTOS DAS INPUTS**
+
+```placeholder ``` -> PLACEHOLDER É O TEXTO DENTRO DA INPUT QUE APARECE NO CAMPO  
+
+```value``` -> É exibido como o nome nos botões, campos de texto e também o valor das inputs de entrada de dados enviado depois do processamento.  
+
+```name```-> referencia ao que foi inserido na caixa, aparece no browser nomeando duas inputs do tipo radio, você as agrupa,
+fazendo com que só uma possa ser selecionada, no checkbox, mesmo com nomes iguais, você pode selecionar quantas quiser. Também se refere ao indice que a informação da input vai estar quando for enviada através de post ou get nas super globais $_GET e $_POST. 
+
+```id``` -> Identificador único de um elemento.  
+
+```required``` ->Impede que o campo fique vazio ao enviar dados de um form" SE USA ASSIM: required="required" ou: required(sem valores)
+ou required=""  
+
+```autofocus```-> diz a caixa que deve aparecer selecionada assim que a pagina carrega, indicando ao usuario por onde ele deve começar.
+
+
+***CAIXA DE SELEÇÃO(COMBOBOX)***
+```<select name="estado"> </select>``` -> Cria uma caixa de seleção
+
+***OPÇÕES DE UMA CAIXA DE SELEÇÃO(COMBOBOX)***
+```<option value="Bahia">BA</option>``` -> Cria opções dentro de uma caixa de seleção // Nesse caso, o nome estado irá receber o valor bahia.  
+
+
+***AREA DE TEXTO***
+```<textarea></textarea>```  
+
+
+***RETIRA A OPCAO DE AUMENTAR A TEXTAREA***
+```<textarea style="resize: none"></textarea>```  
+
+
+>Fieldsets são tags que agrupam dados semelhantes
+
+```<fieldset>
+</fieldset>	
+```  
+
+>Legend é a legenda do fieldset
+
+```<legend> </legend>```
+
+>Label é a etiqueta, o rotulo de uma input(nome que vem antes)
+```<label></label>```  
+
+
+for: > id que associa um input a uma label(quando voce clica na label ela te leva pro input)
+>QUANDO O ID NO FOR TEM O MESMO NOME QUE O DE UMA INPUT, AO CLICAR VOCE É LEVADO PARA A INPUT  
+
+
+```<label for="nome">Nome</label>```  
+
+```<input type="text" name="nome" id="nome">```
+
+
+
+>Há como fazer isso sem precisar do id, assim :   
+
+```<label>Nome:
+	<input type="text" name="nome">
+</label>
+```
+
+>Type é o tipo de input no qual o estilo vai ser aplicado, os que nao forem especificados não sofrem alteração  
+
+```
+input[type="text"].tague{
+}
+```
+
+>PARA MAIS DE UM  
+
+```
+input[type="number"], [type="submit"]{
+	width: 80px;
+}
+```
+
+
+>PARA EXIBIR AS LABELS ACIMA DAS FIELDS É SÓ MUDAR O DISPLAY PRA BLOCK
+
+
+
+>PRA FAZER AQUELAS AREAS DE TEXTO QUE TEM UM ICONE DO LADO PRIMEIRO DÊ UM PADDING-LEFT PRA AFASTAR O TEXTO DENTRO
+CRIE UMA SEGUNDA CLASSE COM O ICONE E COLOQUE NA INPUT DEPOIS POSICIONE COM BACKGROUND POSITION O BACKGROUND 
+QUE TU COLOCOU ALI (OLHE A PASTA AUTENTICAÇÃO INTERFACE PARA ENTENDER DO QUE SE TRATA).  
+
+>QUANDO O INPUT ESTÁ SELECIONADO, PARA PERSONALIZAR OQ ACONTECE NA SELEÇÃO USE:  
+
+```
+classedoinput :focus{
+
+}
+```
