@@ -1,9 +1,9 @@
 **HTML**
 
-O HTML = **HYPERTEXT MARKUP LANGUAGE **
+O html = **hypertext markup language **
 
-MARCA O QUE É CADA PARTE DO TEXTO, INDICA AO INTERPRETADOR O QUE É O QUE
-O QUE É O VIDEO, UMA DIV ETC.
+marca o que é cada parte do texto, indica ao interpretador o que é o que
+o que é o video, uma div etc.
 
 
 **LISTAS**
@@ -45,7 +45,7 @@ O QUE É O VIDEO, UMA DIV ETC.
  atributo scope:
 	```<th scope="col">Month</th>```  
   
-NESSE EXEMPLO, DIZ QUE ESSA TH É UM TABLE HEADER DE UMA COLUNA, PODERIA SER ROW, E ENTÃO SERIA O HEADER DE UMA LINHA.
+nesse exemplo, diz que essa th é um table header de uma coluna, poderia ser row, e então seria o header de uma linha.
 
  
 >Comentar html <! -- conteudo -->  
