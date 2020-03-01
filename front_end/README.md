@@ -658,7 +658,7 @@ _______________________[HTML Audio/Video Methods]_______________________
 >####Desse modo o browser irá ler e interpretar, dizendo a pessoa o que é e onde está cada coisa.####  
 
 
-*[LINKS UTEIS]*
+:heartpulse::heartpulse:**##LINKS UTEIS##**:heartpulse::heartpulse:
 
 *NORMALIZE.CSS*
 https://necolas.github.io/normalize.css/8.0.1/normalize.css
@@ -723,3 +723,6 @@ https://www.w3schools.com/cssref/css3_pr_filter.asp
 
 *AUTO PREFIXER*
 https://autoprefixer.github.io - Adiciona todos os prefixos de compatibilidade a animations e derivados.
+
+*REGEX PRÉ DEFINIDAS* 
+http://regexlib.com/Search.aspx?k=email&c=1&m=-1&ps=20 
