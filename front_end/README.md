@@ -347,7 +347,7 @@ type="extensao/extensao" // audio/mp3
 ```<video></video>``` - DEFINE UM VIDEO, LEVA ATRIBUTOS COMO:    
 
 
-```audioTracks`` - Returns an AudioTrackList object representing available audio tracks.    
+```audioTracks``` - Returns an AudioTrackList object representing available audio tracks.    
 
 ```autoplay``` - Sets or returns whether the audio/video should start playing as soon as it is loaded.   
 
@@ -371,92 +371,150 @@ type="extensao/extensao" // audio/mp3
 
 ```ended``` - Returns whether the playback of the audio/video has ended or not.  
 
-```error``` - Returns a MediaError object representing the error state of the audio/video.
-loop	Sets or returns whether the audio/video should start over again when finished
-mediaGroup	Sets or returns the group the audio/video belongs to (used to link multiple audio/video elements)
-muted	Sets or returns whether the audio/video is muted or not
-networkState	Returns the current network state of the audio/video
-paused	Returns whether the audio/video is paused or not
-playbackRate	Sets or returns the speed of the audio/video playback
-played	Returns a TimeRanges object representing the played parts of the audio/video
-preload	Sets or returns whether the audio/video should be loaded when the page loads
-readyState	Returns the current ready state of the audio/video
-seekable	Returns a TimeRanges object representing the seekable parts of the audio/video
-seeking	Returns whether the user is currently seeking in the audio/video
-startDate	Returns a Date object representing the current time offset
-textTracks	Returns a TextTrackList object representing the available text tracks
-videoTracks	Returns a VideoTrackList object representing the available video tracks
-volume	Sets or returns the volume of the audio/video
-src      - DEFINE DE ONDE O AUDIO É PEGO, MAS É MELHOR USAR A TAG SOURCE:
+```error``` - Returns a MediaError object representing the error state of the audio/video.  
 
-<source></source> - DEFINE DE ONDE O VIDEO SERÁ PEGO, LEVA OS ATRIBUTOS:
-source="endereçoVideo.extensão"
-type="extensao/extensao" // video/mp4
+```loop``` - Sets or returns whether the audio/video should start over again when finished.  
 
-Vários arquivos podem ser especificados utilizando o elemento <source> 
+```mediaGroup``` - Sets or returns the group the audio/video belongs to (used to link multiple audio/video elements).  
+
+```muted``` - Sets or returns whether the audio/video is muted or not.  
+
+```networkState``` - Returns the current network state of the audio/video.  
+
+```paused``` - Returns whether the audio/video is paused or not.  
+
+```playbackRate``` - Sets or returns the speed of the audio/video playback.  
+
+```played``` - Returns a TimeRanges object representing the played parts of the audio/video.  
+
+```preload``` - Sets or returns whether the audio/video should be loaded when the page loads.  
+
+```readyState``` - Returns the current ready state of the audio/video.  
+
+```seekable ``` - Returns a TimeRanges object representing the seekable parts of the audio/video.  
+
+```seeking``` - Returns whether the user is currently seeking in the audio/video.  
+
+```startDate``` - Returns a Date object representing the current time offset.  
+
+```textTracks``` - Returns a TextTrackList object representing the available text tracks.  
+
+```videoTracks``` - Returns a VideoTrackList object representing the available video tracks.  
+
+```volume``` - Sets or returns the volume of the audio/video.  
+
+```src``` - DEFINE DE ONDE O AUDIO É PEGO, MAS É MELHOR USAR A TAG SOURCE:
+
+```<source></source>``` - DEFINE DE ONDE O VIDEO SERÁ PEGO, LEVA OS ATRIBUTOS:  
+
+```source="endereçoVideo.extensão"```  
+
+```type="extensao/extensao" // video/mp4```
+
+>Vários arquivos podem ser especificados utilizando o elemento <source> 
 para disponibilizar vídeo ou áudio codificados em formatos diferentes para navegadores diferentes.
 Por exemplo:
 
-<video controls="">
+```<video controls="">
   <source src="foo.ogg" type="video/ogg">
   <source src="foo.mp4" type="video/mp4">
   Seu navegador não suporta o elemento <code>video</code>.
 </video>
+```
 
-Também é possível especificar os codecs que o arquivo de mídia requer; isso permite que o navegador
+>Também é possível especificar os codecs que o arquivo de mídia requer; isso permite que o navegador
 faça escolhas mais inteligentes:
 
-<video controls="">
+```<video controls="">
   <source src="foo.ogg" type="video/ogg; codecs=dirac, speex">
   Seu navegador não suporta o elemento <code>video</code>.
 </video>
+```
 
 AS CLASSES PARA ESTILIZAR VIDEO:
 
-.video:hover 
-.player
-.player .progress
-.player .progress-bar
-.player .button-holder
-.player .progress-button
-.player [class^="buffered"]
-.player .play-pause
-.player .play
-.player .pause-button
-.player .play .pause-button
-.player .pause .play-button
-.player .pause-button
-.player .pause-button span
-.player .pause-button span:first-of-type
-.player .time
-.player .stime .ttime
-.player .play:hover,
-.player .play:active
-.pause-button:active span
-.player .pause-button:hover span
-.player .volume
-.player .volume-icon
-.player .volume-icon-hover
-.player .volume-holder,
-.player .valume-bar-holder
-.player .volume-button
-.player .volume-button-holder
-.pplayer .volume-bar
-.player .fullscreen
-.player .fullscreen a
-.player .volume-icon span
-.player .volume-icon span:before
-.player .volume-icon span:after
-.player .volume-icon span:before
-.player .volume-icon span:after
-.player .v-change-X span:after onde X varia de 1 a 11 (ambos inclusos).
+```
+.video:hover  
+
+.player  
+
+.player .progress  
+
+.player .progress-bar  
+
+.player .button-holder  
+
+.player .progress-button  
+
+.player [class^="buffered"]  
+
+.player .play-pause  
+
+.player .play  
+
+.player .pause-button  
+
+.player .play .pause-button  
+
+.player .pause .play-button  
+
+.player .pause-button  
+
+.player .pause-button span  
+
+.player .pause-button span:first-of-type  
+
+.player .time  
+
+.player .stime .ttime  
+
+.player .play:hover,  
+
+.player .play:active  
+
+.pause-button:active span  
+
+.player .pause-button:hover span  
+
+.player .volume  
+
+.player .volume-icon  
+
+.player .volume-icon-hover  
+
+.player .volume-holder,  
+
+.player .valume-bar-holder  
+
+.player .volume-button  
+
+.player .volume-button-holder  
+
+.pplayer .volume-bar  
+
+.player .fullscreen  
+
+.player .fullscreen a  
+
+.player .volume-icon span  
+
+.player .volume-icon span:before  
+
+.player .volume-icon span:after  
+
+.player .volume-icon span:before  
+
+.player .volume-icon span:after  
+
+.player .v-change-X span:after onde X varia de 1 a 11 (ambos inclusos).  
+```
 
 
 _______________________[HTML Audio/Video Methods]_______________________
-Method	Description
-addTextTrack()	Adds a new text track to the audio/video
-canPlayType()	Checks if the browser can play the specified audio/video type
-load()	Re-loads the audio/video element
-play()	Starts playing the audio/video
-pause()	Pauses the currently playing audio/video
+***Method	Description***
+```addTextTrack()``` - Adds a new text track to the audio/video
+```canPlayType() ``` - Checks if the browser can play the specified audio/video type
+```load()``` - Re-loads the audio/video element
+```play()``` - Starts playing the audio/video
+```pause()``` - Pauses the currently playing audio/video
 
