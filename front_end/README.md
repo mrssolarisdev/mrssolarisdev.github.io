@@ -726,3 +726,9 @@ https://autoprefixer.github.io - Adiciona todos os prefixos de compatibilidade a
 
 *REGEX PRÉ DEFINIDAS* 
 http://regexlib.com/Search.aspx?k=email&c=1&m=-1&ps=20 
+
+*CONVERTER TRANSFORMAÇÃO DE TEXTO*
+https://convertcase.net
+
+*TIRAR FUNDO DE IMAGEM - MODO AUTOMATICO (TÁ ME SAINDO MELHOR QUE O PS)*
+https://www.stickermule.com/en-in/trace
