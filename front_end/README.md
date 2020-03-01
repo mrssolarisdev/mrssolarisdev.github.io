@@ -12,7 +12,7 @@ o que é o video, uma div etc.
 <ul> unordened list - lista nao ordenada
 <li> list item - item da lista
  ul type : circle, disc, square
- ol type : 1, a, a, i e i(algarismos romanos)
+ ol type : 1, a, A, i e I(algarismos romanos)
  ```
 
 
