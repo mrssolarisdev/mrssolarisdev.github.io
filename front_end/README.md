@@ -626,7 +626,10 @@ _______________________[HTML Audio/Video Methods]_______________________
 
 ```<aside></aside>``` - Feito para os buscadores entenderem que o que está ali se trata de um conteudo que está na lateral.  
 
-```<pre></pre>``` Faz com que o tamanho da fonte seja fixo, os espaços e as quebras de linhas sejam preservadas do texto original.   
+```<pre></pre>``` Faz com que o tamanho da fonte seja fixo, os espaços e as quebras de linhas sejam preservadas do texto original.      
+
+  
+  >####Desse modo o browser irá ler e interpretar, dizendo a pessoa o que é e onde está cada coisa.####
 
 
 ### Antigas: ###  
@@ -673,17 +676,15 @@ _______________________[HTML Audio/Video Methods]_______________________
 
 ```<h1> <p> <table> <div>```  
 
->Elementos inline ,ficam um ao lado do outro e ocupam o tamanho do seu conteudo  
+>Elementos inline ,ficam um ao lado do outro e ocupam o tamanho do seu conteudo:  
+
 
 ```<a> <span> <img>```  
 
->Elementos inline block tem uma combinação do comportamento tanto do block, quanto do inline, agem como blocos, mas se posicionam um ao lado do outro.  
+>Elementos inline block tem uma combinação do comportamento tanto do block, quanto do inline, agem como blocos, mas se posicionam um ao lado do outro (Esses a gente modifica ao nosso gosto, com css).  
 
   
-  
-
-
->####Desse modo o browser irá ler e interpretar, dizendo a pessoa o que é e onde está cada coisa.####  
+   
 
 
 :heartpulse::heartpulse:**##LINKS UTEIS##**:heartpulse::heartpulse:
