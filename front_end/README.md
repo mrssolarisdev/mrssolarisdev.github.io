@@ -512,9 +512,12 @@ AS CLASSES PARA ESTILIZAR VIDEO:
 
 _______________________[HTML Audio/Video Methods]_______________________
 ***Method	Description***
-```addTextTrack()``` - Adds a new text track to the audio/video
-```canPlayType() ``` - Checks if the browser can play the specified audio/video type
-```load()``` - Re-loads the audio/video element
-```play()``` - Starts playing the audio/video
-```pause()``` - Pauses the currently playing audio/video
+```addTextTrack()``` - Adds a new text track to the audio/video.  
 
+```canPlayType() ``` - Checks if the browser can play the specified audio/video type.  
+
+```load()``` - Re-loads the audio/video element.  
+
+```play()``` - Starts playing the audio/video.  
+
+```pause()``` - Pauses the currently playing audio/video.  
