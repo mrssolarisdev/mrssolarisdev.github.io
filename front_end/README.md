@@ -629,9 +629,11 @@ _______________________[HTML Audio/Video Methods]_______________________
 ```<pre></pre>``` Faz com que o tamanho da fonte seja fixo, os espaços e as quebras de linhas sejam preservadas do texto original.   
 
 
-###Antigas:###
+### Antigas: ###  
 
-TAGS HTML
+
+**TAGS HTML**  
+
 ```<!DOCTYPE html>```  
 
 ```<html></html>```  
@@ -653,8 +655,7 @@ TAGS HTML
 ```<img>```  
 
 
->####Desse modo o browser irá ler e interpretar, dizendo a pessoa o que é e onde está cada coisa.####
-
+>####Desse modo o browser irá ler e interpretar, dizendo a pessoa o que é e onde está cada coisa.####  
 
 
 *[LINKS UTEIS]*
