@@ -1,0 +1,253 @@
+:root{
+          --water-color: #42a6ff;
+          --purple: #42124c;
+          --red: #b71a30;
+          --pink: #bb083d;
+        }
+        body{
+          background: #ccc;
+          height: 100%;
+          overflow-x: hidden;
+          position: relative;
+        }
+      
+       
+        #content{
+          padding:5em;
+          padding-top: 3em;
+        }
+        #header{
+          position: relative;
+        }
+        .sect-1{
+          background: white;
+          border-radius: 1em;
+          position: relative;
+        }
+        .shadow{
+          position: absolute;
+          background: #757575;
+          filter: blur(100px);
+          width: 100%;
+          height: 200px;
+        }
+        .row{ 
+          position: relative;
+        }
+        #bomba{
+          position: relative;
+          overflow:hidden;
+          padding: 20px;
+        }
+        #water-lvl{
+          width:100%;
+          height:300px;
+          background:var(--water-color);
+          transition: 2s height;
+          position: relative;
+        }
+        #wave{
+          background: url(wave.png);
+          background-size: 400px;
+          box-sizing:border-box;
+          height:35px;
+        }
+        .wave1{
+          animation: animate 30s linear infinite;
+          animation-delay: 1s;
+        }
+        .wave2{
+          animation: animate 20s linear infinite;
+          animation-delay: 1.5s;
+          opacity: 0.7;
+          position: relative;
+          top:-34px;
+        }
+        .wave3{
+          animation: animate 15s linear infinite;
+          animation-delay: 2s;
+          opacity: 0.5;
+          position: relative;
+          top:-70px;
+        }
+        @keyframes animate{
+          0%{
+            background-position-x: 0;
+          }
+          100%{
+            background-position-x: 1000px;
+          }
+        }
+        #water-box{
+          margin-top: 1em;
+          border: ;
+          background: #fff;
+          padding: 5px;
+          border-bottom-left-radius: 0.8em;
+          border-bottom-right-radius: 0.8em;
+          border-top-left-radius: 0.2em;
+          border-top-right-radius: 0.2em;
+          border-left: 4px solid var(--water-color);
+          border-bottom: 4px solid var(--water-color);
+          border-right: 4px solid var(--water-color);
+          overflow: hidden;
+          margin-left:65px;
+        }
+        #waves{
+          position: relative;
+          top: 72px;
+        }
+        #water{
+          position: relative;
+        }
+        .aviso{
+          background: #42a6ff7d;
+          color: #0e518c;
+          letter-spacing: 0.06em;
+          display: block;
+          padding: 0.5em;
+          border-radius: 4px;
+          margin-left: 2px;
+          font-size: 14px;
+          margin-top: 10px;
+          margin-bottom: 10px;
+        }
+        #rule{
+          display: inline-table;
+        }
+        .trace{
+          width: 4px;
+          height: 425px;
+          background: var(--dark);
+        }
+        #rule{
+          position: absolute;
+          top: 15px;
+        }
+        .cm{
+          background:  var(--dark);
+          width: 20px;
+          height: 5px;
+          position: relative;
+        }
+        .cm:nth-child(1){
+          visibility: hidden;
+        }
+        .cm:nth-child(2){
+          top: 100px;
+        }
+        .cm:nth-child(3){
+          top: 200px;
+        }
+        .cm:nth-child(4){
+          top: 300px;
+        }
+        .cm:nth-child(5){
+          top: 400px;
+        }
+        .title{
+          color:  var(--dark);
+          font-weight: 800;
+          padding: 25px;
+          position: relative;
+          top: -10px;
+        }
+        .bg-purple{
+          background: var(--purple);
+        }
+        .sect-1 input[type="checkbox"]{
+          transform: translate(35%,30%);
+          position: relative;
+          width: 80px;
+          height: 40px;
+          -webkit-appearance: none;
+          background: var(--red);
+          outline: none;
+          border-radius: 20px;
+          transition: .5s;
+          box-shadow: inset 0 0 5px rgba(38, 17, 17, 0.81);
+        }
+        .sect-1 input:checked[type="checkbox"]{
+          background: green;
+        }
+        .sect-1 input[type="checkbox"]:before{
+          content: '';
+          position: absolute;
+          width: 35px;
+          height:35px;
+          border-radius: 50%;
+          top:2.5px;
+          left:2.5px;
+          background:white;
+          transition: .5s;
+          box-sizing: border-box;
+        }
+        .sect-1 input:checked[type="checkbox"]:before{
+          left:42px;
+        }
+        input[type="radio"]{
+          width: 44px;
+          height: 30px;
+          -webkit-appearance: none;
+          background: var(--pink);
+          transform: translate(30%,8%);
+          border: 1px solid var(--pink);
+        }
+        input:active[type="radio"]{
+         outline:none;
+        }
+         input:checked[type="radio"]{
+          background: var(--pink);
+          transform: translate(30%,8%);
+          border: 3px solid #7b0a19;
+          outline:none;
+        }
+        #box-data{
+          position: relative;
+        }
+        .box-1{
+          position: absolute;
+          z-index: 999;
+          color: white;
+          left: 148px;
+          top: 5px;
+          pointer-events: none;
+        }
+        .box-2{
+          position: absolute;
+          pointer-events: none;
+          z-index: 999;
+          color: white;
+          top: 5px;
+          left: 198px;
+        }
+        .pos{
+          position: relative;
+          top: -6px;
+        }
+        svg {
+          position: relative;
+          width: 400px;
+          height: 200px;
+          z-index: 1000;
+        }
+        svg circle{
+          width: 100%;
+          height: 100%;
+          fill: none;
+          stroke: var(--pink);
+          stroke-width: 10;
+          stroke-linecap: round;
+          stroke-dasharray: 610;
+          stroke-dashoffset: 202;
+          transform: translate(100px,9px);
+        }
+        .number{
+          position: absolute;
+          top: 120px;
+          left: 200px;
+        }
+        .color{
+          color: var(--pink);
+          font-size: 0.6em;
+        }
