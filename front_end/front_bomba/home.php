@@ -1,3 +1,10 @@
+<?php
+	session_start();
+	if(!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] === 'no'){
+	  header('Location: index.php?error=login_unauthorized');
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -12,53 +19,9 @@
     <meta http-equiv="Expires" content="0" />
      <title>Bomba dagua</title>
      
-    
-   
-     <script type="text/javascript" defer>
-
-     function attBody(obj){
-       let converted = JSON.parse(obj);
-       let bomba = document.getElementById("estado");
-       let cx = document.getElementById("caixa");
-       bomba.innerHTML = "Estado:"+converted.estado+"-"+"Litros:"+converted.litros;
-       cx.style.height = converted.litros+"px";
-     }
-     try{
-        let connection = new WebSocket('ws://localhost:6790');
-        let messageCounter = 0;
-
-        connection.onopen = function (event) {
-            connection.send(`Conexão com o servidor bem sucedida.`); // Manda mensagem ao efetuar a conexão.
-            console.log(`Conectado com: ${connection.url}.`);
-        };
-        // Log errors
-        connection.onerror = function (event) {
-          console.log(`Erro ${event}!`);
-        };
-
-        // Log messages from the server
-        connection.onmessage = function (e) {
-            console.log(`Message from server: ${e.data}`);//Mostra os dados recebidos do servidor.
-            messageCounter++;
-            connection.send(`Confirmação de recepção de dados da bomba dagua n° ${messageCounter}.`);
-            //A cada mensagem recebida do servidor, manda a confirmação de que os dados foram realmente recebidos.
-            attBody(e.data);
-        };
-
-        connection.onclose = function (){
-          console.log(`Conexão encerrada.`);
-          //document.write("Falha de conexão");
-        }
-        function click(){
-          connection.close();
-        }
-     }
-     catch(error){
-       console.error(`Falha de conexão.`);
-     }
-     
-
+     <script type="module" src="server_connection.js">
      </script>
+     
      <link rel="stylesheet" type="text/css" href="style.css">
   </head>
 
@@ -67,8 +30,8 @@
       <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
           <a href="" class="text-secondary navbar-brand text-light">Home</a>
           <ul class="navbar-nav ml-auto">
-              <li class="nav-item"><a class="nav-link">Bem vindo XXX</a></li>
-              <li class="nav-item"><a class="nav-link" href="">Logout</a></li>
+              <li class="nav-item"><a class="nav-link">Bem vindo <?php $_SESSION['username'] ?></a></li>
+              <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
           </ul>
       </nav>
     </header>
