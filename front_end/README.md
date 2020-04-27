@@ -2,7 +2,7 @@
 
 o html = **hypertext markup language **
 
-marca o que é cada parte do texto, indica ao interpretador o que é o que
+marca o que é cada parte do texto, indica ao interpretador o que é o que: 
 o que é o video, uma div etc.
 
 
@@ -10,6 +10,7 @@ o que é o video, uma div etc.
 
 ```<ol> ordened list- - lista ordenada- numeros
 <ul> unordened list - lista nao ordenada
+<ol> ordened list - lista ordenada
 <li> list item - item da lista
  ul type : circle, disc, square
  ol type : 1, a, A, i e I(algarismos romanos)
