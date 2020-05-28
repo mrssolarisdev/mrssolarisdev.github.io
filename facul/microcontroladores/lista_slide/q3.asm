@@ -1,0 +1,12 @@
+ORG 0000h
+
+MOV R7, #02h
+MOV R5, #01h
+MOV R2, #04h
+MOV R0, #07h
+MOV A, R7
+XRL A, R5
+XRL A, R2
+XRL A, R0
+
+end

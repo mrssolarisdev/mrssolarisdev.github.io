@@ -1,0 +1,17 @@
+ORG 0000h
+
+MOV R1, #05h
+MOV R4, #22h
+MOV 25h, #31h
+MOV R0, #25h
+MOV A, R1
+ADD A, R4
+SUBB A, @R0
+RL A
+RL A
+MOV B, #02h
+MUL AB
+SUBB A, #20h
+MOV 22h, A
+
+END

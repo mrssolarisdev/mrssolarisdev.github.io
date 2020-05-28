@@ -1,0 +1,9 @@
+ORG 0000h
+
+ADD A, #09h
+RR A
+CPL A
+SWAP A
+DEC A
+
+end

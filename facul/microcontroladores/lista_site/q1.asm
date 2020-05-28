@@ -1,0 +1,10 @@
+ORG 0000h
+
+MOV 26h, #26h
+MOV A, 26h
+RRC A
+SUBB A, 6Ah
+ANL A, #2Fh
+MOV 5Dh, A
+
+END

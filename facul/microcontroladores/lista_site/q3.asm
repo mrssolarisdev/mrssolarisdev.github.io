@@ -1,0 +1,17 @@
+ORG 0000h
+
+MOV 1Bh, #40h
+MOV R5, #24h
+MOV PSW, #0Ch
+MOV R7, #1Ch
+MOV A, R7
+ORL A, 1Bh
+MOV B, #04h
+DIV AB
+SUBB A, #51h
+MOV PSW, #00h
+ADD A, R5
+MOV PSW, #08h
+MOV R3, A
+
+END
